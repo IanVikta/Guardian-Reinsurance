@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Guardian Re | Innovative Reinsurance Services</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#191c1d",
+                        "on-error": "#ffffff",
+                        "primary-container": "#002147",
+                        "on-tertiary-container": "#7487be",
+                        "text-primary": "#001529",
+                        "on-secondary-fixed-variant": "#544600",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c400",
+                        "secondary-container": "#fcd400",
+                        "surface": "#f8f9fa",
+                        "secondary-fixed": "#ffe16d",
+                        "on-background": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#aec7f6",
+                        "surface-tint": "#465f88",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#001849",
+                        "on-error-container": "#93000a",
+                        "text-secondary": "#4A5568",
+                        "tertiary-fixed": "#dae1ff",
+                        "on-secondary-container": "#6e5c00",
+                        "surface-container-highest": "#e1e3e4",
+                        "tertiary": "#000825",
+                        "surface-variant": "#e1e3e4",
+                        "on-secondary-fixed": "#221b00",
+                        "surface-container": "#edeeef",
+                        "gold-dark": "#C5A000",
+                        "outline-variant": "#c4c6cf",
+                        "surface-bright": "#f8f9fa",
+                        "surface-muted": "#EAF1F7",
+                        "surface-container-high": "#e7e8e9",
+                        "primary": "#000a1e",
+                        "on-primary-container": "#708ab5",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#324578",
+                        "background": "#f8f9fa",
+                        "tertiary-container": "#051e50",
+                        "secondary": "#705d00",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "primary-fixed": "#d6e3ff",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#001b3d",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#aec7f6",
+                        "tertiary-fixed-dim": "#b3c5ff",
+                        "on-surface-variant": "#44474e",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "section-gap-md": "100px",
+                        "gutter": "40px",
+                        "container-max": "1280px",
+                        "section-gap-lg": "160px",
+                        "unit": "8px",
+                        "margin-desktop": "48px",
+                        "margin-mobile": "24px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Work Sans"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg-mobile": ["Source Serif 4"],
+                        "headline-sm": ["Source Serif 4"],
+                        "label-caps": ["Work Sans"],
+                        "headline-md": ["Source Serif 4"],
+                        "headline-lg": ["Source Serif 4"],
+                        "display-lg": ["Source Serif 4"],
+                        "button": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "30px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "600"}],
+                        "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700"}],
+                        "headline-md": ["36px", {"lineHeight": "44px", "fontWeight": "600"}],
+                        "headline-lg": ["56px", {"lineHeight": "64px", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "button": ["14px", {"lineHeight": "20px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark-glass {
+            background: rgba(0, 10, 30, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .carousel-slide {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            position: absolute;
+            inset: 0;
+        }
+        .carousel-slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .gold-accent-line {
+            height: 2px;
+            background: linear-gradient(90deg, #705d00 0%, transparent 100%);
+            width: 80px;
+        }
+        #mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-[100] bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 flex items-center justify-between px-margin-mobile md:px-margin-desktop h-20">
+<div class="flex items-center gap-3">
+<div class="bg-primary p-1.5 rounded-sm">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold tracking-tight text-primary">Guardian Re</span>
+</div>
+<nav class="hidden lg:flex items-center gap-10">
+<a class="text-primary font-bold font-label-caps text-label-caps border-b-2 border-secondary transition-all" href="#">Home</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Products</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">Claims</a>
+<a class="text-on-surface-variant font-label-caps text-label-caps hover:text-primary transition-colors" href="#">About</a>
+</nav>
+<div class="flex items-center gap-6">
+<a class="hidden sm:block bg-primary px-8 py-3 rounded text-white font-button text-button hover:bg-tertiary transition-all hover:shadow-lg active:scale-95" href="#">Contact Us</a>
+<button class="lg:hidden text-primary p-2" id="menu-toggle">
+<span class="material-symbols-outlined text-3xl">menu</span>
+</button>
+</div>
+</header>
+<!-- Premium Mobile Menu -->
+<div class="fixed inset-0 z-[110] bg-primary flex flex-col p-8" id="mobile-menu">
+<div class="flex justify-between items-center mb-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary-fixed text-2xl">shield</span>
+<span class="font-headline-sm text-headline-sm font-bold text-white">Guardian Re</span>
+</div>
+<button class="text-white p-2" id="menu-close">
+<span class="material-symbols-outlined text-3xl">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-8 mb-auto">
+<a class="text-3xl font-headline-md text-secondary-fixed border-l-4 border-secondary-fixed pl-4" href="#">Home</a>
+<a class="text-3xl font-headline-md text-white/70 hover:text-white pl-4 transition-colors" href="#">Products</a>
+<a class="text-3xl font-headline-md text-white/70 hover:text-white pl-4 transition-colors" href="#">Claims</a>
+<a class="text-3xl font-headline-md text-white/70 hover:text-white pl-4 transition-colors" href="#">About</a>
+</nav>
+<div class="mt-8 border-t border-white/10 pt-8 flex flex-col gap-6">
+<div class="flex gap-6">
+<a class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">alternate_email</span>
+</a>
+</div>
+<p class="text-white/40 text-sm">© 2024 Guardian Reinsurance Brokers</p>
+</div>
+</div>
+<main class="pt-0">
+<!-- Hero Carousel Section -->
+<section class="relative h-screen min-h-[700px] bg-primary overflow-hidden">
+<div class="relative w-full h-full" id="hero-carousel">
+<!-- Slide 1 -->
+<div class="carousel-slide active">
+<img alt="Strategic Reinsurance" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBouung1N1CI110zVd0dhxRsu2zas8MNnbZ-wq8RfHtck_NPY5RZOonpEjN0lT0j_t_TfIgdWB7OSda9C0WzG-P7NvKwp37IOQ6UHkus_cC9RC02QIe7AOxoTRz73ToJUbQ248bMB5pN6DPNhjoTV0CmSvBoTtM1vZcUhzgT6Ht9spuKxwNHwU2A23-qNPOrPs2Dmf5NrZKudun8PLhczoTKW1EqEa73D0Ew3VnaXFkRYy9MuFxSVkXRZ1-vDO0hNOFS7D7qXdMgJxp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-black/30"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<span class="inline-block font-label-caps text-label-caps tracking-[0.3em] text-secondary-fixed mb-6 uppercase animate-fade-in">Strategic Intelligence</span>
+<h1 class="font-display-lg text-4xl md:text-7xl text-white mb-8 leading-[1.1] font-bold">The Benchmark of <span class="text-secondary-fixed italic">Trust</span> in Reinsurance</h1>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-xl">Bespoke risk transfer solutions engineered with clinical precision for the global institutional market.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a class="bg-secondary-container text-primary font-button text-button px-10 py-5 rounded hover:bg-secondary transition-all hover:shadow-[0_0_20px_rgba(252,212,0,0.3)] text-center" href="#">Explore Solutions</a>
+<a class="dark-glass text-white font-button text-button px-10 py-5 rounded hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2" href="#">
+                                    Case Studies <span class="material-symbols-outlined text-sm">north_east</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="carousel-slide">
+<img alt="Global Reach" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvRzFY1mBw0k3gSypB-rbKrgRu3YpEM5uoGd2HYz1CpZeC7RTGcIsSlHfkrdJuGe7Hp3sLO44bfKHdWzkjkNeUaqqUBMWUaGZ6EuRZGHXyBagWUBNHit3lNTeZvRz8gKRvL6QJlbulXEz2FrDt1nwlf7FaPY79RStAjfURmnjG28cxYUaQzlS7RDxzH7xVrIHoqRhQMEakPU-S4smnljDgIef7pdrciWB1ydLY1krtKEGWJMz1BO9JemcEjtlms-BL7DyWMztHMAPK"/>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/50 to-transparent"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<span class="inline-block font-label-caps text-label-caps tracking-[0.3em] text-secondary-fixed mb-6 uppercase">Universal Connectivity</span>
+<h2 class="font-display-lg text-4xl md:text-7xl text-white mb-8 leading-[1.1] font-bold">Unrivaled <span class="text-secondary-fixed">Global</span> Reinsurance Reach</h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-xl">Navigating complex international markets with a network that spans continents and transcends boundaries.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a class="bg-secondary-container text-primary font-button text-button px-10 py-5 rounded hover:bg-secondary transition-all text-center" href="#">Our Global Network</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="carousel-slide">
+<img alt="Data-Driven Insights" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuADR8bkqPTJ7ir7M79p1zrlIC5-E38Py5lFsZx32McBYeqVZ7Oaj3HCarY0_q18C0zzMgVvWNQUzoz5u7ErIiKaZFgcC6jFvqxCQiZTB9Dg50UR5bp_nhDxidbMXygOqWI1DNddpYtS0ZEPWkNIREUTKVur-t_qA-Qb0K8rATjJGHqreA_YYgNCVQlPY4Kh17sLO6kdeC3QjZMhaYXS-WFfQk-RP7PHqyVI2W_QJo52ucIXbG2IepY6DE90ngY27kd6EH7RJt0-3Han"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/95 via-transparent to-black/20"></div>
+<div class="absolute inset-0 flex items-center">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="max-w-3xl">
+<span class="inline-block font-label-caps text-label-caps tracking-[0.3em] text-secondary-fixed mb-6 uppercase">Analytical Excellence</span>
+<h2 class="font-display-lg text-4xl md:text-7xl text-white mb-8 leading-[1.1] font-bold">Data-Driven <span class="text-secondary-fixed underline decoration-2 underline-offset-8">Insights</span></h2>
+<p class="font-body-lg text-body-lg text-white/80 mb-10 max-w-xl">Transforming volatile market data into actionable risk strategies using state-of-the-art predictive modeling.</p>
+<div class="flex flex-col sm:flex-row gap-6">
+<a class="bg-secondary-container text-primary font-button text-button px-10 py-5 rounded hover:bg-secondary transition-all text-center" href="#">View Analytics Hub</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Carousel Nav Dots -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+<button class="carousel-dot w-12 h-1 bg-white/30 hover:bg-white/60 transition-all rounded-full" data-slide="0"></button>
+<button class="carousel-dot w-12 h-1 bg-white/30 hover:bg-white/60 transition-all rounded-full" data-slide="1"></button>
+<button class="carousel-dot w-12 h-1 bg-white/30 hover:bg-white/60 transition-all rounded-full" data-slide="2"></button>
+</div>
+</section>
+<!-- Methodology / Market Analytics Section -->
+<section class="py-section-gap-lg bg-surface relative overflow-hidden">
+<div class="absolute top-0 right-0 w-1/3 h-full opacity-5 pointer-events-none">
+<span class="material-symbols-outlined text-[600px] text-primary">analytics</span>
+</div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
+<div class="order-2 lg:order-1">
+<div class="relative rounded-sm overflow-hidden shadow-2xl">
+<img alt="Market Analytics" class="w-full h-[600px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT7SCtqRvJrF3jcGw4tI3lpwG3ACqSWYTne0ZfP_-tLVGjpif9zbpvBKfju7mwoqsHN3bpQAKvI_fE0VeNMN8LPQq29y3XwYufR9-pIe7OLcKRmX3kajJG3htt5jrHwrrDZRacQVTEZ0Ob-PkZya65-fWGvp2VAEhIsJZtyHB4rlFqfgZJkDwTv8FmxyyLUM951GMoVSMyAbqjFcmjDbQJ7UJoMjL74eYnX4eYoEP1Mkwrbs8m_KAsCkFUXfmT78dyVMlGfF2SpcrX"/>
+<div class="absolute inset-0 ring-1 ring-inset ring-white/20"></div>
+</div>
+</div>
+<div class="order-1 lg:order-2 lg:pl-12">
+<div class="gold-accent-line mb-8"></div>
+<span class="font-label-caps text-label-caps text-secondary font-bold mb-4 block">ANALYTICAL RIGOR</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-8 leading-tight">Advanced Market Analytics &amp; Methodology</h2>
+<p class="font-body-lg text-body-lg text-text-secondary mb-10 leading-relaxed">
+                        We leverage industry-leading data analytics to provide our clients with a competitive edge. Our technical accounting and contract wording expertise ensures that every risk is articulated with clinical precision, providing the stability your stakeholders demand.
+                    </p>
+<div class="grid grid-cols-2 gap-8 mb-10">
+<div>
+<h4 class="font-headline-sm text-xl text-primary mb-2">99.8%</h4>
+<p class="text-sm text-text-secondary">Placement Success Rate</p>
+</div>
+<div>
+<h4 class="font-headline-sm text-xl text-primary mb-2">24/7</h4>
+<p class="text-sm text-text-secondary">Market Monitoring</p>
+</div>
+</div>
+<a class="bg-primary text-white font-button text-button px-8 py-4 rounded hover:bg-tertiary transition-all inline-flex items-center gap-3 shadow-md" href="#">
+                        Our Analytical Framework
+                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us / Expertise Section -->
+<section class="py-section-gap-lg bg-primary text-white relative">
+<div class="absolute inset-0 opacity-20">
+<img alt="Expertise Visual" class="w-full h-full object-cover grayscale" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2ot6VjTtwo5lfyN5lKZLaZxVLkDnIYNkJNVdkkbEgUNl37H7lPwC1q_GSo_nrwQ1CYOCZf7A6ye2B31MC3luK466M6ST9BxkA2pGNzrB40ATWrFa7MqCf5V16_flRWSbs2_soL3GWqslgkL7YzD4RXS2yIg8k8kn8eaxVc3ZibZ05aKTDRqh175JUkawRhU-rJkcmLk1E0d8EXfuT9Sq40QukW5YWo-E2jTdfbj8PNxDzQ-iZqjHZoR0AP_BeTqNmmw0Qbn_trbhb"/>
+<div class="absolute inset-0 bg-primary/80"></div>
+</div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<div class="max-w-3xl mb-20">
+<div class="gold-accent-line mb-8"></div>
+<h2 class="font-display-lg text-headline-lg-mobile md:text-display-lg mb-8 leading-tight">Expertise Redefined</h2>
+<p class="font-body-lg text-body-lg text-white/70 max-w-2xl">Combining the personalized service of a elite boutique firm with the technical prowess of a global powerhouse. We don't just broker; we strategize.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<div class="dark-glass p-10 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-sm bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">handshake</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white mb-4">Unyielding Integrity</h4>
+<p class="text-white/60 leading-relaxed">Total transparency in every transaction. We operate with a fiduciary mindset that puts your interests above all else.</p>
+</div>
+<div class="dark-glass p-10 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-sm bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">person_pin</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white mb-4">Client-First Framework</h4>
+<p class="text-white/60 leading-relaxed">Personalized boutique services tailored to your specific risk appetite. No generic solutions, only custom strategies.</p>
+</div>
+<div class="dark-glass p-10 group hover:bg-white/10 transition-all">
+<div class="w-16 h-16 rounded-sm bg-secondary-container/20 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary-fixed text-4xl">lightbulb</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm text-white mb-4">Innovative Resilience</h4>
+<p class="text-white/60 leading-relaxed">Pioneering new risk transfer structures that anticipate market shifts before they happen. Stay ahead of the curve.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Strategic Solutions Bento -->
+<section class="py-section-gap-lg bg-white">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="mb-20 text-center max-w-2xl mx-auto">
+<span class="font-label-caps text-label-caps text-secondary font-bold mb-4 block">OUR CAPABILITIES</span>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-6">Strategic Reinsurance Solutions</h2>
+<div class="gold-accent-line mx-auto mb-8"></div>
+<p class="text-text-secondary font-body-lg">Tailored reinsurance programs designed for the intricacies of a modern global economy.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+<!-- Treaty Broking -->
+<div class="md:col-span-8 relative h-[500px] overflow-hidden group rounded-sm shadow-xl">
+<img alt="Treaty Broking" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAO0lIqvUp_kZKbocnAK1dYSpXsA23tW3hE3HsuNRH3PmkPXB7j2Z7THospDkpxZUbnHwklF7weYWjTqQhpI1nHGuPu669ka0Cf9xjsCeQWvFjnqalodtjueCMRCG9FTqjPuNjLqylAM8jlrhTa0ow8DU3j3NFf9odsB4ftSHHIrpaxcr2SOKzVmS4hS_vlO9uq7rSrxNxBIxv-qysNrVBi1jWt0NutoLUCg-Y5VJDC4_CDMI_mDtQgvulpbtdm0yzjmcmX8fucpKwP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent flex flex-col justify-end p-12 text-white">
+<h3 class="font-headline-md text-headline-md mb-4">Treaty Broking</h3>
+<p class="font-body-md text-white/80 max-w-md mb-8">Aggregate risk management with high-capacity placement and competitive global pricing.</p>
+<a class="bg-white text-primary px-8 py-3 rounded-sm w-fit font-button text-button hover:bg-secondary-fixed transition-all hover:px-10" href="#">Explore Treaty Services</a>
+</div>
+</div>
+<!-- Facultative -->
+<div class="md:col-span-4 relative h-[500px] overflow-hidden group rounded-sm shadow-xl">
+<img alt="Facultative" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTnjBwR58fx-F0at3YXJaq-Tnb9GTlBbregwssQyKEoTLCf85dzruANv9TuMYgAoBz9h2gdGcif6DZ9aa2Hh3LTI8skR27lhS2-Q-H_VWNCgm8o2buByh-RY8INMiAd8nJBUe-HOiDbaqi-8nM_suc6gPJNcMD3WMkIOE2MRht9hmngA8UvD76uowj3-2Gaa1VC2GMxBj42rI08JnNBKoucggPEyL2VEJ3pFpr_SYD1smuEuB9k6xOpF6eUip8GE32IB7n9HI0M6ca"/>
+<div class="absolute inset-0 bg-secondary/90 flex flex-col justify-end p-10 text-primary">
+<h3 class="font-headline-sm text-headline-sm mb-4">Facultative Reinsurance</h3>
+<p class="font-body-md text-primary/80 mb-8">Bespoke placement for individual, high-value risks requiring specialized underwriting expertise.</p>
+<a class="text-primary font-button text-button border-b-2 border-primary/30 w-fit pb-1 hover:border-primary transition-all flex items-center gap-2" href="#">
+                            Case Studies <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section with Glassmorphism -->
+<section class="py-section-gap-lg bg-surface relative">
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop max-w-4xl">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary mb-4">Professional Insights</h2>
+<p class="text-text-secondary">Clarity on our operational excellence and client engagement models.</p>
+</div>
+<div class="space-y-6">
+<details class="group glass-card rounded-sm border-none open:shadow-xl transition-all">
+<summary class="list-none p-8 flex justify-between items-center cursor-pointer">
+<span class="font-headline-sm text-headline-sm text-primary">How do we ensure optimal placement pricing?</span>
+<span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-text-secondary leading-relaxed">
+                        Through our proprietary market analytics and extensive global network, we conduct competitive bidding processes across top-tier reinsurers to secure the most favorable terms and capacity for our clients.
+                    </div>
+</details>
+<details class="group glass-card rounded-sm border-none open:shadow-xl transition-all">
+<summary class="list-none p-8 flex justify-between items-center cursor-pointer">
+<span class="font-headline-sm text-headline-sm text-primary">Can arrangements be tailored to specific jurisdictions?</span>
+<span class="material-symbols-outlined text-secondary transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-8 pb-8 text-text-secondary leading-relaxed">
+                        Absolutely. We specialize in cross-border reinsurance structures that comply with local regulatory requirements while maximizing capital efficiency and risk protection.
+                    </div>
+</details>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-section-gap-lg bg-primary relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+<div class="container mx-auto px-margin-mobile md:px-margin-desktop relative z-10 text-center">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-6 block tracking-widest uppercase">Take the Next Step</span>
+<h2 class="font-display-lg text-4xl md:text-6xl text-white mb-10 max-w-4xl mx-auto leading-tight">Secure Your Legacy with <span class="text-secondary-fixed">Guardian Prestige</span> Reinsurance</h2>
+<p class="font-body-lg text-body-lg text-white/70 mb-12 max-w-2xl mx-auto">Connect with our senior brokers for a strategic consultation on your risk portfolio.</p>
+<div class="flex flex-col sm:flex-row justify-center gap-6">
+<a class="bg-secondary-container text-primary font-button text-button px-12 py-5 rounded-sm hover:bg-secondary transition-all hover:shadow-[0_10px_30px_rgba(252,212,0,0.3)] active:scale-95 inline-block" href="#">Schedule Consultation</a>
+<a class="border border-white/20 text-white font-button text-button px-12 py-5 rounded-sm hover:bg-white/5 transition-all inline-block" href="#">Our Track Record</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary text-on-primary w-full px-margin-mobile md:px-margin-desktop py-24">
+<div class="container mx-auto grid grid-cols-1 md:grid-cols-4 gap-16">
+<div class="col-span-1 md:col-span-1">
+<div class="flex items-center gap-3 mb-8">
+<div class="bg-secondary p-1 rounded-sm">
+<span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">shield</span>
+</div>
+<span class="font-headline-sm text-headline-sm font-bold text-white">Guardian Re</span>
+</div>
+<p class="text-on-primary/60 mb-8 leading-relaxed">The benchmark for ethical reinsurance brokerage and technical excellence across the globe.</p>
+<div class="flex gap-5">
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-sm">share</span></a>
+<a class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary-fixed hover:text-primary transition-all" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-secondary-fixed mb-8 uppercase">Solutions</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Treaty Placement</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Facultative Risks</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Claims Management</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Risk Advisory</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-secondary-fixed mb-8 uppercase">Governance</h5>
+<ul class="space-y-4 text-sm">
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Compliance</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Privacy Policy</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Terms &amp; Ethics</a></li>
+<li><a class="text-on-primary/60 hover:text-white transition-colors" href="#">Reporting</a></li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-caps text-label-caps text-secondary-fixed mb-8 uppercase">Headquarters</h5>
+<ul class="space-y-6 text-sm">
+<li class="flex items-start gap-4 text-on-primary/60">
+<span class="material-symbols-outlined text-secondary-fixed text-lg">location_on</span>
+                    Suite 402, Financial Tower,<br/>Kampala, Uganda
+                </li>
+<li class="flex items-center gap-4 text-on-primary/60">
+<span class="material-symbols-outlined text-secondary-fixed text-lg">phone</span>
+                    +256 414 344 500
+                </li>
+</ul>
+</div>
+</div>
+<div class="mt-20 pt-8 border-t border-white/5 text-center text-on-primary/30 text-xs tracking-widest uppercase">
+        © 2024 Guardian Reinsurance Brokers. Technical Excellence. Absolute Trust.
+    </div>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Carousel Logic
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        let currentSlide = 0;
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => {
+                d.classList.remove('bg-white', 'w-16');
+                d.classList.add('bg-white/30', 'w-12');
+            });
+            
+            slides[index].classList.add('active');
+            dots[index].classList.add('bg-white', 'w-16');
+            dots[index].classList.remove('bg-white/30', 'w-12');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        let slideInterval = setInterval(nextSlide, 6000);
+
+        dots.forEach((dot, idx) => {
+            dot.addEventListener('click', () => {
+                clearInterval(slideInterval);
+                currentSlide = idx;
+                showSlide(currentSlide);
+                slideInterval = setInterval(nextSlide, 6000);
+            });
+        });
+
+        showSlide(0);
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menu-toggle');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        });
+
+        menuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            document.body.style.overflow = '';
+        });
+
+        // Intersection Observer for Animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-12');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(div => {
+            div.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12');
+            observer.observe(div);
+        });
+    });
+</script>
+</body></html>

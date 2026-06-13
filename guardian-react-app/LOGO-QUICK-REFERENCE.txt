@@ -1,0 +1,315 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                    LOGO DIMENSIONS - QUICK REFERENCE                         ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ RECOMMENDED LOGO SIZE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Primary Logo:
+┌────────────────────────────────────────┐
+│                                         │
+│        YOUR LOGO HERE                   │  ← 60px height
+│                                         │
+└────────────────────────────────────────┘
+           ← 200px width →
+
+Dimensions: 200px × 60px
+Ratio: 3.3:1 (width:height)
+Format: PNG or SVG
+Background: TRANSPARENT
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📏 ALL SIZES NEEDED
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. HEADER LOGO (Desktop)
+   ┌──────────────────────────────┐
+   │      YOUR LOGO              │  60px
+   └──────────────────────────────┘
+            200px
+
+2. HEADER LOGO (Mobile)
+   ┌────────────────────────┐
+   │    YOUR LOGO          │  48px
+   └────────────────────────┘
+          160px
+
+3. RETINA VERSION (@2x)
+   ┌────────────────────────────────────────────────────────┐
+   │                  YOUR LOGO                             │  120px
+   └────────────────────────────────────────────────────────┘
+                        400px
+
+4. FAVICON (Browser Tab)
+   ┌──────┐
+   │ LOGO │  32px
+   └──────┘
+     32px
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 VERSIONS NEEDED
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. COLOR LOGO (Primary)
+   ┌────────────────────────────────┐
+   │  [Navy + Gold Logo]            │
+   └────────────────────────────────┘
+   File: logo.png (200×60)
+   Use: Light backgrounds
+
+2. WHITE LOGO (Secondary)
+   ┌────────────────────────────────┐
+   │  [White Logo]                  │
+   └────────────────────────────────┘
+   File: logo-white.png (200×60)
+   Use: Dark backgrounds (footer)
+
+3. RETINA VERSIONS
+   File: logo@2x.png (400×120)
+   File: logo-white@2x.png (400×120)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📐 RATIO GUIDE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+If your logo doesn't fit exactly 200×60, use similar ratio:
+
+✅ ACCEPTABLE RATIOS (width:height):
+
+3:1 Ratio:
+- 180×60
+- 210×70
+- 240×80
+
+3.3:1 Ratio (RECOMMENDED):
+- 200×60  ← PERFECT
+- 220×66
+- 165×50
+
+4:1 Ratio:
+- 200×50
+- 240×60
+- 160×40
+
+❌ AVOID:
+- Square logos (1:1)
+- Tall logos (1:2)
+- Very wide logos (>5:1)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💾 FILE FORMATS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+BEST:
+✅ SVG (Scalable Vector)
+   - Perfect quality at any size
+   - Small file size
+   - Recommended!
+
+GOOD:
+✅ PNG (Portable Network Graphics)
+   - Supports transparency
+   - Good quality
+   - Need 2 versions (1x and 2x)
+
+AVOID:
+❌ JPG (No transparency)
+❌ GIF (Low quality)
+❌ BMP (Large size)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 WHERE TO SAVE
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Save your logo files here:
+
+d:\xampp\htdocs\AdvPHP\Guardian Reinsurance\guardian-react-app\public\
+
+Files to create:
+├── logo.png              ← 200×60 (standard)
+├── logo@2x.png           ← 400×120 (retina)
+├── logo-white.png        ← 200×60 (for dark bg)
+├── logo-white@2x.png     ← 400×120 (retina)
+└── favicon.ico           ← 32×32 (browser tab)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 EXPORT SETTINGS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FROM PHOTOSHOP:
+1. File → Export → Export As
+2. Format: PNG-24
+3. Size: 200×60 pixels
+4. Transparency: ✅ Checked
+5. Quality: 100%
+
+FROM ILLUSTRATOR:
+1. File → Export → Export As
+2. Format: PNG
+3. Resolution: 300 PPI
+4. Size: 200×60 pixels
+5. Background: Transparent
+
+FROM FIGMA/SKETCH:
+1. Select logo layer
+2. Export settings
+3. Format: PNG
+4. Size: 1x and 2x
+5. Transparency: Yes
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ CHECKLIST
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Before saving your logo:
+
+☐ Logo is 200×60 pixels (or similar 3:1 ratio)
+☐ Background is TRANSPARENT (not white)
+☐ File size is under 50KB
+☐ Logo is clear and readable at actual size
+☐ You have color version (logo.png)
+☐ You have white version (logo-white.png)
+☐ File is named exactly "logo.png"
+☐ Saved in public/ folder
+☐ Created @2x retina versions
+☐ Tested visibility on both light and dark backgrounds
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 QUICK START
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Prepare Logo
+   → Export at 200×60 pixels
+   → Transparent background
+   → PNG format
+
+STEP 2: Save Files
+   → Save as "logo.png" in public/ folder
+   → Save white version as "logo-white.png"
+
+STEP 3: Tell Me When Ready
+   → I'll update the code to use your logo
+   → Will replace shield icon with your logo
+   → Takes 2 minutes!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 VISUAL COMPARISON
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CURRENT (Icon):
+┌──────────────────────────┐
+│ [🛡️] Guardian Re        │
+│      Reinsurance Brokers │
+└──────────────────────────┘
+
+AFTER (Your Logo):
+┌──────────────────────────┐
+│ [Your Professional Logo] │
+└──────────────────────────┘
+
+Size comparison:
+Icon: 40×40 square
+Logo: 200×60 rectangle (5x wider, 1.5x taller)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎨 COLOR GUIDELINES
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Your logo should work well with:
+
+LIGHT BACKGROUNDS:
+- Header: White
+- Main sections: Light gray
+- Cards: White
+
+DARK BACKGROUNDS:
+- Footer: Navy gradient
+- Some hero sections: Dark blue
+- Mobile menu: Navy
+
+BRAND COLORS:
+- Primary: Navy (#000a1e)
+- Gold: #705d00
+- Ensure logo uses these or complements them
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+💡 PRO TIPS
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Test your logo at 200×60 BEFORE exporting
+   - Does text remain readable?
+   - Are details clear?
+   - Does it look professional?
+
+2. Create both color and white versions
+   - Color version for light backgrounds
+   - White version for dark backgrounds
+   - Both should be recognizable
+
+3. Keep file size small
+   - Use compression tools
+   - Target: Under 50KB
+   - Faster loading = better UX
+
+4. Include clear space
+   - Logo should have padding internally
+   - Don't let elements touch edges
+   - Maintain breathing room
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📞 NEED HELP?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Just say:
+"Logo is ready" - I'll update the code
+"Help with logo size" - I'll assist with resizing
+"Logo looks blurry" - I'll help troubleshoot
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎯 SUMMARY
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RECOMMENDED SIZE:
+📏 200 pixels × 60 pixels
+
+FORMAT:
+🎨 PNG with transparent background
+
+WHERE TO SAVE:
+📁 public/logo.png
+
+READY?
+✅ Just tell me when your logo is ready!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
