@@ -5,6 +5,8 @@ import Footer from '../components/Footer';
 
 const Home = () => {
   const [activeSlide, setActiveSlide] = useState(0);
+  
+  // Hero carousel configuration with professional reinsurance messaging
   const slides = [
     {
       image: '/images/guardian-sm-work.png',
