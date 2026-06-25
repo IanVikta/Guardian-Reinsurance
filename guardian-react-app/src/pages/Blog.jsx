@@ -10,55 +10,55 @@ const Blog = () => {
   const articles = [
     {
       id: 1,
-      title: 'Thought Leadership: Reinsurance Outlook on the African Continent',
+      title: 'Beyond Risk Transfer: How Reinsurance is Building a More Resilient Africa',
       slug: 'reinsurance-outlook-african-continent',
-      excerpt: 'An in-depth analysis of the reinsurance landscape across Africa, exploring emerging opportunities, challenges, and the future of risk transfer on the continent.',
+      excerpt: 'The narrative around Africa is often dominated by its risks. But at Guardian Reinsurance, we see a different story—one of immense opportunity, innovation, and resilience.',
       category: 'Industry Insights',
       author: 'Guardian Reinsurance Team',
       date: 'June 15, 2026',
-      readTime: '8 min read',
+      readTime: '6 min read',
       image: '/images/expertise.jpg',
       featured: true,
-      tags: ['Africa', 'Market Analysis', 'Industry Trends']
+      tags: ['Africa', 'Market Analysis', 'Resilience']
     },
     {
       id: 2,
       title: 'What is the Difference Between Facultative and Treaty Reinsurance?',
       slug: 'facultative-vs-treaty-reinsurance',
-      excerpt: 'A comprehensive guide explaining the key differences between facultative and treaty reinsurance, helping you understand which approach best suits your risk management needs.',
+      excerpt: 'Facultative reinsurance is for individual, specific risks negotiated one by one, while treaty reinsurance covers a whole portfolio of risks automatically.',
       category: 'Educational',
       author: 'Guardian Reinsurance Team',
       date: 'May 28, 2026',
-      readTime: '6 min read',
+      readTime: '5 min read',
       image: '/images/treaty.jpg',
       featured: false,
       tags: ['Facultative', 'Treaty', 'Education']
     },
     {
       id: 3,
-      title: 'What Reinsurance Teaches Us About Mental Health',
+      title: 'Sharing the Load: What Reinsurance Can Teach Us About Men\'s Mental Health at Work',
       slug: 'reinsurance-mental-health-lessons',
-      excerpt: 'Exploring the unexpected parallels between reinsurance risk management principles and mental health resilience strategies.',
+      excerpt: 'We talk a lot about resilience in business, but silence is still the default when it comes to men\'s mental health. Learn how the principle of risk sharing can transform workplace wellbeing.',
       category: 'Thought Leadership',
       author: 'Guardian Reinsurance Team',
       date: 'April 10, 2026',
-      readTime: '5 min read',
+      readTime: '6 min read',
       image: '/images/consultant.jpg',
       featured: false,
-      tags: ['Mental Health', 'Risk Management', 'Wellness']
+      tags: ['Mental Health', 'Workplace Wellbeing', 'Leadership']
     },
     {
       id: 4,
-      title: 'World AIDS Day: Our Commitment to Social Responsibility',
+      title: 'Overcoming Disruption in Health Requires Financial Resilience',
       slug: 'world-aids-day-commitment',
-      excerpt: 'Reflecting on our corporate social responsibility initiatives and how Guardian Reinsurance supports health awareness and community well-being.',
+      excerpt: 'This World AIDS Day, we explore how reinsurance provides the financial resilience needed to transform the AIDS response and build sustainable health systems.',
       category: 'Corporate Social Responsibility',
       author: 'Guardian Reinsurance Team',
       date: 'December 1, 2025',
-      readTime: '4 min read',
+      readTime: '5 min read',
       image: '/images/global-connectivity.jpg',
       featured: false,
-      tags: ['CSR', 'Health', 'Community']
+      tags: ['CSR', 'Health', 'World AIDS Day']
     },
     {
       id: 5,
