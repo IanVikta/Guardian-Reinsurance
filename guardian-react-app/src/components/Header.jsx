@@ -22,7 +22,9 @@ const Header = () => {
     { path: '/', label: 'Home', icon: 'home' },
     { path: '/products', label: 'Products', icon: 'inventory_2' },
     { path: '/claims', label: 'Claims', icon: 'receipt_long' },
-    { path: '/about', label: 'About', icon: 'info' }
+    { path: '/about', label: 'About', icon: 'info' },
+    { path: '/gallery', label: 'Gallery', icon: 'photo_library' },
+    { path: '/insights', label: 'Insights', icon: 'insights' }
   ];
 
   const isActive = (path) => {

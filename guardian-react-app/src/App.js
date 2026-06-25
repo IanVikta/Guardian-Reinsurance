@@ -5,6 +5,8 @@ import Products from './pages/Products';
 import Claims from './pages/Claims';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import Gallery from './pages/Gallery';
+import Insights from './pages/Insights';
 import Loader from './components/Loader';
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
           <Route path="/claims" element={<Claims />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/insights" element={<Insights />} />
         </Routes>
       </div>
     </Router>

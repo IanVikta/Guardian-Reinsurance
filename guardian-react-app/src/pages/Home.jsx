@@ -46,6 +46,22 @@ const Home = () => {
       <main className="pt-0">
         {/* Hero Carousel Section */}
         <section className="relative h-screen min-h-[600px] bg-primary overflow-hidden">
+          {/* Background Video - Keep video locally, but use fallback for deployment */}
+          <div className="absolute inset-0">
+            {/* Video will work locally, fallback to image for deployment */}
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover"
+              poster="/images/hero-1.jpg"
+            >
+              <source src="/videos/Guidance.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-black/40"></div>
+          </div>
+
           <div className="relative w-full h-full">
             {slides.map((slide, index) => (
               <div
@@ -54,12 +70,7 @@ const Home = () => {
                   activeSlide === index ? 'opacity-100 z-10' : 'opacity-0 z-0'
                 }`}
               >
-                <img
-                  alt={slide.tag}
-                  className="w-full h-full object-cover"
-                  src={slide.image}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-black/30"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
                 <div className="absolute inset-0 flex items-center">
                   <div className="container mx-auto px-margin-mobile md:px-margin-desktop">
                     <div className="max-w-3xl" data-aos="fade-up">
