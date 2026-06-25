@@ -236,7 +236,7 @@ const Insights = () => {
         </section>
 
         {/* Featured Insight - Horizontal Card */}
-        {selectedCategory === 'All' && featuredInsight && (
+        {activeCategory === 'All' && featuredInsight && (
           <section className="py-12 bg-gradient-to-r from-primary/5 to-secondary/5">
             <div className="container mx-auto px-6 md:px-12 lg:px-16">
               <div className="flex items-center gap-2 mb-6">
