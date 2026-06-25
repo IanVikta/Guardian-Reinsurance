@@ -10,6 +10,7 @@ import Insights from './pages/Insights';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Loader from './components/Loader';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="bg-background text-on-surface font-body-md overflow-x-hidden">
         <Routes>
           <Route path="/" element={<Home />} />

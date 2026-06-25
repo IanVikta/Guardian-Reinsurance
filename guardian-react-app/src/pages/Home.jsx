@@ -47,13 +47,13 @@ const Home = () => {
         {/* Hero Carousel Section */}
         <section className="relative h-screen min-h-[600px] bg-primary overflow-hidden">
           {/* Background Video */}
-          <div className="absolute inset-0">
+          <div className="absolute inset-0 w-full h-full overflow-hidden">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
               poster="/images/hero-1.jpg"
             >
               <source src="/videos/reinsurance.mp4" type="video/mp4" />
