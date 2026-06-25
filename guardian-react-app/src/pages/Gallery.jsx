@@ -47,6 +47,66 @@ const Gallery = () => {
       src: '/images/gallery/WhatsApp Image 2026-03-24 at 3.56.32 PM (3).jpeg',
       title: 'Team Building',
       category: 'Events'
+    },
+    {
+      id: 8,
+      src: '/images/gallery/IMG_7142.jpg',
+      title: 'Corporate Event',
+      category: 'Events'
+    },
+    {
+      id: 9,
+      src: '/images/gallery/IMG_7151.jpg',
+      title: 'Business Networking',
+      category: 'Events'
+    },
+    {
+      id: 10,
+      src: '/images/gallery/IMG_7155.jpg',
+      title: 'Professional Gathering',
+      category: 'Events'
+    },
+    {
+      id: 11,
+      src: '/images/gallery/IMG_7185.jpg',
+      title: 'Industry Partners',
+      category: 'Events'
+    },
+    {
+      id: 12,
+      src: '/images/gallery/IMG_7187.jpg',
+      title: 'Team Excellence',
+      category: 'Office'
+    },
+    {
+      id: 13,
+      src: '/images/gallery/IMG_7272.jpg',
+      title: 'Leadership Forum',
+      category: 'Events'
+    },
+    {
+      id: 14,
+      src: '/images/gallery/IMG_7279.jpg',
+      title: 'Strategic Session',
+      category: 'Office'
+    },
+    {
+      id: 15,
+      src: '/images/gallery/IMG_7286.jpg',
+      title: 'Professional Development',
+      category: 'Office'
+    },
+    {
+      id: 16,
+      src: '/images/gallery/IMG_7296.jpg',
+      title: 'Team Success',
+      category: 'Office'
+    },
+    {
+      id: 17,
+      src: '/images/gallery/IMG_7818.jpg',
+      title: 'Company Milestone',
+      category: 'Events'
     }
   ];
 
