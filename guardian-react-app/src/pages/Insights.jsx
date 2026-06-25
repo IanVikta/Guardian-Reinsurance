@@ -161,9 +161,9 @@ const Insights = () => {
                 <span className="text-white text-xs font-bold uppercase tracking-[0.25em]">Market Intelligence</span>
               </div>
               
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05]" data-aos="fade-up">
+              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05] font-bold" data-aos="fade-up">
                 Data-Driven
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-[#d4a700]">
+                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-[#d4a700] font-bold">
                   Market Insights
                 </span>
               </h1>

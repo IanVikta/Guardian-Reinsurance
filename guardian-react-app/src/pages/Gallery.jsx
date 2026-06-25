@@ -85,8 +85,8 @@ const Gallery = () => {
                 <span className="text-secondary-fixed text-xs font-semibold uppercase tracking-[0.2em]">Gallery</span>
               </div>
               
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight" data-aos="fade-up">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary">Journey</span> in Pictures
+              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight font-bold" data-aos="fade-up">
+                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary font-bold">Journey</span> in Pictures
               </h1>
               
               <p className="font-body-lg text-lg md:text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">

@@ -16,7 +16,7 @@ const Products = () => {
               <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
                 Our Expertise
               </span>
-              <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-6">
+              <h1 className="font-display-lg text-headline-lg md:text-display-lg text-primary mb-6 font-bold">
                 Innovative & Forward Looking Reinsurance Services
               </h1>
               <p className="font-body-lg text-body-lg text-text-secondary mb-10 max-w-2xl">

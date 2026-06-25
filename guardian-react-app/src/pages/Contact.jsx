@@ -84,8 +84,8 @@ const Contact = () => {
                 <span className="text-white/90 text-sm font-medium uppercase tracking-wider">Get In Touch</span>
               </div>
               
-              <h1 className="font-display-lg text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight">
-                Contact <span className="text-secondary-fixed">Guardian Reinsurance</span>
+              <h1 className="font-display-lg text-4xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight font-bold">
+                Contact <span className="text-secondary-fixed font-bold">Guardian Reinsurance</span>
               </h1>
               
               <p className="font-body-lg text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">

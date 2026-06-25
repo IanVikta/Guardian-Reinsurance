@@ -96,12 +96,12 @@ const About = () => {
               </div>
               
               {/* Main Heading with Gradient */}
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05] text-center" data-aos="fade-up">
+              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05] text-center font-bold" data-aos="fade-up">
                 Your Preferred
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-[#d4a700]">
+                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-[#d4a700] font-bold">
                   Reinsurance
                 </span>
-                <span className="block mt-2 text-white/95">Broker</span>
+                <span className="block mt-2 text-white/95 font-bold">Broker</span>
               </h1>
               
               {/* Premium Description */}

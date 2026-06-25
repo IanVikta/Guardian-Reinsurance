@@ -94,9 +94,9 @@ const Claims = () => {
               </div>
               
               {/* Main Heading */}
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] text-center" data-aos="fade-up">
+              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] text-center font-bold" data-aos="fade-up">
                 Efficient Claims
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary mt-1">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary mt-1 font-bold">
                   Recoveries
                 </span>
               </h1>
