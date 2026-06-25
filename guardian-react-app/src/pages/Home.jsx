@@ -46,9 +46,8 @@ const Home = () => {
       <main className="pt-0">
         {/* Hero Carousel Section */}
         <section className="relative h-screen min-h-[600px] bg-primary overflow-hidden">
-          {/* Background Video - Keep video locally, but use fallback for deployment */}
+          {/* Background Video */}
           <div className="absolute inset-0">
-            {/* Video will work locally, fallback to image for deployment */}
             <video
               autoPlay
               loop
@@ -57,7 +56,7 @@ const Home = () => {
               className="w-full h-full object-cover"
               poster="/images/hero-1.jpg"
             >
-              <source src="/videos/Guidance.mp4" type="video/mp4" />
+              <source src="/videos/reinsurance.mp4" type="video/mp4" />
             </video>
             <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/60 to-black/40"></div>
           </div>

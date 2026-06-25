@@ -32,4 +32,8 @@ yarn-error.log*
 *.mp4
 *.mov
 *.avi
+
+# But allow the reinsurance video (exception)
+!public/videos/reinsurance.mp4
+
 /Website Assets/

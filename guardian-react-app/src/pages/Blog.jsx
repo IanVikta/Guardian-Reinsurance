@@ -62,16 +62,16 @@ const Blog = () => {
     },
     {
       id: 5,
-      title: 'LinkedIn Best Practices for Reinsurance Professionals',
+      title: 'LinkedIn Content Strategy for African Reinsurance: Best Practices That Drive Engagement',
       slug: 'linkedin-best-practices',
-      excerpt: 'Professional networking strategies and content sharing tips tailored for reinsurance industry professionals on LinkedIn.',
+      excerpt: 'A comprehensive guide to building thought leadership on LinkedIn for African reinsurance professionals—from data-driven posts to engagement strategies.',
       category: 'Professional Development',
       author: 'Guardian Reinsurance Team',
       date: 'March 20, 2026',
-      readTime: '5 min read',
+      readTime: '8 min read',
       image: '/images/strategic-analysis.jpg',
       featured: false,
-      tags: ['LinkedIn', 'Networking', 'Professional Growth']
+      tags: ['LinkedIn', 'Content Strategy', 'B2B Marketing', 'Thought Leadership']
     }
   ];
 
