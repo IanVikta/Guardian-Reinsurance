@@ -23,6 +23,7 @@ const Header = () => {
     { path: '/products', label: 'Products', icon: 'inventory_2' },
     { path: '/claims', label: 'Claims', icon: 'receipt_long' },
     { path: '/about', label: 'About', icon: 'info' },
+    { path: '/blog', label: 'Blog', icon: 'article' },
     { path: '/gallery', label: 'Gallery', icon: 'photo_library' },
     { path: '/insights', label: 'Insights', icon: 'insights' }
   ];

@@ -7,6 +7,8 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import Gallery from './pages/Gallery';
 import Insights from './pages/Insights';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 import Loader from './components/Loader';
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/insights" element={<Insights />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
         </Routes>
       </div>
     </Router>
