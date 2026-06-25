@@ -14,7 +14,9 @@ const Insights = () => {
       date: 'September 9, 2025',
       category: 'Market Report',
       excerpt: 'Comprehensive analysis of reinsurance market trends and capacity updates for Q3 2025.',
-      featured: true
+      featured: true,
+      readTime: '5 min',
+      trending: true
     },
     {
       id: 2,
@@ -22,7 +24,8 @@ const Insights = () => {
       title: 'Regional Risk Assessment',
       date: 'September 9, 2025',
       category: 'Risk Analysis',
-      excerpt: 'Deep dive into emerging risks and opportunities in East African reinsurance markets.'
+      excerpt: 'Deep dive into emerging risks and opportunities in East African reinsurance markets.',
+      readTime: '4 min'
     },
     {
       id: 3,
@@ -30,7 +33,8 @@ const Insights = () => {
       title: 'Industry Outlook Update',
       date: 'September 9, 2025',
       category: 'Market Report',
-      excerpt: 'Forward-looking perspectives on global reinsurance capacity and pricing trends.'
+      excerpt: 'Forward-looking perspectives on global reinsurance capacity and pricing trends.',
+      readTime: '6 min'
     },
     {
       id: 4,
@@ -38,7 +42,8 @@ const Insights = () => {
       title: 'Claims Management Insights',
       date: 'September 10, 2025',
       category: 'Best Practices',
-      excerpt: 'Strategic approaches to optimizing claims recovery and management processes.'
+      excerpt: 'Strategic approaches to optimizing claims recovery and management processes.',
+      readTime: '5 min'
     },
     {
       id: 5,
@@ -46,7 +51,8 @@ const Insights = () => {
       title: '2026 Market Preview',
       date: 'January 28, 2026',
       category: 'Market Report',
-      excerpt: 'Key trends shaping the reinsurance landscape in 2026 and beyond.'
+      excerpt: 'Key trends shaping the reinsurance landscape in 2026 and beyond.',
+      readTime: '7 min'
     },
     {
       id: 6,
@@ -54,7 +60,8 @@ const Insights = () => {
       title: 'Capacity Trends Analysis',
       date: 'January 28, 2026',
       category: 'Market Report',
-      excerpt: 'Current capacity availability and pricing dynamics across major markets.'
+      excerpt: 'Current capacity availability and pricing dynamics across major markets.',
+      readTime: '5 min'
     },
     {
       id: 7,
@@ -62,7 +69,8 @@ const Insights = () => {
       title: 'Treaty Renewal Strategies',
       date: 'January 28, 2026',
       category: 'Best Practices',
-      excerpt: 'Effective strategies for navigating treaty renewals in a hardening market.'
+      excerpt: 'Effective strategies for navigating treaty renewals in a hardening market.',
+      readTime: '6 min'
     },
     {
       id: 8,
@@ -70,7 +78,8 @@ const Insights = () => {
       title: 'Facultative Market Update',
       date: 'January 28, 2026',
       category: 'Market Report',
-      excerpt: 'Latest developments in facultative reinsurance placement and pricing.'
+      excerpt: 'Latest developments in facultative reinsurance placement and pricing.',
+      readTime: '4 min'
     },
     {
       id: 9,
@@ -78,7 +87,8 @@ const Insights = () => {
       title: 'Regulatory Changes Impact',
       date: 'January 28, 2026',
       category: 'Risk Analysis',
-      excerpt: 'How new regulations are reshaping reinsurance operations and compliance.'
+      excerpt: 'How new regulations are reshaping reinsurance operations and compliance.',
+      readTime: '8 min'
     },
     {
       id: 10,
@@ -86,7 +96,8 @@ const Insights = () => {
       title: 'Technology in Reinsurance',
       date: 'January 28, 2026',
       category: 'Innovation',
-      excerpt: 'Digital transformation and its impact on reinsurance broking efficiency.'
+      excerpt: 'Digital transformation and its impact on reinsurance broking efficiency.',
+      readTime: '6 min'
     },
     {
       id: 11,
@@ -94,7 +105,8 @@ const Insights = () => {
       title: 'Climate Risk Assessment',
       date: 'January 28, 2026',
       category: 'Risk Analysis',
-      excerpt: 'Understanding and managing climate-related risks in reinsurance portfolios.'
+      excerpt: 'Understanding and managing climate-related risks in reinsurance portfolios.',
+      readTime: '7 min'
     },
     {
       id: 12,
@@ -102,7 +114,8 @@ const Insights = () => {
       title: 'Global Market Dynamics',
       date: 'January 28, 2026',
       category: 'Market Report',
-      excerpt: 'Cross-border reinsurance trends and international market opportunities.'
+      excerpt: 'Cross-border reinsurance trends and international market opportunities.',
+      readTime: '5 min'
     },
     {
       id: 13,
@@ -110,7 +123,8 @@ const Insights = () => {
       title: 'Performance Metrics Review',
       date: 'January 28, 2026',
       category: 'Analytics',
-      excerpt: 'Key performance indicators and benchmarks for reinsurance success.'
+      excerpt: 'Key performance indicators and benchmarks for reinsurance success.',
+      readTime: '6 min'
     },
     {
       id: 14,
@@ -118,7 +132,8 @@ const Insights = () => {
       title: 'Strategic Partnership Models',
       date: 'January 28, 2026',
       category: 'Best Practices',
-      excerpt: 'Building effective partnerships between cedants and reinsurers.'
+      excerpt: 'Building effective partnerships between cedants and reinsurers.',
+      readTime: '5 min'
     }
   ];
 
@@ -136,105 +151,146 @@ const Insights = () => {
     <>
       <Header />
       
-      <main className="pt-20">
-        {/* Hero Section - More Compact and Modern */}
-        <section className="relative py-20 md:py-28 bg-gradient-to-br from-primary via-[#001a3d] to-[#00152e] overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/80 to-transparent"></div>
-            <img 
-              src="/images/analytics.jpg" 
-              alt="Market Insights" 
-              className="w-full h-full object-cover opacity-15"
-            />
-          </div>
+      <main className="pt-20 bg-gradient-to-b from-surface to-white">
+        {/* Hero Section - Dashboard Style with Stats */}
+        <section className="relative py-12 bg-white border-b border-outline-variant/20">
+          <div className="container mx-auto px-6 md:px-12 lg:px-16">
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              {/* Left: Title & Description */}
+              <div className="lg:col-span-7">
+                <div className="inline-flex items-center gap-2 bg-secondary/10 px-4 py-2 rounded-lg mb-4">
+                  <span className="material-symbols-outlined text-secondary text-sm">bar_chart</span>
+                  <span className="text-secondary text-xs font-bold uppercase tracking-wider">Market Intelligence</span>
+                </div>
+                
+                <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-primary mb-4 leading-tight font-bold">
+                  Market <span className="text-secondary">Insights</span>
+                </h1>
+                
+                <p className="text-text-secondary text-lg mb-6 leading-relaxed max-w-2xl">
+                  Data-driven analysis and strategic intelligence powering smarter reinsurance decisions
+                </p>
 
-          {/* Animated background elements */}
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-[-10%] w-96 h-96 bg-secondary/20 rounded-full blur-[100px] animate-float"></div>
-            <div className="absolute bottom-10 left-[-5%] w-80 h-80 bg-tertiary/20 rounded-full blur-[80px] animate-float-delayed"></div>
-          </div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2.5 bg-secondary/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-secondary/30 mb-6" data-aos="fade-down">
-                <span className="material-symbols-outlined text-secondary text-lg">insights</span>
-                <span className="text-secondary-fixed text-xs font-bold uppercase tracking-[0.2em]">Market Intelligence</span>
+                {/* Quick Stats */}
+                <div className="flex flex-wrap gap-4">
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-2 h-2 bg-secondary rounded-full"></div>
+                    <span className="text-text-secondary">14 Reports</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-2 h-2 bg-tertiary rounded-full"></div>
+                    <span className="text-text-secondary">Weekly Updates</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <div className="w-2 h-2 bg-primary rounded-full"></div>
+                    <span className="text-text-secondary">Global Coverage</span>
+                  </div>
+                </div>
               </div>
-              
-              <h1 className="font-display-lg text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight font-bold" data-aos="fade-up">
-                Market <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-[#ffd700] to-[#ffed4e] font-bold">Insights</span>
-              </h1>
-              
-              <p className="font-body-lg text-xl text-white/80 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Expert analysis and strategic intelligence on the global reinsurance landscape
-              </p>
 
-              <div className="flex flex-wrap justify-center gap-4 text-white/60 text-sm" data-aos="fade-up" data-aos-delay="200">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">article</span>
-                  <span>14 Reports</span>
-                </div>
-                <div className="w-px h-5 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">update</span>
-                  <span>Weekly Updates</span>
-                </div>
-                <div className="w-px h-5 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">public</span>
-                  <span>Global Coverage</span>
+              {/* Right: Stats Cards */}
+              <div className="lg:col-span-5">
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="bg-gradient-to-br from-primary to-tertiary p-6 rounded-2xl text-white">
+                    <div className="text-4xl font-bold mb-1">{insights.length}</div>
+                    <div className="text-xs uppercase tracking-wider opacity-80">Total Insights</div>
+                  </div>
+                  <div className="bg-gradient-to-br from-secondary to-[#ffd700] p-6 rounded-2xl text-primary">
+                    <div className="text-4xl font-bold mb-1">{categories.length - 1}</div>
+                    <div className="text-xs uppercase tracking-wider opacity-80">Categories</div>
+                  </div>
+                  <div className="bg-surface border border-outline-variant/30 p-6 rounded-2xl col-span-2">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <div className="text-2xl font-bold text-primary mb-1">Latest Report</div>
+                        <div className="text-xs text-text-secondary">Updated 2 days ago</div>
+                      </div>
+                      <span className="material-symbols-outlined text-4xl text-secondary">trending_up</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Featured Insight - Large Hero Card */}
-        {activeCategory === 'All' && featuredInsight && (
-          <section className="py-16 bg-white">
+        {/* Filter Tabs - Dashboard Style */}
+        <section className="py-6 bg-white border-b-2 border-outline-variant/10 sticky top-20 z-40 backdrop-blur-md bg-white/95">
+          <div className="container mx-auto px-6 md:px-12 lg:px-16">
+            <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-5 py-2.5 rounded-lg font-semibold text-sm whitespace-nowrap transition-all ${
+                    activeCategory === category
+                      ? 'bg-primary text-white shadow-lg'
+                      : 'bg-surface text-text-secondary hover:bg-surface-muted border border-outline-variant/20'
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Insight - Horizontal Card */}
+        {selectedCategory === 'All' && featuredInsight && (
+          <section className="py-12 bg-gradient-to-r from-primary/5 to-secondary/5">
             <div className="container mx-auto px-6 md:px-12 lg:px-16">
-              <div className="flex items-center gap-3 mb-8" data-aos="fade-right">
-                <div className="w-1 h-8 bg-gradient-to-b from-secondary to-tertiary rounded-full"></div>
-                <h2 className="font-headline-lg text-2xl md:text-3xl text-primary">Featured Insight</h2>
+              <div className="flex items-center gap-2 mb-6">
+                <span className="material-symbols-outlined text-secondary text-xl">emoji_events</span>
+                <h2 className="font-headline-lg text-xl text-primary font-bold">Featured Analysis</h2>
+                {featuredInsight.trending && (
+                  <span className="ml-2 inline-flex items-center gap-1 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                    <span className="material-symbols-outlined text-xs">local_fire_department</span>
+                    Trending
+                  </span>
+                )}
               </div>
               
               <div 
-                className="group relative bg-gradient-to-br from-surface to-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 cursor-pointer"
-                data-aos="fade-up"
+                className="group relative bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 cursor-pointer border-2 border-secondary/20"
                 onClick={() => setSelectedInsight(featuredInsight)}
               >
-                <div className="grid lg:grid-cols-2 gap-0">
-                  <div className="relative h-96 lg:h-auto overflow-hidden">
+                <div className="grid md:grid-cols-3 gap-0">
+                  <div className="relative h-64 md:h-auto overflow-hidden">
                     <img
                       src={featuredInsight.image}
                       alt={featuredInsight.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent"></div>
-                    <div className="absolute top-6 left-6">
-                      <span className="inline-flex items-center gap-2 bg-secondary text-primary text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg">
-                        <span className="material-symbols-outlined text-sm">star</span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="inline-block bg-secondary text-primary text-xs font-bold px-3 py-1.5 rounded-lg uppercase tracking-wider">
                         {featuredInsight.category}
                       </span>
                     </div>
                   </div>
                   
-                  <div className="p-8 lg:p-12 flex flex-col justify-center">
-                    <div className="flex items-center gap-2 text-text-secondary text-sm mb-4">
-                      <span className="material-symbols-outlined text-base">schedule</span>
-                      <span>{featuredInsight.date}</span>
-                    </div>
-                    
-                    <h3 className="font-headline-lg text-3xl md:text-4xl text-primary mb-4 group-hover:text-tertiary transition-colors">
+                  <div className="md:col-span-2 p-8 flex flex-col justify-center">
+                    <h3 className="font-headline-lg text-2xl md:text-3xl text-primary mb-3 group-hover:text-tertiary transition-colors">
                       {featuredInsight.title}
                     </h3>
                     
-                    <p className="text-text-secondary text-lg leading-relaxed mb-6">
+                    <p className="text-text-secondary text-base leading-relaxed mb-4">
                       {featuredInsight.excerpt}
                     </p>
                     
-                    <div className="inline-flex items-center gap-2 text-primary font-semibold group-hover:gap-4 transition-all">
-                      <span>Explore Insight</span>
+                    <div className="flex items-center gap-6 text-xs text-text-secondary mb-4">
+                      <div className="flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm">calendar_month</span>
+                        <span>{featuredInsight.date}</span>
+                      </div>
+                      <div className="flex items-center gap-1.5">
+                        <span className="material-symbols-outlined text-sm">schedule</span>
+                        <span>{featuredInsight.readTime} read</span>
+                      </div>
+                    </div>
+                    
+                    <div className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all">
+                      <span>View Full Report</span>
                       <span className="material-symbols-outlined">arrow_forward</span>
                     </div>
                   </div>
@@ -244,172 +300,144 @@ const Insights = () => {
           </section>
         )}
 
-        {/* Filter Section - Improved Design */}
-        <section className="py-8 bg-surface/50 border-y border-outline-variant/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-3">
-                <span className="material-symbols-outlined text-text-secondary">filter_alt</span>
-                <span className="text-text-secondary font-medium">Filter by category:</span>
-              </div>
-              <div className="flex gap-2 flex-wrap">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all ${
-                      activeCategory === category
-                        ? 'bg-primary text-white shadow-md scale-105'
-                        : 'bg-white text-text-secondary hover:bg-surface-muted hover:scale-105'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Insights Grid - Masonry-style Layout */}
-        <section className="py-16 bg-white">
+        {/* Insights Grid - Card Style with Metrics */}
+        <section className="py-12">
           <div className="container mx-auto px-6 md:px-12 lg:px-16">
             {regularInsights.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
                 {regularInsights.map((insight, index) => (
                   <div
                     key={insight.id}
-                    className="group relative bg-white rounded-2xl overflow-hidden border border-outline-variant/20 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                    className="group relative bg-white rounded-xl overflow-hidden border border-outline-variant/20 hover:border-primary/40 hover:shadow-2xl transition-all duration-300 cursor-pointer"
                     data-aos="fade-up"
-                    data-aos-delay={Math.min(index * 50, 300)}
+                    data-aos-delay={Math.min(index * 30, 200)}
                     onClick={() => setSelectedInsight(insight)}
                   >
-                    {/* Image with Overlay */}
-                    <div className="relative h-52 overflow-hidden">
+                    {/* Image with Category Overlay */}
+                    <div className="relative h-44 overflow-hidden">
                       <img
                         src={insight.image}
                         alt={insight.title}
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                       
                       {/* Category Badge */}
-                      <div className="absolute top-4 left-4">
-                        <span className="inline-block bg-secondary/95 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">
+                      <div className="absolute top-3 left-3">
+                        <span className="inline-block bg-secondary/90 backdrop-blur-sm text-primary text-xs font-bold px-2.5 py-1 rounded-md uppercase tracking-wide">
                           {insight.category}
                         </span>
                       </div>
-                      
-                      {/* Hover Icon */}
-                      <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-75 group-hover:scale-100">
-                        <span className="material-symbols-outlined text-white text-lg">arrow_outward</span>
+
+                      {/* Read Time Badge */}
+                      <div className="absolute top-3 right-3">
+                        <div className="bg-white/20 backdrop-blur-md rounded-md px-2 py-1 flex items-center gap-1">
+                          <span className="material-symbols-outlined text-white text-xs">schedule</span>
+                          <span className="text-white text-xs font-semibold">{insight.readTime}</span>
+                        </div>
                       </div>
                     </div>
                     
                     {/* Content */}
-                    <div className="p-6">
-                      <div className="flex items-center gap-2 text-xs text-text-secondary mb-3">
-                        <span className="material-symbols-outlined text-sm">calendar_month</span>
-                        <span>{insight.date}</span>
-                      </div>
-                      
-                      <h3 className="font-headline-sm text-xl text-primary mb-3 line-clamp-2 group-hover:text-tertiary transition-colors leading-snug">
+                    <div className="p-5">
+                      <h3 className="font-headline-sm text-base text-primary mb-2 line-clamp-2 group-hover:text-tertiary transition-colors leading-tight min-h-[2.5rem]">
                         {insight.title}
                       </h3>
                       
-                      <p className="text-text-secondary text-sm leading-relaxed line-clamp-3 mb-4">
+                      <p className="text-text-secondary text-xs leading-relaxed line-clamp-2 mb-3 min-h-[2.5rem]">
                         {insight.excerpt}
                       </p>
-                      
-                      <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all">
-                        <span>Read More</span>
-                        <span className="material-symbols-outlined text-base">east</span>
+
+                      {/* Meta Footer */}
+                      <div className="flex items-center justify-between pt-3 border-t border-outline-variant/20">
+                        <div className="flex items-center gap-1 text-xs text-text-secondary">
+                          <span className="material-symbols-outlined text-sm">calendar_month</span>
+                          <span>{new Date(insight.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                        </div>
+                        <div className="flex items-center gap-1 text-primary font-semibold text-xs group-hover:gap-2 transition-all">
+                          <span>View</span>
+                          <span className="material-symbols-outlined text-sm">east</span>
+                        </div>
                       </div>
                     </div>
                   </div>
                 ))}
               </div>
             ) : (
-              <div className="text-center py-20">
-                <div className="w-20 h-20 bg-surface rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="text-center py-16">
+                <div className="w-20 h-20 bg-surface rounded-2xl flex items-center justify-center mx-auto mb-4">
                   <span className="material-symbols-outlined text-4xl text-text-secondary/40">search_off</span>
                 </div>
-                <h3 className="text-2xl text-text-secondary mb-2">No insights found</h3>
-                <p className="text-text-secondary/70">Try selecting a different category</p>
+                <h3 className="text-2xl text-text-secondary mb-2 font-semibold">No insights found</h3>
+                <p className="text-text-secondary/70 mb-6">Try selecting a different category</p>
+                <button 
+                  onClick={() => setActiveCategory('All')}
+                  className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-tertiary transition-all"
+                >
+                  <span className="material-symbols-outlined">refresh</span>
+                  <span>View All Insights</span>
+                </button>
               </div>
             )}
           </div>
         </section>
 
-        {/* Newsletter Section - Improved */}
-        <section className="py-20 bg-gradient-to-br from-surface via-white to-surface">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="max-w-5xl mx-auto bg-gradient-to-br from-primary via-[#002850] to-tertiary rounded-3xl p-10 md:p-14 text-center relative overflow-hidden shadow-2xl">
-              {/* Animated background pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: 'radial-gradient(circle at 2px 2px, white 1.5px, transparent 0)',
-                  backgroundSize: '40px 40px'
-                }}></div>
-              </div>
-              
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-secondary/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="material-symbols-outlined text-4xl text-secondary-fixed">mail</span>
-                </div>
-                <h2 className="font-headline-lg text-3xl md:text-4xl text-white mb-4">
-                  Never Miss an Insight
-                </h2>
-                <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                  Get weekly market intelligence, expert analysis, and exclusive reports delivered to your inbox
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-xl mx-auto">
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="flex-1 px-6 py-4 rounded-xl text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-secondary shadow-lg"
-                  />
-                  <button className="bg-secondary text-primary px-8 py-4 rounded-xl font-bold hover:bg-secondary-fixed transition-all hover:shadow-xl whitespace-nowrap flex items-center justify-center gap-2">
-                    <span>Subscribe</span>
-                    <span className="material-symbols-outlined text-lg">send</span>
-                  </button>
-                </div>
-                
-                <p className="text-white/50 text-xs mt-4">Join 500+ industry professionals receiving our insights</p>
-              </div>
-            </div>
+        {/* CTA Section - Data Dashboard Style */}
+        <section className="py-16 bg-gradient-to-br from-primary via-[#00234a] to-tertiary relative overflow-hidden">
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute inset-0" style={{
+              backgroundImage: 'linear-gradient(rgba(252,212,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(252,212,0,0.3) 1px, transparent 1px)',
+              backgroundSize: '50px 50px'
+            }}></div>
           </div>
-        </section>
-
-        {/* CTA Section - Modernized */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block bg-secondary/10 p-4 rounded-2xl mb-6">
-                <span className="material-symbols-outlined text-5xl text-secondary">analytics</span>
+          
+          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div>
+                <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-sm px-4 py-2 rounded-lg mb-4">
+                  <span className="material-symbols-outlined text-secondary text-lg">psychology</span>
+                  <span className="text-secondary text-xs font-bold uppercase tracking-wider">Custom Research</span>
+                </div>
+                <h2 className="font-display-lg text-3xl md:text-4xl text-white mb-4 font-bold">
+                  Need Tailored <span className="text-secondary">Market Analysis?</span>
+                </h2>
+                <p className="text-white/80 text-lg mb-6">
+                  Our research team delivers bespoke intelligence specific to your reinsurance portfolio and strategic objectives
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link 
+                    to="/contact"
+                    className="inline-flex items-center justify-center gap-2 bg-secondary text-primary px-6 py-3 rounded-lg font-bold hover:bg-secondary-fixed transition-all"
+                  >
+                    <span>Request Research</span>
+                    <span className="material-symbols-outlined">science</span>
+                  </Link>
+                  <Link 
+                    to="/about"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-all"
+                  >
+                    <span>Our Expertise</span>
+                    <span className="material-symbols-outlined">arrow_forward</span>
+                  </Link>
+                </div>
               </div>
-              <h2 className="font-display-lg text-3xl md:text-5xl text-primary mb-6">
-                Need <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary">Custom Analysis?</span>
-              </h2>
-              <p className="font-body-lg text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
-                Our expert team provides tailored market insights and bespoke research specific to your reinsurance portfolio
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-tertiary transition-all shadow-lg hover:shadow-xl"
-                >
-                  <span>Request Custom Report</span>
-                  <span className="material-symbols-outlined">trending_up</span>
-                </Link>
-                <Link 
-                  to="/about"
-                  className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all"
-                >
-                  <span>Learn About Our Team</span>
-                  <span className="material-symbols-outlined">group</span>
-                </Link>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+                  <span className="material-symbols-outlined text-4xl text-secondary mb-2 block">assignment</span>
+                  <div className="text-2xl font-bold text-white mb-1">50+</div>
+                  <div className="text-xs text-white/70 uppercase tracking-wider">Custom Reports</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20">
+                  <span className="material-symbols-outlined text-4xl text-secondary mb-2 block">groups</span>
+                  <div className="text-2xl font-bold text-white mb-1">200+</div>
+                  <div className="text-xs text-white/70 uppercase tracking-wider">Clients Served</div>
+                </div>
+                <div className="bg-white/10 backdrop-blur-md p-6 rounded-xl border border-white/20 col-span-2">
+                  <span className="material-symbols-outlined text-4xl text-secondary mb-2 block">workspace_premium</span>
+                  <div className="text-2xl font-bold text-white mb-1">Expert Analysis</div>
+                  <div className="text-xs text-white/70">Powered by 20+ years of industry experience</div>
+                </div>
               </div>
             </div>
           </div>
@@ -418,7 +446,7 @@ const Insights = () => {
 
       <Footer />
 
-      {/* Detail Modal */}
+      {/* Detail Modal - Same as before */}
       {selectedInsight && (
         <div
           className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl overflow-y-auto"
