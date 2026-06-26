@@ -562,7 +562,6 @@ const BlogPost = () => {
           <p class="text-sm text-text-secondary"><strong>Keywords:</strong> World AIDS Day, Health Equity, Resilience, Reinsurance, Risk Management, Public Health, WAD2025, Stop HIV Together, Financial Resilience, Health Systems</p>
         </div>
       `
-      `
     }
   };
 
