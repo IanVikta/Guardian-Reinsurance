@@ -75,7 +75,7 @@ const Products = () => {
                 <img
                   alt="Reinsurance Treaty Discussion"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  src="/images/treaty-discussion.jpg"
+                  src="/images/guardian-sm-work.png"
                 />
               </div>
             </div>
