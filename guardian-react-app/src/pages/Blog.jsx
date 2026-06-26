@@ -58,19 +58,6 @@ const Blog = () => {
       image: '/images/global-connectivity.jpg',
       featured: false,
       tags: ['CSR', 'Health', 'World AIDS Day']
-    },
-    {
-      id: 5,
-      title: 'LinkedIn Content Strategy for African Reinsurance: Best Practices That Drive Engagement',
-      slug: 'linkedin-best-practices',
-      excerpt: 'A comprehensive guide to building thought leadership on LinkedIn for African reinsurance professionals—from data-driven posts to engagement strategies.',
-      category: 'Professional Development',
-      author: 'Guardian Reinsurance Team',
-      date: 'March 20, 2026',
-      readTime: '8 min read',
-      image: '/images/strategic-analysis.jpg',
-      featured: false,
-      tags: ['LinkedIn', 'Content Strategy', 'B2B Marketing', 'Thought Leadership']
     }
   ];
 
@@ -79,8 +66,7 @@ const Blog = () => {
     'Industry Insights',
     'Educational',
     'Thought Leadership',
-    'Corporate Social Responsibility',
-    'Professional Development'
+    'Corporate Social Responsibility'
   ];
 
   const filteredArticles = selectedCategory === 'All' 
