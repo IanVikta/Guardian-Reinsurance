@@ -233,7 +233,7 @@ const Home = () => {
                 <img
                   alt="Treaty Broking"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  src="/images/treaty.jpg"
+                  src="/images/treaty brokerage.png"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent flex flex-col justify-end p-10 text-white">
                   <h3 className="font-headline-md text-2xl md:text-3xl mb-3">Treaty Broking</h3>
@@ -251,7 +251,7 @@ const Home = () => {
                 <img
                   alt="Facultative"
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
-                  src="/images/facultative.jpg"
+                  src="/images/treaty.jpg"
                 />
                 <div className="absolute inset-0 bg-secondary/90 flex flex-col justify-end p-8 text-primary">
                   <h3 className="font-headline-sm text-xl mb-3">Facultative Reinsurance</h3>
