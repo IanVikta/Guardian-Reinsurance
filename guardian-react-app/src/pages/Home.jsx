@@ -48,8 +48,15 @@ const Home = () => {
       <main className="pt-0">
         {/* Hero Carousel Section */}
         <section className="relative h-screen min-h-[600px] bg-primary overflow-hidden">
-          {/* Background Video */}
+          {/* Background Video - Only loads if video is available */}
           <div className="absolute inset-0 w-full h-full overflow-hidden">
+            {/* Fallback static image for production */}
+            <div 
+              className="absolute inset-0 bg-cover bg-center"
+              style={{backgroundImage: 'url(/images/hero-1.jpg)'}}
+            />
+            
+            {/* Video overlay - will work when hosted on Vercel Blob */}
             <video
               autoPlay
               loop
@@ -57,6 +64,10 @@ const Home = () => {
               playsInline
               className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto transform -translate-x-1/2 -translate-y-1/2 object-cover"
               poster="/images/hero-1.jpg"
+              onError={(e) => {
+                // Hide video if it fails to load
+                e.target.style.display = 'none';
+              }}
             >
               <source src="/videos/reinsurance.mp4" type="video/mp4" />
             </video>
