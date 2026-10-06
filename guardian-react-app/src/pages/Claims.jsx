@@ -1,55 +1,166 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Claims = () => {
+  const [claimData, setClaimData] = useState({
+    cedantName: '',
+    slipNumber: '',
+    dateOfLoss: '',
+    estimatedAmount: '',
+    description: ''
+  });
+  const [claimErrors, setClaimErrors] = useState({});
+  const [claimTouched, setClaimTouched] = useState({});
+  const [isSubmittingClaim, setIsSubmittingClaim] = useState(false);
+  const [claimSubmitted, setClaimSubmitted] = useState(false);
+
+  const validateClaimField = (name, value) => {
+    switch (name) {
+      case 'cedantName':
+        if (!value.trim()) return 'Cedant or insurer name is required.';
+        if (value.trim().length < 2) return 'Name must be at least 2 characters.';
+        return '';
+      case 'slipNumber':
+        if (!value.trim()) return 'Policy or treaty slip number is required.';
+        if (value.trim().length < 3) return 'Please enter a valid slip number.';
+        return '';
+      case 'dateOfLoss':
+        if (!value) return 'Date of loss is required.';
+        const today = new Date().toISOString().split('T')[0];
+        if (value > today) return 'Date of loss cannot be in the future.';
+        return '';
+      case 'estimatedAmount':
+        if (value.trim() && !/^[0-9,.\s$€£UGXusdUSD]+$/.test(value.trim())) {
+          return 'Please enter a valid monetary amount.';
+        }
+        return '';
+      case 'description':
+        if (!value.trim()) return 'Loss circumstances and incident summary are required.';
+        if (value.trim().length < 10) return 'Please provide more details (minimum 10 characters).';
+        return '';
+      default:
+        return '';
+    }
+  };
+
+  const validateClaimForm = () => {
+    const errors = {};
+    ['cedantName', 'slipNumber', 'dateOfLoss', 'estimatedAmount', 'description'].forEach((key) => {
+      const err = validateClaimField(key, claimData[key]);
+      if (err) errors[key] = err;
+    });
+    return errors;
+  };
+
+  const handleClaimChange = (e) => {
+    const { name, value } = e.target;
+    setClaimData((prev) => ({ ...prev, [name]: value }));
+    if (claimTouched[name]) {
+      const err = validateClaimField(name, value);
+      setClaimErrors((prev) => ({ ...prev, [name]: err }));
+    }
+  };
+
+  const handleClaimBlur = (e) => {
+    const { name, value } = e.target;
+    setClaimTouched((prev) => ({ ...prev, [name]: true }));
+    const err = validateClaimField(name, value);
+    setClaimErrors((prev) => ({ ...prev, [name]: err }));
+  };
+
+  const handleSubmitClaim = (e) => {
+    e.preventDefault();
+    const allTouched = {
+      cedantName: true,
+      slipNumber: true,
+      dateOfLoss: true,
+      estimatedAmount: true,
+      description: true
+    };
+    setClaimTouched(allTouched);
+
+    const errors = validateClaimForm();
+    setClaimErrors(errors);
+
+    if (Object.keys(errors).length === 0) {
+      setIsSubmittingClaim(true);
+      setTimeout(() => {
+        setIsSubmittingClaim(false);
+        setClaimSubmitted(true);
+        setClaimData({
+          cedantName: '',
+          slipNumber: '',
+          dateOfLoss: '',
+          estimatedAmount: '',
+          description: ''
+        });
+        setClaimTouched({});
+        setClaimErrors({});
+        setTimeout(() => setClaimSubmitted(false), 7000);
+      }, 500);
+    }
+  };
+
   const claimsFeatures = [
     {
       icon: 'speed',
-      title: 'Rapid Processing',
-      description: 'Fast-track claims processing with dedicated support teams ensuring quick turnaround times.'
+      title: 'Rapid Turnaround',
+      description: 'Fast-track claims review with dedicated desk officers ensuring minimum processing latency and accelerated recovery cycles.'
     },
     {
       icon: 'verified',
-      title: 'Accurate Assessment',
-      description: 'Thorough evaluation and documentation of all claims for maximum recovery potential.'
+      title: 'Actuarial Precision',
+      description: 'Meticulous evaluation of loss documentation against treaty wording and retention provisions to maximize eligible recovery.'
     },
     {
       icon: 'support_agent',
-      title: '24/7 Support',
-      description: 'Round-the-clock assistance for urgent claims and emergency situations.'
+      title: '24/7 Priority Support',
+      description: 'Round-the-clock availability for critical catastrophe notifications and time-sensitive cash call coordination.'
     },
     {
       icon: 'analytics',
       title: 'Transparent Reporting',
-      description: 'Real-time updates and detailed reporting throughout the claims lifecycle.'
+      description: 'Clear, real-time audit trails and bordereau updates from initial notice of loss through final settlement disbursement.'
     }
   ];
 
   const claimsProcess = [
     {
       step: '01',
-      title: 'Notification',
-      description: 'Submit your claim notification with all relevant documentation and details.',
+      phase: 'Initial Intake',
+      sla: 'Immediate Log',
+      title: 'Notice of Loss',
+      description: 'Submit initial claim notifications with preliminary loss estimates, treaty schedules, and incident documentation.',
+      details: ['Instant Docket Registration', 'Loss Adjuster Notification', 'Urgent Cash Call Review'],
       icon: 'notification_important'
     },
     {
       step: '02',
-      title: 'Assessment',
-      description: 'Our experts review and assess the claim against policy terms and conditions.',
+      phase: 'Technical Audit',
+      sla: '24–48 Hours',
+      title: 'Policy Assessment',
+      description: 'Our senior actuarial desk reviews retention thresholds, treaty wordings, and excess-of-loss clauses with clinical precision.',
+      details: ['Treaty Schedule Alignment', 'Retention Boundary Audit', 'Coverage Verification'],
       icon: 'assessment'
     },
     {
       step: '03',
-      title: 'Coordination',
-      description: 'We liaise with reinsurers to facilitate smooth processing and recovery.',
+      phase: 'Market Syndication',
+      sla: 'Active Dialogue',
+      title: 'Reinsurer Coordination',
+      description: 'We liaise directly with participating reinsurers, lead syndicate underwriters, and independent adjusters to secure prompt agreement.',
+      details: ['Lead Underwriter Liaison', 'Adjustment Negotiation', 'Dispute Elimination'],
       icon: 'handshake'
     },
     {
       step: '04',
-      title: 'Settlement',
-      description: 'Efficient settlement and recovery of reinsurance proceeds to your account.',
+      phase: 'Settlement & Wire',
+      sla: 'Expedited Payout',
+      title: 'Recovery Disbursement',
+      description: 'Full recovery proceeds are verified, reconciled with technical bordereau accounting, and wired into the cedant’s account.',
+      details: ['Bordereau Reconciliation', 'Multi-Currency Settlement', 'Final IRA Regulatory Audit'],
       icon: 'payments'
     }
   ];
@@ -57,132 +168,199 @@ const Claims = () => {
   return (
     <>
       <Header />
-      
-      <main className="pt-20">
-        {/* Redesigned Hero Section - Modern & Compact */}
-        <section className="relative min-h-[70vh] flex items-center bg-gradient-to-br from-[#000a1e] via-[#001838] to-[#002855] overflow-hidden">
-          {/* Animated Background Image */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-tertiary/85 mix-blend-multiply"></div>
-            <img 
-              src="/images/claims-hero.jpg" 
-              alt="Claims Recovery Services" 
-              className="w-full h-full object-cover opacity-30 scale-105 animate-slow-zoom"
-            />
+
+      <main className="pt-24 lg:pt-28 pb-16 bg-[#FAF8F5]">
+        {/* ========================================================================= */}
+        {/* HERO SECTION */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:pb-16">
+          <div className="mb-4" data-aos="fade-down">
+            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+              Claims Management & Recovery • Kampala Desk
+            </span>
           </div>
 
-          {/* Modern Geometric Shapes */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-10 right-0 w-[400px] h-[400px] bg-secondary/10 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-tertiary/10 rounded-full blur-3xl animate-float-delayed"></div>
-          </div>
-
-          {/* Grid Pattern Overlay */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '50px 50px'
-          }}></div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-16">
-            <div className="max-w-4xl mx-auto">
-              {/* Badge */}
-              <div className="flex justify-center mb-6" data-aos="fade-down">
-                <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-2xl px-5 py-2 rounded-full border border-secondary/30 shadow-xl">
-                  <div className="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
-                  <span className="text-secondary-fixed text-xs font-semibold uppercase tracking-[0.2em]">Claims Support</span>
-                </div>
-              </div>
-              
-              {/* Main Heading */}
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.1] text-center font-bold" data-aos="fade-up">
-                Efficient Claims
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary mt-1 font-bold">
-                  Recoveries
-                </span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10">
+            <div className="lg:col-span-8" data-aos="fade-right">
+              <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-charcoal font-normal leading-[1.08] tracking-tight">
+                Frictionless claims recovery & dedicated fiduciary advocacy.
               </h1>
-              
-              {/* Description */}
-              <p className="font-body-lg text-lg md:text-xl text-white/70 mb-8 max-w-2xl mx-auto leading-relaxed text-center" data-aos="fade-up" data-aos-delay="100">
-                Dedicated support for prompt and accurate claims handling. We ensure the bridge between cedant and reinsurer remains fluid and transparent.
+            </div>
+            <div className="lg:col-span-4" data-aos="fade-left" data-aos-delay="100">
+              <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed mb-6">
+                When a catastrophic event or high-value loss occurs, our claims advocacy team bridges the gap between cedants and global reinsurers with prompt, decisive execution.
               </p>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10" data-aos="fade-up" data-aos-delay="200">
-                <Link 
-                  to="/contact"
-                  className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-secondary via-secondary-fixed to-secondary text-primary px-8 py-3.5 rounded-xl font-bold hover:shadow-[0_20px_60px_rgba(252,212,0,0.4)] transition-all overflow-hidden"
-                >
-                  <span className="relative z-10">Submit a Claim</span>
-                  <span className="material-symbols-outlined relative z-10 text-lg group-hover:translate-x-1 transition-transform">arrow_forward</span>
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform"></div>
-                </Link>
-                
-                <Link 
-                  to="/contact"
-                  className="group inline-flex items-center justify-center gap-2 border-2 border-white/40 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-white/10 hover:border-white/60 transition-all backdrop-blur-xl"
-                >
-                  <span className="material-symbols-outlined text-lg">call</span>
-                  <span>Contact Claims Team</span>
-                </Link>
-              </div>
-
-              {/* Trust Indicators */}
-              <div className="grid grid-cols-3 gap-6 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="300">
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-fixed mb-1">24/7</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Support</div>
-                </div>
-                <div className="text-center border-x border-white/10">
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-fixed mb-1">98%</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Success Rate</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold text-secondary-fixed mb-1">Fast</div>
-                  <div className="text-xs text-white/60 uppercase tracking-wider">Recovery</div>
-                </div>
-              </div>
+              <a
+                href="#claim-notification"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm"
+              >
+                <span>Notify a Claim</span>
+                <span className="material-symbols-outlined text-sm">arrow_downward</span>
+              </a>
             </div>
           </div>
 
-          {/* Bottom Wave */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              <path d="M0 80L60 70C120 60 240 40 360 35C480 30 600 40 720 45C840 50 960 50 1080 47.5C1200 45 1320 40 1380 37.5L1440 35V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z" fill="currentColor" className="text-surface"/>
-            </svg>
+          {/* Hero Image Card - Sharp Architectural Geometry */}
+          <div className="relative border border-[#E5E0D8] shadow-sm group overflow-hidden" data-aos="fade-up" data-aos-delay="150">
+            <img
+              src="/images/accounting-desk.jpg"
+              alt="Claims document reconciliation and technical accounting"
+              className="w-full h-[320px] sm:h-[450px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md px-5 py-3 border-l-4 border-l-brand-navy border border-[#E5E0D8] shadow-sm max-w-md">
+              <p className="text-xs font-bold text-brand-navy uppercase tracking-wider">
+                Uncompromising Advocacy
+              </p>
+              <p className="text-xs text-charcoal-muted mt-1">
+                Over 99.8% recovery settlement rate on validated reinsurance treaty and facultative losses.
+              </p>
+            </div>
           </div>
         </section>
 
-        {/* Claims Features Grid */}
-        <section className="py-20 bg-surface">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-16">
-              <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                Why Choose Us
-              </span>
-              <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-4">
-                Expert Claims Management
+        {/* ========================================================================= */}
+        {/* 4-STEP CLAIMS PROCESS - DYNAMIC & VIBRANT ARCHITECTURAL TIMELINE */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+          {/* Section Header */}
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-14" data-aos="fade-up">
+            <div>
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-2 h-2 bg-brand-azure rounded-full"></span>
+                <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                  STRUCTURED PROTOCOL
+                </span>
+              </div>
+              <h2 className="editorial-heading text-3xl sm:text-4xl lg:text-5xl text-charcoal font-normal">
+                How We Expedite Your Reinsurance Recovery
               </h2>
-              <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-                Our dedicated claims team ensures smooth processing and maximum recovery for your reinsurance claims.
+            </div>
+            <p className="text-sm sm:text-base text-charcoal-muted max-w-md font-light leading-relaxed">
+              A clinical, four-stage protocol engineered to eliminate friction, accelerate settlement cash flows, and protect balance sheet solvency.
+            </p>
+          </div>
+
+          {/* Desktop Connecting Progress Track */}
+          <div className="hidden lg:grid grid-cols-4 gap-6 mb-4 px-2" data-aos="fade-in" data-aos-delay="100">
+            {claimsProcess.map((item, idx) => (
+              <div key={idx} className="flex items-center gap-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-brand-azure ring-4 ring-brand-azure/10"></span>
+                <div className="flex-1 h-[2px] bg-gradient-to-r from-brand-azure/40 to-[#E5E0D8]"></div>
+                {idx < 3 && (
+                  <span className="material-symbols-outlined text-sm text-charcoal-light">arrow_forward</span>
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* 4 Dynamic Protocol Cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {claimsProcess.map((item, index) => (
+              <div
+                key={item.step}
+                data-aos="fade-up"
+                data-aos-delay={index * 120}
+                className="group relative bg-white p-7 sm:p-8 border border-[#E5E0D8] hover:border-brand-azure/60 shadow-sm hover:shadow-xl hover:shadow-brand-navy/5 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              >
+                {/* Glowing Top Accent Border */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy via-brand-azure to-brand-cyan group-hover:h-1.5 transition-all duration-300"></div>
+
+                {/* Subtle Background Watermark Numeral */}
+                <span className="absolute -bottom-3 -right-2 text-7xl sm:text-8xl font-serif font-bold text-brand-navy/[0.04] group-hover:text-brand-azure/[0.08] transition-colors pointer-events-none select-none">
+                  {item.step}
+                </span>
+
+                <div className="relative z-10">
+                  {/* Card Header Row: Step Badge + SLA + Icon */}
+                  <div className="flex items-center justify-between mb-6">
+                    <div className="space-y-1">
+                      <span className="inline-block text-[10px] font-bold tracking-widest font-mono uppercase px-2.5 py-1 bg-brand-navy/5 text-brand-navy group-hover:bg-brand-navy group-hover:text-white transition-colors duration-200">
+                        STAGE {item.step}
+                      </span>
+                      <div className="flex items-center gap-1.5 text-[10px] font-medium text-charcoal-muted">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        <span>{item.sla}</span>
+                      </div>
+                    </div>
+
+                    <div className="w-11 h-11 bg-gradient-to-br from-brand-navy to-brand-blue text-white rounded-lg flex items-center justify-center shadow-md shadow-brand-navy/15 group-hover:scale-110 group-hover:from-brand-azure group-hover:to-brand-blue transition-all duration-300">
+                      <span className="material-symbols-outlined text-xl">{item.icon}</span>
+                    </div>
+                  </div>
+
+                  {/* Phase & Title */}
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-brand-azure block mb-1">
+                    {item.phase}
+                  </span>
+                  <h3 className="editorial-heading text-xl text-charcoal font-normal mb-3 group-hover:text-brand-navy transition-colors">
+                    {item.title}
+                  </h3>
+
+                  {/* Narrative Description */}
+                  <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light mb-6">
+                    {item.description}
+                  </p>
+                </div>
+
+                {/* Micro Action Checklist */}
+                <div className="relative z-10 pt-4 border-t border-[#F0EBE1] space-y-2">
+                  {item.details.map((detail, dIdx) => (
+                    <div key={dIdx} className="flex items-center gap-2 text-[11px] text-charcoal-muted">
+                      <span className="material-symbols-outlined text-xs text-brand-azure group-hover:translate-x-0.5 transition-transform">
+                        check_circle
+                      </span>
+                      <span className="font-medium text-charcoal/85">{detail}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* CORE CLAIMS STRENGTHS */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5 space-y-6" data-aos="fade-right">
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                THE GUARDIAN STANDARD
+              </span>
+              <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal leading-tight">
+                Designed to eliminate friction, dispute, and delay.
+              </h2>
+              <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed">
+                Reinsurance claims must not be stalled by paperwork or conflicting interpretations. We maintain direct, seasoned dialogues with international loss adjusters and lead reinsurers to protect client liquidity.
               </p>
+              <div className="pt-2">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-brand-navy hover:text-brand-azure"
+                >
+                  <span>Connect with Claims Desk</span>
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </Link>
+              </div>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {claimsFeatures.map((feature, index) => (
-                <div 
-                  key={index}
-                  className="bg-white p-8 rounded-2xl border border-outline-variant/30 hover:shadow-xl transition-all duration-300 group"
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {claimsFeatures.map((feat, idx) => (
+                <div
+                  key={idx}
+                  data-aos="fade-up"
+                  data-aos-delay={idx * 100}
+                  className="bg-white p-6 border border-[#E5E0D8] space-y-3 hover:border-brand-navy/40 transition-all duration-200"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/5 to-secondary/5 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-4xl text-primary">
-                      {feature.icon}
-                    </span>
+                  <div className="w-8 h-8 bg-brand-navy text-white flex items-center justify-center">
+                    <span className="material-symbols-outlined text-lg">{feat.icon}</span>
                   </div>
-                  <h3 className="font-headline-sm text-xl text-primary mb-3">
-                    {feature.title}
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed">
-                    {feature.description}
+                  <h4 className="text-sm font-semibold text-charcoal">
+                    {feat.title}
+                  </h4>
+                  <p className="text-xs text-charcoal-muted leading-relaxed">
+                    {feat.description}
                   </p>
                 </div>
               ))}
@@ -190,201 +368,182 @@ const Claims = () => {
           </div>
         </section>
 
-        {/* Claims Process */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-16">
-              <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                Our Process
+        {/* ========================================================================= */}
+        {/* CLAIMS NOTIFICATION FORM - Sharp Architecture */}
+        {/* ========================================================================= */}
+        <section id="claim-notification" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#E5E0D8]">
+          <div className="max-w-3xl mx-auto bg-white p-8 sm:p-12 border border-[#E5E0D8] shadow-sm" data-aos="fade-up">
+            <div className="text-center mb-8">
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-2">
+                OFFICIAL NOTICE OF LOSS
               </span>
-              <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-4">
-                How Claims Work
+              <h2 className="editorial-heading text-3xl text-charcoal font-normal">
+                Submit Claim Notification
               </h2>
-              <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-                A streamlined four-step process designed for efficiency and transparency.
+              <p className="text-xs sm:text-sm text-charcoal-muted mt-2 max-w-lg mx-auto">
+                Please provide primary policy references and initial loss estimates. An acknowledgement will be issued immediately.
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {claimsProcess.map((process, index) => (
-                <div key={index} className="relative">
-                  {/* Connector Line */}
-                  {index < claimsProcess.length - 1 && (
-                    <div className="hidden lg:block absolute top-16 left-full w-full h-0.5 bg-gradient-to-r from-secondary via-secondary/50 to-transparent -z-10"></div>
-                  )}
-                  
-                  <div className="relative bg-gradient-to-br from-surface to-surface-muted p-8 rounded-2xl border-2 border-outline-variant/30 hover:border-secondary/50 transition-all group">
-                    {/* Step Number */}
-                    <div className="absolute -top-4 -right-4 w-12 h-12 bg-gradient-to-br from-primary to-tertiary rounded-xl flex items-center justify-center text-white font-bold shadow-lg">
-                      {process.step}
-                    </div>
-
-                    {/* Icon */}
-                    <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
-                      <span className="material-symbols-outlined text-4xl text-primary">
-                        {process.icon}
-                      </span>
-                    </div>
-
-                    <h3 className="font-headline-sm text-xl text-primary mb-3">
-                      {process.title}
-                    </h3>
-                    <p className="text-text-secondary leading-relaxed">
-                      {process.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Claims Documentation */}
-        <section className="py-20 bg-surface-muted">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                  Documentation
-                </span>
-                <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-6">
-                  Required Documents for Claims
-                </h2>
-                <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-                  To expedite your claim processing, please ensure you have the following documentation ready:
+            {claimSubmitted ? (
+              <div className="p-8 text-center space-y-3">
+                <span className="material-symbols-outlined text-5xl text-emerald-600">verified</span>
+                <h3 className="editorial-heading text-2xl text-charcoal">Notice Acknowledged</h3>
+                <p className="text-sm text-charcoal-muted">
+                  Your claim docket has been registered. Our senior claims counsel is reviewing your submission and will contact you directly.
                 </p>
-
-                <div className="space-y-4">
-                  {[
-                    'Original policy documents and endorsements',
-                    'Detailed loss or damage report',
-                    'Supporting invoices and receipts',
-                    'Investigation reports (if applicable)',
-                    'Treaty or facultative slip confirmation',
-                    'Any other relevant correspondence'
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 group">
-                      <div className="w-6 h-6 bg-secondary-container rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-primary text-sm">check</span>
-                      </div>
-                      <p className="text-text-secondary">{item}</p>
-                    </div>
-                  ))}
-                </div>
               </div>
-
-              <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="/images/analytics.jpg" 
-                    alt="Claims Documentation" 
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent"></div>
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-white/20">
-                      <div className="flex items-center gap-4 mb-2">
-                        <span className="material-symbols-outlined text-secondary-fixed text-3xl">description</span>
-                        <div>
-                          <div className="text-white font-semibold text-lg">Digital Submission</div>
-                          <div className="text-white/70 text-sm">Secure online portal available</div>
-                        </div>
-                      </div>
-                    </div>
+            ) : (
+              <form onSubmit={handleSubmitClaim} noValidate className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                      Cedant / Insurer Name *
+                    </label>
+                    <input
+                      type="text"
+                      name="cedantName"
+                      value={claimData.cedantName}
+                      onChange={handleClaimChange}
+                      onBlur={handleClaimBlur}
+                      placeholder="e.g. Uganda General Assurance"
+                      className={`w-full px-4 py-3 border bg-[#FAF8F5] text-sm text-charcoal focus:outline-none transition-colors ${
+                        claimTouched.cedantName && claimErrors.cedantName
+                          ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                          : 'border-[#E5E0D8] focus:border-brand-navy'
+                      }`}
+                    />
+                    {claimTouched.cedantName && claimErrors.cedantName && (
+                      <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1 font-mono">
+                        <span className="material-symbols-outlined text-xs">error</span>
+                        <span>{claimErrors.cedantName}</span>
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                      Policy / Treaty Slip Number *
+                    </label>
+                    <input
+                      type="text"
+                      name="slipNumber"
+                      value={claimData.slipNumber}
+                      onChange={handleClaimChange}
+                      onBlur={handleClaimBlur}
+                      placeholder="e.g. GRB-TR-2024-049"
+                      className={`w-full px-4 py-3 border bg-[#FAF8F5] text-sm text-charcoal focus:outline-none transition-colors ${
+                        claimTouched.slipNumber && claimErrors.slipNumber
+                          ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                          : 'border-[#E5E0D8] focus:border-brand-navy'
+                      }`}
+                    />
+                    {claimTouched.slipNumber && claimErrors.slipNumber && (
+                      <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1 font-mono">
+                        <span className="material-symbols-outlined text-xs">error</span>
+                        <span>{claimErrors.slipNumber}</span>
+                      </p>
+                    )}
                   </div>
                 </div>
-                
-                {/* Decorative Element */}
-                <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-secondary/20 rounded-full blur-3xl -z-10"></div>
-              </div>
-            </div>
-          </div>
-        </section>
 
-        {/* FAQ Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 max-w-4xl">
-            <div className="text-center mb-16">
-              <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-4">
-                Claims FAQs
-              </h2>
-              <p className="text-text-secondary text-lg">
-                Common questions about our claims process.
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                {
-                  question: 'Who should clients contact for claims information?',
-                  answer: 'Clients can contact their insurance brokers, agents, or directly reach out to our claims team for assistance and advice regarding claims recoveries.'
-                },
-                {
-                  question: 'How long does claims processing take?',
-                  answer: 'Processing times vary based on claim complexity. Simple claims are typically processed within 10-15 business days, while complex cases may require additional time for thorough assessment.'
-                },
-                {
-                  question: 'Can I track my claim status online?',
-                  answer: 'Yes, we provide a secure online portal where you can submit claims and track their progress in real-time with detailed status updates.'
-                }
-              ].map((faq, index) => (
-                <details 
-                  key={index}
-                  className="glass-card rounded-xl border border-outline-variant/30 open:shadow-xl transition-all group"
-                >
-                  <summary className="list-none p-6 flex justify-between items-center cursor-pointer">
-                    <span className="font-headline-sm text-lg text-primary pr-4">
-                      {faq.question}
-                    </span>
-                    <span className="material-symbols-outlined text-secondary transition-transform group-open:rotate-180 flex-shrink-0">
-                      expand_more
-                    </span>
-                  </summary>
-                  <div className="px-6 pb-6 text-text-secondary leading-relaxed">
-                    {faq.answer}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                      Date of Loss *
+                    </label>
+                    <input
+                      type="date"
+                      name="dateOfLoss"
+                      max={new Date().toISOString().split('T')[0]}
+                      value={claimData.dateOfLoss}
+                      onChange={handleClaimChange}
+                      onBlur={handleClaimBlur}
+                      className={`w-full px-4 py-3 border bg-[#FAF8F5] text-sm text-charcoal focus:outline-none transition-colors ${
+                        claimTouched.dateOfLoss && claimErrors.dateOfLoss
+                          ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                          : 'border-[#E5E0D8] focus:border-brand-navy'
+                      }`}
+                    />
+                    {claimTouched.dateOfLoss && claimErrors.dateOfLoss && (
+                      <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1 font-mono">
+                        <span className="material-symbols-outlined text-xs">error</span>
+                        <span>{claimErrors.dateOfLoss}</span>
+                      </p>
+                    )}
                   </div>
-                </details>
-              ))}
-            </div>
-          </div>
-        </section>
+                  <div>
+                    <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                      Estimated Recovery Amount (USD / UGX)
+                    </label>
+                    <input
+                      type="text"
+                      name="estimatedAmount"
+                      value={claimData.estimatedAmount}
+                      onChange={handleClaimChange}
+                      onBlur={handleClaimBlur}
+                      placeholder="e.g. USD 250,000"
+                      className={`w-full px-4 py-3 border bg-[#FAF8F5] text-sm text-charcoal focus:outline-none transition-colors ${
+                        claimTouched.estimatedAmount && claimErrors.estimatedAmount
+                          ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                          : 'border-[#E5E0D8] focus:border-brand-navy'
+                      }`}
+                    />
+                    {claimTouched.estimatedAmount && claimErrors.estimatedAmount && (
+                      <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1 font-mono">
+                        <span className="material-symbols-outlined text-xs">error</span>
+                        <span>{claimErrors.estimatedAmount}</span>
+                      </p>
+                    )}
+                  </div>
+                </div>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary to-tertiary-container relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '32px 32px'
-            }}></div>
-          </div>
+                <div>
+                  <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">
+                    Loss Description & Circumstances *
+                  </label>
+                  <textarea
+                    rows={4}
+                    name="description"
+                    value={claimData.description}
+                    onChange={handleClaimChange}
+                    onBlur={handleClaimBlur}
+                    placeholder="Provide a concise summary of the incident, damaged property or liability event..."
+                    className={`w-full px-4 py-3 border bg-[#FAF8F5] text-sm text-charcoal focus:outline-none transition-colors ${
+                      claimTouched.description && claimErrors.description
+                        ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                        : 'border-[#E5E0D8] focus:border-brand-navy'
+                    }`}
+                  ></textarea>
+                  {claimTouched.description && claimErrors.description && (
+                    <p className="text-[11px] text-red-600 mt-1 flex items-center gap-1 font-mono">
+                      <span className="material-symbols-outlined text-xs">error</span>
+                      <span>{claimErrors.description}</span>
+                    </p>
+                  )}
+                </div>
 
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 text-center">
-            <span className="text-secondary-fixed font-label-caps text-label-caps block mb-6 uppercase tracking-widest">
-              Need Assistance?
-            </span>
-            <h2 className="font-display-lg text-4xl md:text-6xl text-white mb-6">
-              Our Claims Team is <span className="text-secondary-fixed">Here to Help</span>
-            </h2>
-            <p className="font-body-lg text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-              Get in touch with our expert claims handlers for personalized support.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="tel:+256414344500"
-                className="inline-flex items-center justify-center gap-2 bg-secondary-container text-primary px-10 py-5 rounded-xl font-semibold hover:bg-secondary hover:shadow-2xl transition-all"
-              >
-                <span className="material-symbols-outlined">call</span>
-                <span>Call: +256 414 344 500</span>
-              </a>
-              <a 
-                href="mailto:info@guardianrebrokers.co.ug"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white px-10 py-5 rounded-xl font-semibold hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-xl"
-              >
-                <span className="material-symbols-outlined">mail</span>
-                <span>Email Claims Team</span>
-              </a>
-            </div>
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+                  <span className="text-xs text-charcoal-muted flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-sm text-brand-azure">lock</span>
+                    Strict confidentiality under IRA guidelines
+                  </span>
+                  <button
+                    type="submit"
+                    disabled={isSubmittingClaim}
+                    className="w-full sm:w-auto px-8 py-3.5 bg-brand-navy text-white text-xs uppercase tracking-widest font-semibold hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm disabled:opacity-60 flex items-center justify-center gap-2"
+                  >
+                    {isSubmittingClaim ? (
+                      <>
+                        <span className="w-3.5 h-3.5 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                        <span>Registering Docket...</span>
+                      </>
+                    ) : (
+                      <span>Submit Notification</span>
+                    )}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </section>
       </main>

@@ -1,277 +1,294 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Gallery = () => {
-  const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [activeFilter, setActiveFilter] = useState('All');
 
   const galleryImages = [
     {
       id: 1,
-      src: '/images/gallery/WhatsApp Image 2025-09-19 at 1.22.59 PM (1).jpeg',
-      title: 'Team Collaboration',
-      category: 'Events'
+      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.35 PM.jpeg',
+      title: 'FANAF 48th Annual Assembly',
+      location: 'Abidjan, Côte d’Ivoire',
+      category: 'Assemblies'
     },
     {
       id: 2,
-      src: '/images/gallery/WhatsApp Image 2025-09-19 at 1.23.00 PM(1).jpeg',
-      title: 'Professional Meeting',
-      category: 'Events'
+      src: '/images/gallery/IMG_7272.jpg',
+      title: 'Executive Syndicate Consultation',
+      location: 'Continental Re & WAICA Re Session',
+      category: 'Assemblies'
     },
     {
       id: 3,
-      src: '/images/gallery/WhatsApp Image 2025-10-01 at 10.21.08 AM (3).jpeg',
-      title: 'Industry Conference',
-      category: 'Events'
+      src: '/images/gallery/IMG_7142.jpg',
+      title: '52nd AIO Reinsurance Assembly',
+      location: 'Ghana Re & Sanlam Allianz Forum',
+      category: 'Assemblies'
     },
     {
       id: 4,
-      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.35 PM.jpeg',
-      title: 'Strategic Planning',
+      src: '/images/gallery/WhatsApp Image 2025-09-19 at 1.22.59 PM (1).jpeg',
+      title: 'Strategic Portfolio Review',
+      location: 'Kampala Headquarters',
       category: 'Office'
     },
     {
       id: 5,
-      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.36 PM (1).jpeg',
-      title: 'Team Workshop',
+      src: '/images/gallery/WhatsApp Image 2025-09-19 at 1.23.00 PM(1).jpeg',
+      title: 'Underwriting Working Group',
+      location: 'Executive Suite, Kampala',
       category: 'Office'
     },
     {
       id: 6,
-      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.36 PM.jpeg',
-      title: 'Client Engagement',
-      category: 'Office'
+      src: '/images/gallery/WhatsApp Image 2025-10-01 at 10.21.08 AM (3).jpeg',
+      title: 'Regional Industry Conference',
+      location: 'East Africa Risk Summit',
+      category: 'Assemblies'
     },
     {
       id: 7,
-      src: '/images/gallery/WhatsApp Image 2026-03-24 at 3.56.32 PM (3).jpeg',
-      title: 'Team Building',
-      category: 'Events'
+      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.36 PM (1).jpeg',
+      title: 'Treaty Broking Delegation',
+      location: 'International Assembly',
+      category: 'Assemblies'
     },
     {
       id: 8,
-      src: '/images/gallery/IMG_7142.jpg',
-      title: 'Corporate Event',
+      src: '/images/gallery/WhatsApp Image 2026-02-10 at 2.58.36 PM.jpeg',
+      title: 'Reinsurance Market Dinner',
+      location: 'African Insurance Organisation',
       category: 'Events'
     },
     {
       id: 9,
-      src: '/images/gallery/IMG_7151.jpg',
-      title: 'Business Networking',
-      category: 'Events'
+      src: '/images/gallery/WhatsApp Image 2026-03-24 at 3.56.32 PM (3).jpeg',
+      title: 'Team Capacity Workshop',
+      location: 'Kampala Office',
+      category: 'Office'
     },
     {
       id: 10,
-      src: '/images/gallery/IMG_7155.jpg',
-      title: 'Professional Gathering',
-      category: 'Events'
+      src: '/images/gallery/IMG_7151.jpg',
+      title: 'Cedant Partnership Dialogue',
+      location: 'AIO Networking Forum',
+      category: 'Assemblies'
     },
     {
       id: 11,
-      src: '/images/gallery/IMG_7185.jpg',
-      title: 'Industry Partners',
+      src: '/images/gallery/IMG_7155.jpg',
+      title: 'Industry Stakeholder Reception',
+      location: 'Annual Reinsurance Gala',
       category: 'Events'
     },
     {
       id: 12,
-      src: '/images/gallery/IMG_7187.jpg',
-      title: 'Team Excellence',
-      category: 'Office'
-    },
-    {
-      id: 13,
-      src: '/images/gallery/IMG_7272.jpg',
-      title: 'Leadership Forum',
+      src: '/images/gallery/IMG_7185.jpg',
+      title: 'Treaty Slip Signing',
+      location: 'Syndicate Council',
       category: 'Events'
     },
     {
-      id: 14,
+      id: 13,
       src: '/images/gallery/IMG_7279.jpg',
-      title: 'Strategic Session',
+      title: 'Technical Broking Desk Session',
+      location: 'Executive Room, Kampala',
       category: 'Office'
     },
     {
-      id: 15,
-      src: '/images/gallery/IMG_7286.jpg',
-      title: 'Professional Development',
-      category: 'Office'
-    },
-    {
-      id: 16,
-      src: '/images/gallery/IMG_7296.jpg',
-      title: 'Team Success',
-      category: 'Office'
-    },
-    {
-      id: 17,
+      id: 14,
       src: '/images/gallery/IMG_7818.jpg',
-      title: 'Company Milestone',
+      title: 'Annual Corporate Milestone',
+      location: 'Kampala Corporate Gathering',
       category: 'Events'
     }
   ];
 
-  const [activeFilter, setActiveFilter] = useState('All');
-  const categories = ['All', 'Events', 'Office'];
+  const filterTabs = [
+    { id: 'All', label: 'All Engagements' },
+    { id: 'Assemblies', label: 'Assemblies' },
+    { id: 'Events', label: 'Receptions & Forums' },
+    { id: 'Office', label: 'Kampala Office' }
+  ];
 
-  const filteredImages = activeFilter === 'All' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeFilter);
+  const filteredImages = activeFilter === 'All'
+    ? galleryImages
+    : galleryImages.filter((img) => img.category === activeFilter);
+
+  const openLightbox = (index) => {
+    setSelectedIndex(index);
+  };
+
+  const closeLightbox = () => {
+    setSelectedIndex(null);
+  };
+
+  const nextImage = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((prev) => (prev + 1) % filteredImages.length);
+    }
+  }, [selectedIndex, filteredImages.length]);
+
+  const prevImage = useCallback(() => {
+    if (selectedIndex !== null) {
+      setSelectedIndex((prev) => (prev - 1 + filteredImages.length) % filteredImages.length);
+    }
+  }, [selectedIndex, filteredImages.length]);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (selectedIndex === null) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowRight') nextImage();
+      if (e.key === 'ArrowLeft') prevImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedIndex, nextImage, prevImage]);
+
+  const currentItem = selectedIndex !== null ? filteredImages[selectedIndex] : null;
 
   return (
     <>
       <Header />
-      
-      <main className="pt-20">
-        {/* Hero Section */}
-        <section className="relative min-h-[60vh] flex items-center bg-gradient-to-br from-primary via-[#001636] to-tertiary overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-tertiary/85"></div>
-            <img 
-              src="/images/expertise.jpg" 
-              alt="Gallery" 
-              className="w-full h-full object-cover opacity-20"
-            />
-          </div>
 
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-20 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-tertiary/10 rounded-full blur-3xl animate-float-delayed"></div>
-          </div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-16">
-            <div className="max-w-3xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-2xl px-5 py-2 rounded-full border border-secondary/30 shadow-xl mb-6" data-aos="fade-down">
-                <span className="material-symbols-outlined text-secondary-fixed">photo_library</span>
-                <span className="text-secondary-fixed text-xs font-semibold uppercase tracking-[0.2em]">Gallery</span>
-              </div>
-              
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-tight font-bold" data-aos="fade-up">
-                Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-secondary font-bold">Journey</span> in Pictures
-              </h1>
-              
-              <p className="font-body-lg text-lg md:text-xl text-white/70 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Capturing moments of excellence, collaboration, and growth at Guardian Reinsurance Brokers.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Filter Section */}
-        <section className="py-12 bg-white border-b border-outline-variant/30">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="flex justify-center gap-4 flex-wrap">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveFilter(category)}
-                  className={`px-6 py-3 rounded-xl font-semibold transition-all ${
-                    activeFilter === category
-                      ? 'bg-primary text-white shadow-lg'
-                      : 'bg-surface text-text-secondary hover:bg-surface-muted'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Gallery Grid */}
-        <section className="py-20 bg-surface">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredImages.map((image, index) => (
-                <div
-                  key={image.id}
-                  className="group relative overflow-hidden rounded-2xl shadow-lg cursor-pointer aspect-square"
-                  data-aos="fade-up"
-                  data-aos-delay={index * 100}
-                  onClick={() => setSelectedImage(image)}
-                >
-                  <img
-                    src={image.src}
-                    alt={image.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <span className="inline-block text-xs font-semibold text-secondary-fixed mb-2 uppercase tracking-wider">
-                        {image.category}
-                      </span>
-                      <h3 className="text-white font-headline-sm text-xl">
-                        {image.title}
-                      </h3>
-                    </div>
-                  </div>
-                  <div className="absolute top-4 right-4 w-10 h-10 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                    <span className="material-symbols-outlined text-white text-lg">zoom_in</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary to-tertiary-container relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '32px 32px'
-            }}></div>
-          </div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 text-center">
-            <h2 className="font-display-lg text-3xl md:text-5xl text-white mb-6">
-              Join Our <span className="text-secondary-fixed">Success Story</span>
-            </h2>
-            <p className="font-body-lg text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-              Partner with Guardian Reinsurance for innovative solutions and exceptional service.
+      <main className="pt-24 lg:pt-28 pb-20 bg-[#FAF8F5]">
+        {/* ========================================================================= */}
+        {/* CLEAN, MINIMAL HEADER */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-10">
+          <div className="max-w-3xl">
+            <h1 className="editorial-heading text-4xl sm:text-5xl text-charcoal font-normal tracking-tight mb-4">
+              Industry Delegations & Engagements
+            </h1>
+            <p className="text-base text-charcoal-muted font-light leading-relaxed">
+              Photographic records from our participation in Pan-African reinsurance assemblies, bilateral syndicate sessions, and Kampala operations.
             </p>
-            <a 
-              href="/contact"
-              className="inline-flex items-center justify-center gap-2 bg-secondary-container text-primary px-10 py-5 rounded-xl font-semibold hover:bg-secondary hover:shadow-2xl transition-all"
-            >
-              <span>Get in Touch</span>
-              <span className="material-symbols-outlined">arrow_forward</span>
-            </a>
+          </div>
+
+          {/* Minimal Text Filter Tabs */}
+          <div className="flex items-center gap-6 sm:gap-8 pt-8 mt-8 border-t border-[#E5E0D8]">
+            {filterTabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveFilter(tab.id)}
+                className={`text-xs uppercase tracking-wider transition-colors pb-2 -mb-px border-b-2 font-mono ${
+                  activeFilter === tab.id
+                    ? 'border-brand-navy text-brand-navy font-semibold'
+                    : 'border-transparent text-charcoal-muted hover:text-charcoal'
+                }`}
+              >
+                {tab.label}
+              </button>
+            ))}
           </div>
         </section>
+
+        {/* ========================================================================= */}
+        {/* CLEAN GALLERY GRID */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+            {filteredImages.map((item, index) => (
+              <div
+                key={item.id}
+                onClick={() => openLightbox(index)}
+                className="group cursor-pointer"
+              >
+                {/* Photo Frame */}
+                <div className="aspect-[4/3] w-full overflow-hidden bg-[#121824]/5 border border-[#E5E0D8] group-hover:border-charcoal/40 transition-colors">
+                  <img
+                    src={item.src}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Clean, Restrained Caption */}
+                <div className="pt-3.5 space-y-1">
+                  <h3 className="editorial-heading text-lg sm:text-xl text-charcoal font-normal group-hover:text-brand-navy transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-xs text-charcoal-muted font-light">
+                    {item.location}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* MINIMAL LIGHTBOX MODAL */}
+        {/* ========================================================================= */}
+        {currentItem && (
+          <div
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+            onClick={closeLightbox}
+          >
+            <div
+              className="relative max-w-4xl w-full bg-white border border-[#E5E0D8] shadow-2xl overflow-hidden flex flex-col max-h-[92vh]"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header Bar */}
+              <div className="px-5 py-3 border-b border-[#E5E0D8] flex items-center justify-between text-xs text-charcoal-muted font-mono">
+                <span>
+                  {selectedIndex + 1} / {filteredImages.length}
+                </span>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={prevImage}
+                    className="p-1 hover:text-charcoal transition-colors"
+                    title="Previous"
+                  >
+                    <span className="material-symbols-outlined text-lg block">chevron_left</span>
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="p-1 hover:text-charcoal transition-colors"
+                    title="Next"
+                  >
+                    <span className="material-symbols-outlined text-lg block">chevron_right</span>
+                  </button>
+                  <button
+                    onClick={closeLightbox}
+                    className="p-1 hover:text-charcoal transition-colors ml-2"
+                    title="Close"
+                  >
+                    <span className="material-symbols-outlined text-lg block">close</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Photo Display */}
+              <div className="bg-[#121824] flex items-center justify-center p-2 flex-grow min-h-[300px]">
+                <img
+                  src={currentItem.src}
+                  alt={currentItem.title}
+                  className="max-h-[65vh] w-auto max-w-full object-contain mx-auto"
+                />
+              </div>
+
+              {/* Caption */}
+              <div className="p-5 bg-white border-t border-[#E5E0D8]">
+                <h3 className="editorial-heading text-xl text-charcoal font-normal mb-1">
+                  {currentItem.title}
+                </h3>
+                <p className="text-xs text-charcoal-muted font-light">
+                  {currentItem.location}
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
 
       <Footer />
-
-      {/* Lightbox Modal */}
-      {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-4 right-4 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all"
-            onClick={() => setSelectedImage(null)}
-          >
-            <span className="material-symbols-outlined text-2xl">close</span>
-          </button>
-          
-          <div className="max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-            <img
-              src={selectedImage.src}
-              alt={selectedImage.title}
-              className="w-full h-auto max-h-[90vh] object-contain rounded-xl shadow-2xl"
-            />
-            <div className="text-center mt-6">
-              <span className="inline-block text-xs font-semibold text-secondary-fixed mb-2 uppercase tracking-wider">
-                {selectedImage.category}
-              </span>
-              <h3 className="text-white font-headline-md text-2xl">
-                {selectedImage.title}
-              </h3>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };

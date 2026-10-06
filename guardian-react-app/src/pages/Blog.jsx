@@ -1,440 +1,554 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+const articles = [
+  {
+    id: 1,
+    title: 'Beyond Risk Transfer: How Reinsurance is Building a More Resilient Africa',
+    slug: 'reinsurance-outlook-african-continent',
+    excerpt: 'The narrative around Africa is often dominated by its risks. But at Guardian Reinsurance, we see a different story—one of immense opportunity, innovation, and institutional resilience across the continent.',
+    category: 'Industry Insights',
+    author: 'Guardian Re Research Desk',
+    date: 'June 15, 2026',
+    readTime: '6 min read',
+    image: '/images/hero-editorial.jpg',
+    featured: true,
+    tags: ['Africa', 'Market Analysis', 'Resilience', 'Economic Growth']
+  },
+  {
+    id: 2,
+    title: 'What is the Difference Between Facultative and Treaty Reinsurance?',
+    slug: 'facultative-vs-treaty-reinsurance',
+    excerpt: 'Facultative reinsurance is for individual, high-value specific risks negotiated slip-by-slip, while treaty reinsurance covers an entire underwriting portfolio automatically under long-term contract structures.',
+    category: 'Educational',
+    author: 'Technical Broking Desk',
+    date: 'May 28, 2026',
+    readTime: '5 min read',
+    image: '/images/treaty.jpg',
+    featured: false,
+    tags: ['Facultative', 'Treaty', 'Underwriting', 'Education']
+  },
+  {
+    id: 3,
+    title: 'Sharing the Load: What Reinsurance Can Teach Us About Executive Mental Health',
+    slug: 'reinsurance-mental-health-lessons',
+    excerpt: 'We talk endlessly about financial resilience in business, but silence is often the default when it comes to executive well-being. How the mathematical principles of risk syndication apply to modern leadership.',
+    category: 'Thought Leadership',
+    author: 'Corporate Advisory Desk',
+    date: 'April 10, 2026',
+    readTime: '6 min read',
+    image: '/images/consultant.jpg',
+    featured: false,
+    tags: ['Leadership', 'Workplace Wellbeing', 'Governance']
+  },
+  {
+    id: 4,
+    title: 'Overcoming Disruption in Health Requires Balance-Sheet Resilience',
+    slug: 'world-aids-day-commitment',
+    excerpt: 'Exploring how reinsurance mechanisms provide the liquidity needed to strengthen healthcare financing and protect primary health insurance schemes against shock claims.',
+    category: 'Healthcare & CSR',
+    author: 'Guardian Re Practice Group',
+    date: 'December 1, 2025',
+    readTime: '5 min read',
+    image: '/images/accounting-desk.jpg',
+    featured: false,
+    tags: ['Healthcare', 'CSR', 'Sustainability', 'Social Impact']
+  }
+];
+
+const categories = ['All', 'Industry Insights', 'Educational', 'Thought Leadership', 'Healthcare & CSR'];
+
 const Blog = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterError, setNewsletterError] = useState('');
+  const [newsletterTouched, setNewsletterTouched] = useState(false);
+  const [isSubmittingNewsletter, setIsSubmittingNewsletter] = useState(false);
+  const [newsletterSubscribed, setNewsletterSubscribed] = useState(false);
 
-  const articles = [
-    {
-      id: 1,
-      title: 'Beyond Risk Transfer: How Reinsurance is Building a More Resilient Africa',
-      slug: 'reinsurance-outlook-african-continent',
-      excerpt: 'The narrative around Africa is often dominated by its risks. But at Guardian Reinsurance, we see a different story—one of immense opportunity, innovation, and resilience.',
-      category: 'Industry Insights',
-      author: 'Guardian Reinsurance Team',
-      date: 'June 15, 2026',
-      readTime: '6 min read',
-      image: '/images/expertise.jpg',
-      featured: true,
-      tags: ['Africa', 'Market Analysis', 'Resilience']
-    },
-    {
-      id: 2,
-      title: 'What is the Difference Between Facultative and Treaty Reinsurance?',
-      slug: 'facultative-vs-treaty-reinsurance',
-      excerpt: 'Facultative reinsurance is for individual, specific risks negotiated one by one, while treaty reinsurance covers a whole portfolio of risks automatically.',
-      category: 'Educational',
-      author: 'Guardian Reinsurance Team',
-      date: 'May 28, 2026',
-      readTime: '5 min read',
-      image: '/images/treaty.jpg',
-      featured: false,
-      tags: ['Facultative', 'Treaty', 'Education']
-    },
-    {
-      id: 3,
-      title: 'Sharing the Load: What Reinsurance Can Teach Us About Men\'s Mental Health at Work',
-      slug: 'reinsurance-mental-health-lessons',
-      excerpt: 'We talk a lot about resilience in business, but silence is still the default when it comes to men\'s mental health. Learn how the principle of risk sharing can transform workplace wellbeing.',
-      category: 'Thought Leadership',
-      author: 'Guardian Reinsurance Team',
-      date: 'April 10, 2026',
-      readTime: '6 min read',
-      image: '/images/consultant.jpg',
-      featured: false,
-      tags: ['Mental Health', 'Workplace Wellbeing', 'Leadership']
-    },
-    {
-      id: 4,
-      title: 'Overcoming Disruption in Health Requires Financial Resilience',
-      slug: 'world-aids-day-commitment',
-      excerpt: 'This World AIDS Day, we explore how reinsurance provides the financial resilience needed to transform the AIDS response and build sustainable health systems.',
-      category: 'Corporate Social Responsibility',
-      author: 'Guardian Reinsurance Team',
-      date: 'December 1, 2025',
-      readTime: '5 min read',
-      image: '/images/global-connectivity.jpg',
-      featured: false,
-      tags: ['CSR', 'Health', 'World AIDS Day']
-    },
-    {
-      id: 5,
-      title: 'LinkedIn Content Strategy for African Reinsurance: Best Practices That Drive Engagement',
-      slug: 'linkedin-best-practices',
-      excerpt: 'A comprehensive guide to building thought leadership on LinkedIn for African reinsurance professionals—from data-driven posts to engagement strategies.',
-      category: 'Professional Development',
-      author: 'Guardian Reinsurance Team',
-      date: 'March 20, 2026',
-      readTime: '8 min read',
-      image: '/images/strategic-analysis.jpg',
-      featured: false,
-      tags: ['LinkedIn', 'Content Strategy', 'B2B Marketing', 'Thought Leadership']
+  // Category counts
+  const categoryCounts = useMemo(() => {
+    const counts = { All: articles.length };
+    articles.forEach((a) => {
+      counts[a.category] = (counts[a.category] || 0) + 1;
+    });
+    return counts;
+  }, []);
+
+  // Search and category filter
+  const filteredArticles = useMemo(() => {
+    return articles.filter((article) => {
+      const matchesCategory = selectedCategory === 'All' || article.category === selectedCategory;
+      const q = searchQuery.toLowerCase().trim();
+      const matchesSearch =
+        !q ||
+        article.title.toLowerCase().includes(q) ||
+        article.excerpt.toLowerCase().includes(q) ||
+        article.author.toLowerCase().includes(q) ||
+        article.tags.some((tag) => tag.toLowerCase().includes(q));
+      return matchesCategory && matchesSearch;
+    });
+  }, [selectedCategory, searchQuery]);
+
+  const featuredArticle = articles.find((a) => a.featured) || articles[0];
+  const isDefaultView = selectedCategory === 'All' && !searchQuery.trim();
+
+  // Non-featured articles for the grid on default view, or all filtered articles
+  const gridArticles = isDefaultView
+    ? filteredArticles.filter((a) => !a.featured)
+    : filteredArticles;
+
+  const validateNewsletter = (email) => {
+    if (!email.trim()) return 'Please enter your corporate email address.';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
+      return 'Please enter a valid email format (e.g., officer@company.com).';
     }
-  ];
+    return '';
+  };
 
-  const categories = [
-    'All',
-    'Industry Insights',
-    'Educational',
-    'Thought Leadership',
-    'Corporate Social Responsibility',
-    'Professional Development'
-  ];
+  const handleNewsletterChange = (e) => {
+    const val = e.target.value;
+    setNewsletterEmail(val);
+    if (newsletterTouched) {
+      setNewsletterError(validateNewsletter(val));
+    }
+  };
 
-  const filteredArticles = selectedCategory === 'All' 
-    ? articles 
-    : articles.filter(article => article.category === selectedCategory);
+  const handleNewsletterBlur = () => {
+    setNewsletterTouched(true);
+    setNewsletterError(validateNewsletter(newsletterEmail));
+  };
 
-  const featuredArticle = articles.find(article => article.featured);
-  const regularArticles = filteredArticles.filter(article => !article.featured || selectedCategory !== 'All');
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+    setNewsletterTouched(true);
+    const err = validateNewsletter(newsletterEmail);
+    setNewsletterError(err);
+
+    if (!err) {
+      setIsSubmittingNewsletter(true);
+      setTimeout(() => {
+        setIsSubmittingNewsletter(false);
+        setNewsletterSubscribed(true);
+        setNewsletterEmail('');
+        setNewsletterError('');
+        setNewsletterTouched(false);
+        setTimeout(() => setNewsletterSubscribed(false), 6000);
+      }, 500);
+    }
+  };
 
   return (
     <>
       <Header />
-      
-      <main className="pt-20">
-        {/* Hero Section - Modern & Clean */}
-        <section className="relative py-20 md:py-24 bg-gradient-to-br from-primary via-[#001d42] to-[#001528] overflow-hidden">
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-primary/75 to-transparent"></div>
-            <img 
-              src="/images/analytics.jpg" 
-              alt="Blog" 
-              className="w-full h-full object-cover opacity-10"
-            />
+
+      <main className="pt-24 lg:pt-28 pb-16 bg-[#FAF8F5]">
+        {/* ========================================================================= */}
+        {/* 1. HERO SECTION & INTEL SEARCH */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:pb-16">
+          <div className="mb-4" data-aos="fade-down">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 bg-brand-azure rounded-full animate-pulse"></span>
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                PUBLICATIONS & PERSPECTIVES • KAMPALA DESK
+              </span>
+            </div>
           </div>
 
-          <div className="absolute inset-0">
-            <div className="absolute top-20 right-[-5%] w-80 h-80 bg-secondary/15 rounded-full blur-[100px] animate-float"></div>
-            <div className="absolute bottom-10 left-[-5%] w-72 h-72 bg-tertiary/15 rounded-full blur-[90px] animate-float-delayed"></div>
-          </div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2.5 bg-secondary/10 backdrop-blur-md px-5 py-2.5 rounded-full border border-secondary/30 mb-6" data-aos="fade-down">
-                <span className="material-symbols-outlined text-secondary text-lg">edit_note</span>
-                <span className="text-secondary-fixed text-xs font-bold uppercase tracking-[0.2em]">Blog & Articles</span>
-              </div>
-              
-              <h1 className="font-display-lg text-5xl md:text-6xl lg:text-7xl text-white mb-6 leading-tight font-bold" data-aos="fade-up">
-                Thought <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary via-[#ffd700] to-[#ffed4e] font-bold">Leadership</span>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10">
+            <div className="lg:col-span-8" data-aos="fade-right">
+              <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-[3.5rem] xl:text-6xl text-charcoal font-normal leading-[1.08] tracking-tight">
+                Perspectives on risk, capital & market trends.
               </h1>
-              
-              <p className="font-body-lg text-xl text-white/80 mb-8 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">
-                Expert perspectives and insights on reinsurance, risk management, and the evolving insurance landscape
+            </div>
+            <div className="lg:col-span-4" data-aos="fade-left" data-aos-delay="100">
+              <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed font-light">
+                Technical commentaries, actuarial perspectives, and executive briefings authored by Guardian Re brokers and market analysts in Kampala.
               </p>
+            </div>
+          </div>
 
-              <div className="flex flex-wrap justify-center gap-4 text-white/60 text-sm" data-aos="fade-up" data-aos-delay="200">
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">article</span>
-                  <span>{articles.length} Articles</span>
-                </div>
-                <div className="w-px h-5 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">category</span>
-                  <span>{categories.length - 1} Topics</span>
-                </div>
-                <div className="w-px h-5 bg-white/20"></div>
-                <div className="flex items-center gap-2">
-                  <span className="material-symbols-outlined text-secondary text-base">update</span>
-                  <span>Weekly Updates</span>
-                </div>
-              </div>
+          {/* Search Bar & Category Filters */}
+          <div className="space-y-4 pt-6 border-t border-[#E5E0D8]" data-aos="fade-up" data-aos-delay="150">
+            {/* Live Search Input */}
+            <div className="relative max-w-xl">
+              <span className="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-charcoal-muted text-lg pointer-events-none">
+                search
+              </span>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search publications, topics, or authors..."
+                className="w-full pl-10 pr-10 py-3 bg-white border border-[#E5E0D8] text-sm text-charcoal placeholder:text-charcoal-light focus:outline-none focus:border-brand-navy shadow-sm transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal-light hover:text-charcoal"
+                  aria-label="Clear search"
+                >
+                  <span className="material-symbols-outlined text-sm">close</span>
+                </button>
+              )}
+            </div>
+
+            {/* Category Filter Pills */}
+            <div className="flex flex-wrap gap-2 pt-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold tracking-wider uppercase transition-all duration-150 border ${
+                    selectedCategory === cat
+                      ? 'bg-brand-navy text-white border-brand-navy shadow-sm'
+                      : 'bg-white border-[#E5E0D8] text-charcoal-muted hover:text-charcoal hover:border-brand-navy/40 shadow-2xs'
+                  }`}
+                >
+                  <span>{cat}</span>
+                  <span
+                    className={`text-[10px] px-1.5 py-0.2 rounded-full font-mono ${
+                      selectedCategory === cat
+                        ? 'bg-white/20 text-white'
+                        : 'bg-[#FAF8F5] text-charcoal-muted'
+                    }`}
+                  >
+                    {categoryCounts[cat] || 0}
+                  </span>
+                </button>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Featured Article - Hero Style */}
-        {selectedCategory === 'All' && featuredArticle && (
-          <section className="py-16 bg-white">
-            <div className="container mx-auto px-6 md:px-12 lg:px-16">
-              <div className="flex items-center gap-3 mb-8" data-aos="fade-right">
-                <div className="w-1 h-8 bg-gradient-to-b from-secondary to-tertiary rounded-full"></div>
-                <h2 className="font-headline-lg text-2xl md:text-3xl text-primary">Featured Article</h2>
-              </div>
-              
-              <Link 
-                to={`/blog/${featuredArticle.slug}`}
-                className="group relative bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 border border-outline-variant/20"
-                data-aos="fade-up"
-              >
-                <div className="grid lg:grid-cols-5 gap-0">
-                  {/* Image Section - 3 columns */}
-                  <div className="relative h-96 lg:h-auto lg:col-span-3 overflow-hidden">
-                    <img
-                      src={featuredArticle.image}
-                      alt={featuredArticle.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent"></div>
-                    
-                    {/* Featured Badge */}
-                    <div className="absolute top-6 left-6">
-                      <span className="inline-flex items-center gap-2 bg-secondary text-primary text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider shadow-lg">
-                        <span className="material-symbols-outlined text-sm">star</span>
-                        Featured
-                      </span>
-                    </div>
+        {/* ========================================================================= */}
+        {/* 2. COVER STORY / FEATURED EDITORIAL SPOTLIGHT */}
+        {/* ========================================================================= */}
+        {isDefaultView && (
+          <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16" data-aos="fade-up">
+            <Link
+              to={`/blog/${featuredArticle.slug}`}
+              className="group relative bg-white border border-[#E5E0D8] hover:border-brand-azure/60 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 block overflow-hidden"
+            >
+              {/* Top Accent Gradient Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy via-brand-azure to-brand-cyan group-hover:h-1.5 transition-all duration-300 z-10"></div>
 
-                    {/* Category on Image */}
-                    <div className="absolute bottom-6 left-6">
-                      <span className="inline-block bg-white/20 backdrop-blur-md text-white text-xs font-semibold px-3 py-1.5 rounded-full uppercase tracking-wide border border-white/30">
+              <div className="grid grid-cols-1 lg:grid-cols-12 items-center">
+                {/* Visual Framing */}
+                <div className="lg:col-span-7 relative aspect-[16/10] lg:aspect-[16/11] overflow-hidden bg-charcoal">
+                  <img
+                    src={featuredArticle.image}
+                    alt={featuredArticle.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+
+                  {/* Architectural Badge */}
+                  <div className="absolute top-5 left-5 bg-white/95 backdrop-blur-md px-3.5 py-1.5 border border-[#E5E0D8] border-l-4 border-l-brand-azure shadow-sm flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-brand-azure animate-pulse"></span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-brand-navy">
+                      Featured Cover Story
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content Side */}
+                <div className="lg:col-span-5 p-8 sm:p-12 flex flex-col justify-between space-y-6">
+                  <div className="space-y-4">
+                    <div className="flex flex-wrap items-center gap-2.5 text-xs text-charcoal-muted">
+                      <span className="font-bold text-brand-azure uppercase tracking-wider text-[11px] px-2.5 py-0.5 bg-brand-ice border border-brand-azure/20">
                         {featuredArticle.category}
                       </span>
+                      <span>•</span>
+                      <span className="flex items-center gap-1 font-mono text-[11px]">
+                        <span className="material-symbols-outlined text-xs">schedule</span>
+                        {featuredArticle.readTime}
+                      </span>
+                      <span>•</span>
+                      <span className="text-[11px]">{featuredArticle.date}</span>
                     </div>
-                  </div>
-                  
-                  {/* Content Section - 2 columns */}
-                  <div className="p-8 lg:p-10 lg:col-span-2 flex flex-col justify-center">
-                    <h3 className="font-headline-lg text-2xl md:text-3xl lg:text-4xl text-primary mb-4 group-hover:text-tertiary transition-colors leading-tight">
+
+                    <h2 className="editorial-heading text-2xl sm:text-3xl lg:text-[2rem] text-charcoal font-normal group-hover:text-brand-navy transition-colors leading-snug">
                       {featuredArticle.title}
-                    </h3>
-                    
-                    <p className="text-text-secondary text-base md:text-lg leading-relaxed mb-6 line-clamp-3">
+                    </h2>
+
+                    <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed font-light line-clamp-3">
                       {featuredArticle.excerpt}
                     </p>
-                    
-                    {/* Meta Info */}
-                    <div className="flex flex-wrap items-center gap-4 text-xs text-text-secondary mb-6 pb-6 border-b border-outline-variant/30">
-                      <div className="flex items-center gap-1.5">
-                        <span className="material-symbols-outlined text-sm">person</span>
-                        <span>{featuredArticle.author}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="material-symbols-outlined text-sm">calendar_month</span>
-                        <span>{featuredArticle.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1.5">
-                        <span className="material-symbols-outlined text-sm">schedule</span>
-                        <span>{featuredArticle.readTime}</span>
-                      </div>
-                    </div>
-                    
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mb-6">
-                      {featuredArticle.tags.slice(0, 3).map((tag, index) => (
-                        <span key={index} className="text-xs bg-primary/5 text-primary px-3 py-1 rounded-md font-medium">
+
+                    {/* Tag Pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {featuredArticle.tags.map((tag, tIdx) => (
+                        <span
+                          key={tIdx}
+                          className="text-[11px] font-medium text-charcoal-muted px-2 py-0.5 bg-[#FAF8F5] border border-[#E5E0D8]"
+                        >
                           #{tag}
                         </span>
                       ))}
                     </div>
-                    
-                    {/* CTA */}
-                    <div className="inline-flex items-center gap-2 text-primary font-bold group-hover:gap-4 transition-all">
-                      <span>Continue Reading</span>
-                      <span className="material-symbols-outlined">arrow_forward</span>
+                  </div>
+
+                  {/* Bottom Footer Row */}
+                  <div className="pt-4 border-t border-[#F0ECE4] flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-xs text-charcoal">
+                      <div className="w-7 h-7 rounded-full bg-brand-navy text-white flex items-center justify-center font-bold text-[10px]">
+                        GR
+                      </div>
+                      <span className="font-medium text-charcoal-muted text-[11px]">
+                        {featuredArticle.author}
+                      </span>
                     </div>
+
+                    <span className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-widest text-brand-navy group-hover:text-brand-azure group-hover:translate-x-1 transition-all">
+                      <span>Read Analysis</span>
+                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
                   </div>
                 </div>
-              </Link>
-            </div>
+              </div>
+            </Link>
           </section>
         )}
 
-        {/* Category Filter - Improved */}
-        <section className="py-8 bg-surface/50 border-y border-outline-variant/20 sticky top-20 z-40 backdrop-blur-sm">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="flex items-center justify-between flex-wrap gap-4">
-              <div className="flex items-center gap-2.5">
-                <span className="material-symbols-outlined text-text-secondary text-lg">filter_list</span>
-                <span className="text-text-secondary font-medium text-sm">Filter:</span>
-              </div>
-              <div className="flex gap-2 flex-wrap">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-lg font-medium text-xs transition-all ${
-                      selectedCategory === category
-                        ? 'bg-primary text-white shadow-md scale-105'
-                        : 'bg-white text-text-secondary hover:bg-white/80 hover:scale-105 border border-outline-variant/30'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
+        {/* ========================================================================= */}
+        {/* 3. ARTICLES ARCHITECTURAL GRID */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 lg:pb-24">
+          {/* Section Sub-heading if on default view */}
+          {isDefaultView && (
+            <div className="flex items-center justify-between mb-8 pb-3 border-b border-[#E5E0D8]" data-aos="fade-up">
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                RECENT ANALYSES & TREATISES
+              </span>
+              <span className="text-xs text-charcoal-muted font-mono">
+                {gridArticles.length} publications
+              </span>
             </div>
-          </div>
+          )}
+
+          {/* Active Search / Category Indicator */}
+          {!isDefaultView && (
+            <div className="flex items-center justify-between mb-8 pb-3 border-b border-[#E5E0D8]" data-aos="fade-up">
+              <div>
+                <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-1">
+                  FILTERED RESULTS
+                </span>
+                <p className="text-sm text-charcoal font-medium">
+                  Showing publications for <span className="text-brand-navy font-bold">"{selectedCategory}"</span>
+                  {searchQuery && (
+                    <> matching <span className="text-brand-azure font-bold">"{searchQuery}"</span></>
+                  )}
+                </p>
+              </div>
+              <button
+                onClick={() => {
+                  setSelectedCategory('All');
+                  setSearchQuery('');
+                }}
+                className="text-xs font-semibold uppercase tracking-wider text-brand-navy hover:text-brand-azure flex items-center gap-1"
+              >
+                <span className="material-symbols-outlined text-sm">refresh</span>
+                <span>Reset Filters</span>
+              </button>
+            </div>
+          )}
+
+          {/* Zero Results State */}
+          {filteredArticles.length === 0 ? (
+            <div className="bg-white border border-[#E5E0D8] p-12 text-center max-w-xl mx-auto my-12" data-aos="fade-up">
+              <span className="material-symbols-outlined text-5xl text-charcoal-light mb-3">
+                search_off
+              </span>
+              <h3 className="editorial-heading text-2xl text-charcoal font-normal mb-2">
+                No publications match your criteria
+              </h3>
+              <p className="text-xs sm:text-sm text-charcoal-muted mb-6 leading-relaxed">
+                We couldn't find any articles matching your search query. Try alternative terms or clear your filters to view all intelligence pieces.
+              </p>
+              <button
+                onClick={() => {
+                  setSelectedCategory('All');
+                  setSearchQuery('');
+                }}
+                className="px-6 py-3 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue transition-colors shadow-sm"
+              >
+                View All Publications
+              </button>
+            </div>
+          ) : (
+            /* Standard Grid */
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {gridArticles.map((article, index) => (
+                <Link
+                  key={article.id}
+                  to={`/blog/${article.slug}`}
+                  data-aos="fade-up"
+                  data-aos-delay={index * 100}
+                  className="group relative bg-white border border-[#E5E0D8] hover:border-brand-azure/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                >
+                  {/* Top Glowing Gradient Line */}
+                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy via-brand-azure to-brand-cyan group-hover:h-1.5 transition-all duration-300 z-10"></div>
+
+                  <div>
+                    {/* Visual Media Container */}
+                    <div className="aspect-[16/10] w-full overflow-hidden bg-charcoal relative">
+                      <img
+                        src={article.image}
+                        alt={article.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
+
+                      <div className="absolute bottom-3 left-3">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-white px-2.5 py-1 bg-brand-navy/90 backdrop-blur-xs border border-white/20">
+                          {article.category}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Article Body */}
+                    <div className="p-7">
+                      <div className="flex items-center justify-between text-xs text-charcoal-muted mb-3 font-mono text-[11px]">
+                        <span>{article.date}</span>
+                        <span className="flex items-center gap-1">
+                          <span className="material-symbols-outlined text-xs">schedule</span>
+                          {article.readTime}
+                        </span>
+                      </div>
+
+                      <h3 className="editorial-heading text-xl text-charcoal font-normal group-hover:text-brand-navy transition-colors mb-3 leading-snug">
+                        {article.title}
+                      </h3>
+
+                      <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light line-clamp-3 mb-4">
+                        {article.excerpt}
+                      </p>
+
+                      {/* Micro Tag Badges */}
+                      <div className="flex flex-wrap gap-1.5 pt-2 border-t border-[#F0ECE4]">
+                        {article.tags.slice(0, 3).map((tag, tIdx) => (
+                          <span
+                            key={tIdx}
+                            className="text-[10px] font-medium text-charcoal-muted px-2 py-0.5 bg-[#FAF8F5] border border-[#E5E0D8]"
+                          >
+                            #{tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card Bottom CTA */}
+                  <div className="px-7 pb-6 pt-2 border-t border-[#FAF8F5] flex items-center justify-between">
+                    <span className="text-[11px] font-medium text-charcoal-muted">
+                      {article.author}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-brand-navy group-hover:text-brand-azure group-hover:translate-x-1 transition-all">
+                      <span>Read</span>
+                      <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
 
-        {/* Articles Grid - Modern Cards */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            {regularArticles.length > 0 ? (
-              <>
-                {selectedCategory !== 'All' && (
-                  <div className="mb-8">
-                    <p className="text-text-secondary">
-                      Showing <span className="font-semibold text-primary">{regularArticles.length}</span> {regularArticles.length === 1 ? 'article' : 'articles'} in <span className="font-semibold">{selectedCategory}</span>
+        {/* ========================================================================= */}
+        {/* 4. THE GUARDIAN RE BRIEFING (EXECUTIVE NEWSLETTER DOCKET) */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8" data-aos="fade-up">
+          <div className="p-8 sm:p-12 lg:p-14 border border-[#E5E0D8] bg-[#F4F1EA] shadow-sm relative overflow-hidden">
+            {/* Top Accent Line */}
+            <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy via-brand-azure to-brand-cyan"></div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              <div className="lg:col-span-7 space-y-4">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-brand-azure"></span>
+                  <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                    INSTITUTIONAL INTELLIGENCE
+                  </span>
+                </div>
+
+                <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal leading-tight">
+                  Subscribe to The Guardian Re Reinsurance Briefing
+                </h2>
+
+                <p className="text-sm text-charcoal-muted leading-relaxed font-light max-w-xl">
+                  Receive quarterly treaty market reviews, regulatory circular analyses from IRA Uganda, and reinsurance syndicate commentary directly in your inbox.
+                </p>
+
+                <div className="flex items-center gap-6 pt-2 text-xs text-charcoal-muted">
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-brand-azure text-base">verified</span>
+                    <span>Quarterly Digest</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="material-symbols-outlined text-brand-azure text-base">lock</span>
+                    <span>Zero Spam • Strictly Institutional</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-5">
+                {newsletterSubscribed ? (
+                  <div className="bg-white p-6 border border-[#E5E0D8] border-l-4 border-l-emerald-600 shadow-sm space-y-2">
+                    <div className="flex items-center gap-2 text-emerald-700 font-semibold text-sm">
+                      <span className="material-symbols-outlined text-base">check_circle</span>
+                      <span>Subscription Registered</span>
+                    </div>
+                    <p className="text-xs text-charcoal-muted">
+                      Thank you. You will receive our next quarterly reinsurance intelligence brief.
                     </p>
                   </div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} noValidate className="space-y-3">
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      <input
+                        type="email"
+                        value={newsletterEmail}
+                        onChange={handleNewsletterChange}
+                        onBlur={handleNewsletterBlur}
+                        placeholder="Enter corporate email address..."
+                        className={`flex-1 px-4 py-3.5 bg-white border text-sm text-charcoal placeholder:text-charcoal-light focus:outline-none transition-colors shadow-sm ${
+                          newsletterTouched && newsletterError
+                            ? 'border-red-400 focus:border-red-500 bg-red-50/20'
+                            : 'border-[#E5E0D8] focus:border-brand-navy'
+                        }`}
+                      />
+                      <button
+                        type="submit"
+                        disabled={isSubmittingNewsletter}
+                        className="px-6 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm shrink-0 disabled:opacity-60 flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        {isSubmittingNewsletter ? (
+                          <>
+                            <span className="w-3 h-3 border-2 border-white/30 border-t-white rounded-full animate-spin"></span>
+                            <span>Subscribing...</span>
+                          </>
+                        ) : (
+                          <span>Subscribe</span>
+                        )}
+                      </button>
+                    </div>
+                    {newsletterTouched && newsletterError ? (
+                      <p className="text-[11px] text-red-600 flex items-center gap-1 font-mono">
+                        <span className="material-symbols-outlined text-xs">error</span>
+                        <span>{newsletterError}</span>
+                      </p>
+                    ) : (
+                      <p className="text-[11px] text-charcoal-light">
+                        By subscribing, you agree to receive institutional publications from Guardian Reinsurance Brokers.
+                      </p>
+                    )}
+                  </form>
                 )}
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {regularArticles.map((article, index) => (
-                    <Link
-                      key={article.id}
-                      to={`/blog/${article.slug}`}
-                      className="group relative bg-white rounded-2xl overflow-hidden border border-outline-variant/20 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
-                      data-aos="fade-up"
-                      data-aos-delay={Math.min(index * 50, 300)}
-                    >
-                      {/* Image */}
-                      <div className="relative h-52 overflow-hidden">
-                        <img
-                          src={article.image}
-                          alt={article.title}
-                          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                        
-                        {/* Category Badge */}
-                        <div className="absolute top-4 left-4">
-                          <span className="inline-block bg-secondary/95 backdrop-blur-sm text-primary text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide shadow-md">
-                            {article.category}
-                          </span>
-                        </div>
-
-                        {/* Hover Icon */}
-                        <div className="absolute bottom-4 right-4 w-10 h-10 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all transform scale-75 group-hover:scale-100">
-                          <span className="material-symbols-outlined text-white text-lg">arrow_outward</span>
-                        </div>
-                      </div>
-                      
-                      {/* Content */}
-                      <div className="p-6">
-                        {/* Meta */}
-                        <div className="flex items-center gap-3 text-xs text-text-secondary mb-3">
-                          <div className="flex items-center gap-1">
-                            <span className="material-symbols-outlined text-sm">calendar_month</span>
-                            <span>{article.date}</span>
-                          </div>
-                          <span className="text-outline-variant">•</span>
-                          <div className="flex items-center gap-1">
-                            <span className="material-symbols-outlined text-sm">schedule</span>
-                            <span>{article.readTime}</span>
-                          </div>
-                        </div>
-                        
-                        {/* Title */}
-                        <h3 className="font-headline-sm text-xl text-primary mb-3 line-clamp-2 group-hover:text-tertiary transition-colors leading-snug min-h-[3.5rem]">
-                          {article.title}
-                        </h3>
-                        
-                        {/* Excerpt */}
-                        <p className="text-text-secondary text-sm leading-relaxed line-clamp-3 mb-4 min-h-[4rem]">
-                          {article.excerpt}
-                        </p>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-1.5 mb-4">
-                          {article.tags.slice(0, 2).map((tag, tagIndex) => (
-                            <span key={tagIndex} className="text-xs bg-surface text-text-secondary px-2 py-1 rounded">
-                              #{tag}
-                            </span>
-                          ))}
-                        </div>
-                        
-                        {/* CTA */}
-                        <div className="flex items-center gap-2 text-primary font-semibold text-sm group-hover:gap-3 transition-all pt-4 border-t border-outline-variant/20">
-                          <span>Read Article</span>
-                          <span className="material-symbols-outlined text-base">east</span>
-                        </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </>
-            ) : (
-              <div className="text-center py-20">
-                <div className="w-20 h-20 bg-surface rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="material-symbols-outlined text-4xl text-text-secondary/40">search_off</span>
-                </div>
-                <h3 className="text-2xl text-text-secondary mb-2">No articles found</h3>
-                <p className="text-text-secondary/70 mb-6">Try selecting a different category</p>
-                <button 
-                  onClick={() => setSelectedCategory('All')}
-                  className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg font-semibold hover:bg-tertiary transition-all"
-                >
-                  <span className="material-symbols-outlined">refresh</span>
-                  <span>View All Articles</span>
-                </button>
-              </div>
-            )}
-          </div>
-        </section>
-
-        {/* Newsletter Section - Modern */}
-        <section className="py-20 bg-gradient-to-br from-surface via-white to-surface">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="max-w-5xl mx-auto bg-gradient-to-br from-primary via-[#002850] to-tertiary rounded-3xl p-10 md:p-14 text-center relative overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{
-                  backgroundImage: 'radial-gradient(circle at 2px 2px, white 1.5px, transparent 0)',
-                  backgroundSize: '40px 40px'
-                }}></div>
-              </div>
-              
-              <div className="relative z-10">
-                <div className="w-16 h-16 bg-secondary/20 backdrop-blur-sm rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <span className="material-symbols-outlined text-4xl text-secondary-fixed">notifications_active</span>
-                </div>
-                <h2 className="font-headline-lg text-3xl md:text-4xl text-white mb-4">
-                  Never Miss an Update
-                </h2>
-                <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-                  Subscribe to receive our latest articles, industry insights, and expert analysis delivered to your inbox
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-xl mx-auto">
-                  <input
-                    type="email"
-                    placeholder="your@email.com"
-                    className="flex-1 px-6 py-4 rounded-xl text-primary placeholder:text-text-secondary/50 focus:outline-none focus:ring-2 focus:ring-secondary shadow-lg"
-                  />
-                  <button className="bg-secondary text-primary px-8 py-4 rounded-xl font-bold hover:bg-secondary-fixed transition-all hover:shadow-xl whitespace-nowrap flex items-center justify-center gap-2">
-                    <span>Subscribe</span>
-                    <span className="material-symbols-outlined text-lg">send</span>
-                  </button>
-                </div>
-                
-                <p className="text-white/50 text-xs mt-4">Join 1,000+ professionals in the reinsurance industry</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-block bg-secondary/10 p-4 rounded-2xl mb-6">
-                <span className="material-symbols-outlined text-5xl text-secondary">groups</span>
-              </div>
-              <h2 className="font-display-lg text-3xl md:text-5xl text-primary mb-6">
-                Have a Topic <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-tertiary">You'd Like Us to Cover?</span>
-              </h2>
-              <p className="font-body-lg text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
-                We're always looking for relevant topics that matter to reinsurance professionals. Share your suggestions with us.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Link 
-                  to="/contact"
-                  className="inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-tertiary transition-all shadow-lg hover:shadow-xl"
-                >
-                  <span>Contact Us</span>
-                  <span className="material-symbols-outlined">forum</span>
-                </Link>
-                <Link 
-                  to="/about"
-                  className="inline-flex items-center justify-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all"
-                >
-                  <span>About Our Team</span>
-                  <span className="material-symbols-outlined">info</span>
-                </Link>
               </div>
             </div>
           </div>

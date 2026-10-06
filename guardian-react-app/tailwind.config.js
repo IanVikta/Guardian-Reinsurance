@@ -8,95 +8,75 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "on-surface": "#191c1d",
-        "on-error": "#ffffff",
-        "primary-container": "#002147",
-        "on-tertiary-container": "#7487be",
-        "text-primary": "#001529",
-        "on-secondary-fixed-variant": "#544600",
-        "on-secondary": "#ffffff",
-        "secondary-fixed-dim": "#e9c400",
-        "secondary-container": "#fcd400",
-        "surface": "#f8f9fa",
-        "secondary-fixed": "#ffe16d",
-        "on-background": "#191c1d",
-        "inverse-surface": "#2e3132",
-        "on-tertiary": "#ffffff",
+        // Logo-aligned primary and accent colors
+        "brand-navy": "#0B2553",       // Primary authoritative navy from logo
+        "brand-navy-dark": "#071735",  // Deeper shade
+        "brand-blue": "#0E3B82",       // Royal blue midtone
+        "brand-azure": "#0284C7",      // Vibrant azure from logo gradient sphere
+        "brand-cyan": "#0EA5E9",
+        "brand-ice": "#F0F7FF",        // Soft ice blue tint
+
+        // High-end editorial neutrals (inspired by Coverly template)
+        "warm-canvas": "#FAF8F5",      // Crisp warm ivory canvas
+        "warm-card": "#F5F2EB",        // Warm sand / oat card background
+        "warm-card-hover": "#EFEBE2",  // Hover state
+        "warm-border": "#E7E2D9",      // Fine editorial border
+        "warm-border-strong": "#D5CEBF",
+        "charcoal": "#121824",         // Rich deep slate for high contrast typography
+        "charcoal-muted": "#525D6F",   // Subdued readable copy
+        "charcoal-light": "#8A94A6",
+
+        // Maintained aliases for compatibility
+        "primary": "#0B2553",
+        "primary-container": "#071735",
+        "secondary": "#0284C7",
+        "secondary-container": "#E0F2FE",
+        "secondary-fixed": "#0284C7",
+        "tertiary": "#0E3B82",
+        "tertiary-container": "#071735",
+        "surface": "#FAF8F5",
+        "surface-muted": "#F5F2EB",
+        "surface-container": "#F5F2EB",
+        "surface-container-highest": "#E7E2D9",
+        "text-primary": "#121824",
+        "text-secondary": "#525D6F",
+        "on-surface": "#121824",
         "on-primary": "#ffffff",
-        "primary-fixed-dim": "#aec7f6",
-        "surface-tint": "#465f88",
-        "outline": "#74777f",
-        "on-tertiary-fixed": "#001849",
-        "on-error-container": "#93000a",
-        "text-secondary": "#4A5568",
-        "tertiary-fixed": "#dae1ff",
-        "on-secondary-container": "#6e5c00",
-        "surface-container-highest": "#e1e3e4",
-        "tertiary": "#000825",
-        "surface-variant": "#e1e3e4",
-        "on-secondary-fixed": "#221b00",
-        "surface-container": "#edeeef",
-        "gold-dark": "#C5A000",
-        "outline-variant": "#c4c6cf",
-        "surface-bright": "#f8f9fa",
-        "surface-muted": "#EAF1F7",
-        "surface-container-high": "#e7e8e9",
-        "primary": "#000a1e",
-        "on-primary-container": "#708ab5",
-        "surface-dim": "#d9dadb",
-        "on-tertiary-fixed-variant": "#324578",
-        "background": "#f8f9fa",
-        "tertiary-container": "#051e50",
-        "secondary": "#705d00",
-        "on-primary-fixed-variant": "#2d476f",
-        "primary-fixed": "#d6e3ff",
-        "error-container": "#ffdad6",
-        "on-primary-fixed": "#001b3d",
-        "inverse-on-surface": "#f0f1f2",
-        "surface-container-lowest": "#ffffff",
-        "inverse-primary": "#aec7f6",
-        "tertiary-fixed-dim": "#b3c5ff",
-        "on-surface-variant": "#44474e",
-        "error": "#ba1a1a"
+        "on-background": "#121824",
+        "background": "#FAF8F5",
+        "outline": "#D5CEBF",
+        "outline-variant": "#E7E2D9"
       },
       borderRadius: {
-        DEFAULT: "0.125rem",
-        lg: "0.25rem",
-        xl: "0.5rem",
-        full: "0.75rem"
+        DEFAULT: "0.25rem",
+        md: "0.5rem",
+        lg: "0.75rem",
+        xl: "1rem",
+        "2xl": "1.25rem",
+        "3xl": "1.75rem",
+        "4xl": "2.25rem",
+        full: "9999px"
       },
       spacing: {
-        "section-gap-md": "100px",
-        "gutter": "40px",
-        "container-max": "1280px",
-        "section-gap-lg": "160px",
-        "unit": "8px",
-        "margin-desktop": "48px",
-        "margin-mobile": "24px"
+        "section-gap-md": "80px",
+        "section-gap-lg": "120px",
+        "container-max": "1280px"
       },
       fontFamily: {
-        "body-md": ["Work Sans", "sans-serif"],
-        "body-lg": ["Work Sans", "sans-serif"],
-        "headline-lg-mobile": ["Source Serif 4", "serif"],
-        "headline-sm": ["Source Serif 4", "serif"],
-        "label-caps": ["Work Sans", "sans-serif"],
-        "headline-md": ["Source Serif 4", "serif"],
-        "headline-lg": ["Source Serif 4", "serif"],
-        "display-lg": ["Source Serif 4", "serif"],
-        "button": ["Work Sans", "sans-serif"]
-      },
-      fontSize: {
-        "body-md": ["16px", { "lineHeight": "26px", "fontWeight": "400" }],
-        "body-lg": ["18px", { "lineHeight": "30px", "fontWeight": "400" }],
-        "headline-lg-mobile": ["36px", { "lineHeight": "44px", "fontWeight": "600" }],
-        "headline-sm": ["24px", { "lineHeight": "32px", "fontWeight": "600" }],
-        "label-caps": ["12px", { "lineHeight": "16px", "letterSpacing": "0.15em", "fontWeight": "700" }],
-        "headline-md": ["36px", { "lineHeight": "44px", "fontWeight": "600" }],
-        "headline-lg": ["56px", { "lineHeight": "64px", "fontWeight": "600" }],
-        "display-lg": ["72px", { "lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
-        "button": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+        serif: ["Newsreader", "Source Serif 4", "Playfair Display", "serif"],
+        sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+        display: ["Newsreader", "Source Serif 4", "serif"],
+        body: ["Plus Jakarta Sans", "Inter", "sans-serif"],
+        "body-md": ["Plus Jakarta Sans", "Inter", "sans-serif"],
+        "body-lg": ["Plus Jakarta Sans", "Inter", "sans-serif"],
+        "headline-sm": ["Newsreader", "Source Serif 4", "serif"],
+        "headline-md": ["Newsreader", "Source Serif 4", "serif"],
+        "headline-lg": ["Newsreader", "Source Serif 4", "serif"],
+        "display-lg": ["Newsreader", "Source Serif 4", "serif"],
+        "label-caps": ["Plus Jakarta Sans", "Inter", "sans-serif"],
+        "button": ["Plus Jakarta Sans", "Inter", "sans-serif"]
       }
     }
   },
   plugins: []
-}
+};

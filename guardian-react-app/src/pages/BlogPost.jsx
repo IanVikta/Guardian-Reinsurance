@@ -931,118 +931,81 @@ const BlogPost = () => {
     <>
       <Header />
       
-      <main className="pt-20">
+      <main className="pt-24 lg:pt-28 pb-16 bg-[#FAF8F5]">
         {/* Article Header */}
-        <article>
-          <div className="relative h-[60vh] min-h-[500px]">
+        <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-6">
+            <Link to="/blog" className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-charcoal-muted hover:text-brand-navy transition-colors">
+              <span className="material-symbols-outlined text-base">arrow_back</span>
+              <span>Back to Publications</span>
+            </Link>
+          </div>
+
+          <div className="mb-8">
+            <span className="inline-block px-3 py-1 rounded-full bg-warm-card text-brand-navy text-[11px] font-semibold uppercase tracking-wider mb-4 border border-warm-border">
+              {post.category}
+            </span>
+            <h1 className="editorial-heading text-3xl sm:text-4xl lg:text-5xl text-charcoal font-normal leading-[1.15] mb-6">
+              {post.title}
+            </h1>
+            <div className="flex flex-wrap items-center gap-4 text-xs text-charcoal-muted pb-6 border-b border-warm-border">
+              <span>{post.author}</span>
+              <span>•</span>
+              <span>{post.date}</span>
+              <span>•</span>
+              <span>{post.readTime}</span>
+            </div>
+          </div>
+
+          {/* Featured Image */}
+          <div className="rounded-3xl overflow-hidden border border-warm-border mb-12 shadow-sm">
             <img
               src={post.image}
               alt={post.title}
-              className="w-full h-full object-cover"
+              className="w-full h-[360px] sm:h-[460px] object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/60 to-transparent"></div>
-            
-            <div className="absolute bottom-0 left-0 right-0 pb-16">
-              <div className="container mx-auto px-6 md:px-12 lg:px-16">
-                <div className="max-w-4xl">
-                  <Link to="/blog" className="inline-flex items-center gap-2 text-white/80 hover:text-white mb-6 transition-colors">
-                    <span className="material-symbols-outlined">arrow_back</span>
-                    <span>Back to Blog</span>
-                  </Link>
-                  
-                  <span className="inline-block bg-secondary text-primary text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider mb-6">
-                    {post.category}
-                  </span>
-                  
-                  <h1 className="font-display-lg text-3xl md:text-5xl text-white mb-6 leading-tight">
-                    {post.title}
-                  </h1>
-                  
-                  <div className="flex flex-wrap items-center gap-6 text-white/80">
-                    <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined">person</span>
-                      <span>{post.author}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined">calendar_today</span>
-                      <span>{post.date}</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <span className="material-symbols-outlined">schedule</span>
-                      <span>{post.readTime}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Article Content */}
-          <div className="bg-white py-16">
-            <div className="container mx-auto px-6 md:px-12 lg:px-16">
-              <div className="max-w-4xl mx-auto">
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {post.tags.map((tag, index) => (
-                    <span key={index} className="text-sm bg-surface text-text-secondary px-4 py-2 rounded-full">
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Article Body */}
-                <div 
-                  className="prose prose-lg max-w-none
-                    prose-headings:font-headline-md prose-headings:text-primary
-                    prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-                    prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                    prose-p:text-text-secondary prose-p:leading-relaxed prose-p:mb-6
-                    prose-a:text-secondary prose-a:no-underline hover:prose-a:text-tertiary
-                    prose-strong:text-primary prose-strong:font-semibold
-                    prose-ul:text-text-secondary prose-ul:my-6
-                    prose-li:mb-2
-                    prose-table:border-collapse prose-table:w-full
-                    prose-th:bg-surface prose-th:p-3 prose-th:text-left prose-th:font-semibold
-                    prose-td:border prose-td:border-outline-variant/30 prose-td:p-3"
-                  dangerouslySetInnerHTML={{ __html: post.content }}
-                />
-
-                {/* Share Section */}
-                <div className="mt-16 pt-8 border-t border-outline-variant/30">
-                  <h3 className="text-xl font-semibold text-primary mb-4">Share this article</h3>
-                  <div className="flex gap-3">
-                    <a href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-surface hover:bg-primary hover:text-white rounded-full flex items-center justify-center transition-all">
-                      <span className="material-symbols-outlined">share</span>
-                    </a>
-                    <a href={`https://twitter.com/intent/tweet?url=${window.location.href}&text=${post.title}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-surface hover:bg-primary hover:text-white rounded-full flex items-center justify-center transition-all">
-                      <span className="material-symbols-outlined">share</span>
-                    </a>
-                    <a href={`mailto:?subject=${post.title}&body=Check out this article: ${window.location.href}`} className="w-12 h-12 bg-surface hover:bg-primary hover:text-white rounded-full flex items-center justify-center transition-all">
-                      <span className="material-symbols-outlined">mail</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
+          {/* Article Body */}
+          <div className="bg-white rounded-3xl p-8 sm:p-12 border border-warm-border shadow-sm mb-12">
+            <div className="flex flex-wrap gap-2 mb-8">
+              {post.tags.map((tag, index) => (
+                <span key={index} className="text-xs bg-warm-card text-charcoal-muted px-3 py-1 rounded-full border border-warm-border">
+                  #{tag}
+                </span>
+              ))}
             </div>
-          </div>
 
-          {/* Related Articles CTA */}
-          <div className="bg-surface py-16">
-            <div className="container mx-auto px-6 md:px-12 lg:px-16">
-              <div className="max-w-4xl mx-auto text-center">
-                <h3 className="text-2xl font-headline-md text-primary mb-4">
-                  More Insights & Articles
-                </h3>
-                <p className="text-text-secondary mb-8">
-                  Explore more expert perspectives and industry analysis
-                </p>
-                <Link 
-                  to="/blog"
-                  className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-tertiary transition-all"
+            <div 
+              className="prose prose-lg max-w-none text-charcoal leading-relaxed
+                [&>h2]:editorial-heading [&>h2]:text-2xl [&>h2]:sm:text-3xl [&>h2]:text-charcoal [&>h2]:mt-10 [&>h2]:mb-4 [&>h2]:font-normal
+                [&>h3]:editorial-heading [&>h3]:text-xl [&>h3]:sm:text-2xl [&>h3]:text-charcoal [&>h3]:mt-8 [&>h3]:mb-3 [&>h3]:font-normal
+                [&>p]:text-sm [&>p]:sm:text-base [&>p]:text-charcoal-muted [&>p]:leading-relaxed [&>p]:mb-6
+                [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:my-6 [&>ul]:space-y-2 [&>ul]:text-sm [&>ul]:sm:text-base [&>ul]:text-charcoal-muted
+                [&>blockquote]:p-6 [&>blockquote]:rounded-2xl [&>blockquote]:bg-warm-card [&>blockquote]:border-l-4 [&>blockquote]:border-brand-navy [&>blockquote]:my-8 [&>blockquote]:italic [&>blockquote]:text-charcoal"
+              dangerouslySetInnerHTML={{ __html: post.content }}
+            />
+
+            {/* Share Section */}
+            <div className="mt-12 pt-8 border-t border-warm-border flex items-center justify-between">
+              <span className="text-xs font-semibold uppercase tracking-wider text-charcoal-muted">
+                Share this Publication
+              </span>
+              <div className="flex items-center gap-2">
+                <a
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${window.location.href}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-9 h-9 rounded-full bg-warm-card hover:bg-brand-navy hover:text-white flex items-center justify-center text-charcoal transition-colors"
                 >
-                  <span>View All Articles</span>
-                  <span className="material-symbols-outlined">arrow_forward</span>
-                </Link>
+                  <span className="material-symbols-outlined text-base">share</span>
+                </a>
+                <a
+                  href={`mailto:?subject=${post.title}&body=Check out this article: ${window.location.href}`}
+                  className="w-9 h-9 rounded-full bg-warm-card hover:bg-brand-navy hover:text-white flex items-center justify-center text-charcoal transition-colors"
+                >
+                  <span className="material-symbols-outlined text-base">mail</span>
+                </a>
               </div>
             </div>
           </div>

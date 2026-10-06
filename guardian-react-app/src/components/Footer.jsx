@@ -4,13 +4,30 @@ import { Link } from 'react-router-dom';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
+  const solutionsLinks = [
+    { label: 'Treaty Broking', path: '/products' },
+    { label: 'Facultative Placement', path: '/products' },
+    { label: 'Claims Recoveries', path: '/claims' },
+    { label: 'Technical Accounting', path: '/products' },
+    { label: 'Market Analytics', path: '/insights' }
+  ];
+
+  const companyLinks = [
+    { label: 'About Us', path: '/about' },
+    { label: 'Practice Desks & Leadership', path: '/about' },
+    { label: 'Market Insights', path: '/insights' },
+    { label: 'Industry Gallery', path: '/gallery' },
+    { label: 'Publications', path: '/blog' },
+    { label: 'Careers & Contact', path: '/contact' }
+  ];
+
   const socialLinks = [
     {
       name: 'LinkedIn',
       url: 'https://www.linkedin.com/company/guardian-reinsurance-brokers-ltd',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 8.76a1.4 1.4 0 1 0 0-2.8 1.4 1.4 0 0 0 0 2.8m1.4 9.74V9.97H5.06v8.53z" />
         </svg>
       )
     },
@@ -18,17 +35,8 @@ const Footer = () => {
       name: 'X (Twitter)',
       url: 'https://twitter.com/GuardianReUg',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-        </svg>
-      )
-    },
-    {
-      name: 'Instagram',
-      url: 'https://instagram.com/guardianrebrokers',
-      icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
         </svg>
       )
     },
@@ -36,180 +44,173 @@ const Footer = () => {
       name: 'YouTube',
       url: 'https://www.youtube.com/watch?v=gUVFBa-ouLM',
       icon: (
-        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
         </svg>
       )
     }
   ];
 
   return (
-    <footer className="relative bg-primary text-white overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img 
-          src="/images/skyline.jpg" 
-          alt="City Background" 
-          className="w-full h-full object-cover opacity-10"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary-container to-tertiary-container opacity-95"></div>
-      </div>
-
-      {/* Top decorative line */}
-      <div className="relative h-1 bg-gradient-to-r from-transparent via-secondary to-transparent"></div>
-
-      {/* Main Footer Content - Big Logo + Reorganized Content */}
-      <div className="relative container mx-auto px-6 md:px-12 lg:px-16 py-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-12 items-center">
-          
-          {/* Left Side: Very Big Logo - Spans 3 columns */}
-          <div className="md:col-span-3 flex justify-center md:justify-start" data-aos="fade-right">
-            <Link to="/" className="inline-block group">
-              <img 
-                src="/images/Guardian reinsurance brokers logo 1.png" 
-                alt="Guardian Reinsurance Brokers" 
-                className="h-32 md:h-40 lg:h-48 w-auto object-contain brightness-0 invert group-hover:scale-105 transition-transform"
+    <footer className="bg-[#071735] text-slate-200 pt-16 pb-12 border-t border-white/[0.08]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* ========================================================================= */}
+        {/* TIER 1: BRAND MASTHEAD & DIRECT REINSURANCE DESK CHANNELS */}
+        {/* ========================================================================= */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-8 pb-12 border-b border-white/[0.08]">
+          {/* Logo & Corporate Identity */}
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8">
+            <Link to="/" className="inline-block shrink-0 focus:outline-none">
+              <img
+                src="/images/guardian-logo-white.png"
+                alt="Guardian Reinsurance Brokers Uganda"
+                className="h-20 sm:h-24 w-auto object-contain"
               />
             </Link>
+
+            <div className="space-y-1.5 max-w-lg">
+              <span className="text-[11px] font-mono font-semibold tracking-wider uppercase text-slate-400 block">
+                GUARDIAN REINSURANCE BROKERS UGANDA LIMITED
+              </span>
+              <h3 className="font-serif text-lg sm:text-xl text-white font-normal leading-snug">
+                Your preferred reinsurance broker in Uganda and East Africa.
+              </h3>
+              <p className="text-xs text-slate-400 font-light leading-relaxed">
+                Licensed and regulated by the Insurance Regulatory Authority of Uganda (IRA).
+              </p>
+            </div>
           </div>
 
-          {/* Right Side: Reorganized Content - Spans 9 columns */}
-          <div className="md:col-span-9" data-aos="fade-left">
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              
-              {/* Column 1: Tagline */}
-              <div>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  Your preferred reinsurance broker, delivering innovative solutions with integrity and expertise.
-                </p>
-              </div>
-              
-              {/* Column 2: Quick Links */}
-              <div>
-                <h5 className="font-semibold text-secondary-fixed mb-3 text-xs uppercase tracking-wider">
-                  Quick Links
-                </h5>
-                <ul className="space-y-2">
-                  <li>
-                    <Link to="/products#treaty" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Treaty Broking
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/products#facultative" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Facultative Reinsurance
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/claims" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Claims Recoveries
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/about" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      About Us
-                    </Link>
-                  </li>
-                </ul>
-              </div>
+          {/* Quick Direct Broking Channels */}
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-8 text-xs font-mono text-slate-300 lg:border-l lg:border-white/[0.08] lg:pl-8">
+            <div>
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest block mb-0.5">
+                Direct Switchboard
+              </span>
+              <a
+                href="tel:+256414344500"
+                className="text-white hover:text-brand-azure transition-colors text-sm font-medium block"
+              >
+                +256 414 344 500
+              </a>
+            </div>
 
-              {/* Column 3: Legal */}
-              <div>
-                <h5 className="font-semibold text-secondary-fixed mb-3 text-xs uppercase tracking-wider">
-                  Legal
-                </h5>
-                <ul className="space-y-2">
-                  <li>
-                    <a href="#privacy" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#terms" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Terms of Service
-                    </a>
-                  </li>
-                  <li>
-                    <Link to="/about#sustainability" className="text-white/70 hover:text-white transition-colors text-sm block">
-                      Sustainability
-                    </Link>
-                  </li>
-                </ul>
-              </div>
-
-              {/* Column 4: Contact + Social */}
-              <div>
-                <h5 className="font-semibold text-secondary-fixed mb-3 text-xs uppercase tracking-wider">
-                  Contact
-                </h5>
-                <div className="space-y-2 mb-4">
-                  <a 
-                    href="tel:+256414344500" 
-                    className="flex items-center gap-2 text-white/70 hover:text-secondary-fixed transition-colors text-sm"
-                  >
-                    <span className="material-symbols-outlined text-base">call</span>
-                    <span>+256 414 344 500</span>
-                  </a>
-                  
-                  <a 
-                    href="mailto:info@guardianrebrokers.co.ug" 
-                    className="flex items-center gap-2 text-white/70 hover:text-secondary-fixed transition-colors text-sm"
-                  >
-                    <span className="material-symbols-outlined text-base">mail</span>
-                    <span className="break-all">info@guardianrebrokers.co.ug</span>
-                  </a>
-                  
-                  <div className="flex items-center gap-2 text-white/70 text-sm">
-                    <span className="material-symbols-outlined text-base">location_on</span>
-                    <span>Kampala, Uganda</span>
-                  </div>
-                </div>
-
-                {/* Social Icons */}
-                <div className="flex items-center gap-2">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-9 h-9 rounded-lg bg-white/5 hover:bg-secondary/20 border border-white/10 hover:border-secondary/50 flex items-center justify-center text-white/70 hover:text-secondary-fixed transition-all"
-                      aria-label={social.name}
-                      title={social.name}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
-                </div>
-              </div>
+            <div>
+              <span className="text-[10px] text-slate-400 uppercase tracking-widest block mb-0.5">
+                Treaty Inquiries
+              </span>
+              <a
+                href="mailto:info@guardianrebrokers.co.ug"
+                className="text-white hover:text-brand-azure transition-colors text-sm font-medium block break-all"
+              >
+                info@guardianrebrokers.co.ug
+              </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Bar - Compact */}
-      <div className="relative border-t border-white/10 bg-black/20 backdrop-blur-xl">
-        <div className="container mx-auto px-6 md:px-12 lg:px-16 py-3">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
-            {/* Copyright */}
-            <div className="text-white/50 text-center md:text-left">
-              © {currentYear} Guardian Reinsurance Brokers. All rights reserved.
-            </div>
+        {/* ========================================================================= */}
+        {/* TIER 2: FOUR EVENLY ALIGNED PRACTICE & CORPORATE COLUMNS */}
+        {/* ========================================================================= */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 py-12 border-b border-white/[0.08]">
+          {/* Column 1: Solutions */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              Solutions
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {solutionsLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.path}
+                    className="text-slate-400 hover:text-white transition-colors duration-150 block"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            {/* Legal Links - Inline */}
-            <div className="flex items-center gap-4 text-xs">
-              <a href="#privacy" className="text-white/50 hover:text-white transition-colors">
-                Privacy
-              </a>
-              <span className="text-white/20">•</span>
-              <a href="#terms" className="text-white/50 hover:text-white transition-colors">
-                Terms
-              </a>
-              <span className="text-white/20">•</span>
-              <a href="#cookies" className="text-white/50 hover:text-white transition-colors">
-                Cookies
-              </a>
+          {/* Column 2: Company */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              Company
+            </h4>
+            <ul className="space-y-3 text-sm">
+              {companyLinks.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.path}
+                    className="text-slate-400 hover:text-white transition-colors duration-150 block"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Column 3: Principal Headquarters */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              Headquarters
+            </h4>
+            <div className="space-y-3 text-sm text-slate-400">
+              <div className="space-y-0.5">
+                <p className="text-slate-300 font-medium">Plot 14/16 Kampala Road</p>
+                <p>P.O. Box 7120, Kampala</p>
+                <p className="text-xs font-mono text-slate-400">Kampala, Uganda • East Africa</p>
+              </div>
+
+              <div className="pt-1 text-xs font-mono text-slate-400/80">
+                <span>Market Hours: Mon – Fri 08:30 – 17:00</span>
+              </div>
             </div>
+          </div>
+
+          {/* Column 4: Institutional Fiduciary Standing & Social */}
+          <div>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-white mb-4">
+              Institutional Fiduciary
+            </h4>
+            <p className="text-xs text-slate-400 leading-relaxed font-light mb-4">
+              Delivering innovative risk transfer solutions with clinical precision, integrity, and institutional trust under IRA oversight.
+            </p>
+
+            <div className="pt-3 border-t border-white/[0.08] flex items-center gap-4">
+              {socialLinks.map((s) => (
+                <a
+                  key={s.name}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.name}
+                  className="text-slate-400 hover:text-white transition-colors duration-150"
+                >
+                  {s.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* TIER 3: STATUTORY LEGAL ATTRIBUTION & COMPLIANCE LINKS */}
+        {/* ========================================================================= */}
+        <div className="pt-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-400">
+          <p>© {currentYear} Guardian Reinsurance Brokers Uganda Limited. All rights reserved.</p>
+
+          <div className="flex flex-wrap items-center gap-6">
+            <Link to="/about" className="hover:text-white transition-colors duration-150">
+              Privacy Statement
+            </Link>
+            <Link to="/about" className="hover:text-white transition-colors duration-150">
+              Terms of Engagement
+            </Link>
+            <Link to="/about" className="hover:text-white transition-colors duration-150">
+              Regulatory Compliance
+            </Link>
           </div>
         </div>
       </div>

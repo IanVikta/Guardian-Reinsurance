@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import AOS from 'aos';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -10,6 +11,10 @@ const ScrollToTop = () => {
       left: 0,
       behavior: 'instant'
     });
+    // Refresh AOS positions when route changes
+    setTimeout(() => {
+      AOS.refresh();
+    }, 100);
   }, [pathname]);
 
   return null;

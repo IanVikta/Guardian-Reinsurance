@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Products from './pages/Products';
@@ -9,29 +9,17 @@ import Gallery from './pages/Gallery';
 import Insights from './pages/Insights';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
-import Loader from './components/Loader';
 import ScrollToTop from './components/ScrollToTop';
+import Loader from './components/Loader';
 
 function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    // Simulate loading time (minimum 2 seconds for professional feel)
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <Loader />;
-  }
+  const [isLoading, setIsLoading] = useState(true);
 
   return (
     <Router>
+      {isLoading && <Loader onLoaded={() => setIsLoading(false)} />}
       <ScrollToTop />
-      <div className="bg-background text-on-surface font-body-md overflow-x-hidden">
+      <div className="min-h-screen bg-warm-canvas text-charcoal font-sans antialiased selection:bg-brand-navy selection:text-white">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />

@@ -7,400 +7,365 @@ const About = () => {
   const values = [
     {
       icon: 'verified_user',
-      title: 'Integrity',
-      description: 'Trust in ethical practices and unwavering transparency in every transaction.'
+      title: 'Integrity & Ethics',
+      description: 'Trust in ethical practices and unwavering transparency in every transaction. We operate as true fiduciaries for our cedants.'
     },
     {
       icon: 'person_pin',
-      title: 'Client-Centered',
-      description: 'Enjoy personalized services tailored to your unique risk profile and business needs.'
+      title: 'Client-Centered Focus',
+      description: 'Personalized services tailored to your unique capital requirements, retention limits, and business goals.'
     },
     {
       icon: 'lightbulb',
-      title: 'Innovation',
-      description: 'Stay ahead with tailored risk solutions and cutting-edge reinsurance strategies.'
+      title: 'Technical Innovation',
+      description: 'Pioneering dynamic risk architectures and sophisticated modeling to anticipate complex market shifts.'
     },
     {
       icon: 'public',
-      title: 'Global Reach',
-      description: 'Access a wide network of international reinsurers for competitive pricing and capacity.'
+      title: 'Global Counterparty Reach',
+      description: 'Direct access to premier Lloyd’s syndicates, continental reinsurers, and regional capacity providers.'
     },
     {
       icon: 'military_tech',
-      title: 'Expertise',
-      description: 'Benefit from seasoned professionals with decades of combined industry experience.'
+      title: 'Seasoned Expertise',
+      description: 'Seasoned reinsurance brokers and actuarial professionals bringing decades of combined institutional experience.'
     },
     {
       icon: 'eco',
-      title: 'Sustainability',
-      description: 'Committed to environmental and social responsibility in all our operations.'
+      title: 'ESG & Sustainability',
+      description: 'Committed to environmental risk consciousness, ethical corporate governance, and community resilience in East Africa.'
     }
   ];
 
   const team = [
     {
-      role: 'Leadership',
-      description: 'Experienced executives guiding strategic vision and operational excellence.'
+      icon: 'domain',
+      role: 'Executive Leadership',
+      title: 'Strategic Direction & Governance',
+      description: 'Guiding long-term institutional vision, regulatory alignment, and senior relationships with international reinsurers.',
+      focus: 'Board Oversight & IRA Governance'
     },
     {
-      role: 'Broking Team',
-      description: 'Skilled professionals managing treaty and facultative placements globally.'
+      icon: 'account_balance',
+      role: 'Treaty Broking Desk',
+      title: 'Portfolio Architecture & Placement',
+      description: 'Specialists in proportional and non-proportional treaty structuring, exposure aggregation, and competitive capacity syndication.',
+      focus: 'Life & General Treaty Portfolios'
     },
     {
-      role: 'Technical Team',
-      description: 'Experts in contract wording, accounting, and claims management.'
+      icon: 'hub',
+      role: 'Facultative & Special Risks',
+      title: 'Single-Risk Placement',
+      description: 'Rapid syndication for high-value infrastructure, energy, aviation, and complex commercial exposures.',
+      focus: 'Aviation, Marine & Energy Lines'
     },
     {
-      role: 'Support Staff',
-      description: 'Dedicated professionals ensuring seamless client service delivery.'
+      icon: 'receipt_long',
+      role: 'Technical Accounting & Claims',
+      title: 'Financial Integrity & Advocacy',
+      description: 'Actuarial reconciliation, claims recovery acceleration, and adherence to Insurance Regulatory Authority standards.',
+      focus: 'Fast-Track Cash Calls & Audits'
     }
   ];
 
   return (
     <>
       <Header />
-      
-      <main className="pt-20">
-        {/* Redesigned Hero Section - Elegant & Compact */}
-        <section className="relative min-h-[75vh] flex items-center bg-gradient-to-br from-[#000a1e] via-[#001636] to-[#002449] overflow-hidden">
-          {/* Premium Background Image with Parallax Effect */}
-          <div className="absolute inset-0">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/92 via-primary/88 to-tertiary/85 mix-blend-multiply"></div>
-            <img 
-              src="/images/guardian-feb.png" 
-              alt="Guardian Reinsurance" 
-              className="w-full h-full object-cover opacity-35 scale-110 animate-slow-zoom"
-            />
-          </div>
 
-          {/* Elegant Floating Elements */}
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-secondary/10 rounded-full blur-3xl animate-float"></div>
-            <div className="absolute bottom-0 left-0 w-[450px] h-[450px] bg-tertiary/15 rounded-full blur-3xl animate-float-delayed"></div>
-          </div>
-
-          {/* Refined Grid Overlay */}
-          <div className="absolute inset-0 opacity-[0.025]" style={{
-            backgroundImage: 'linear-gradient(rgba(252,212,0,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(252,212,0,0.3) 1px, transparent 1px)',
-            backgroundSize: '60px 60px'
-          }}></div>
-
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 py-16">
-            <div className="max-w-4xl mx-auto">
-              {/* Premium Badge */}
-              <div className="flex justify-center mb-6" data-aos="fade-down">
-                <div className="inline-flex items-center gap-2 bg-gradient-to-r from-secondary/20 to-secondary/10 backdrop-blur-2xl px-6 py-2.5 rounded-full border border-secondary/40 shadow-2xl">
-                  <span className="material-symbols-outlined text-secondary-fixed">business</span>
-                  <span className="text-white text-xs font-bold uppercase tracking-[0.25em]">About Us</span>
-                </div>
-              </div>
-              
-              {/* Main Heading with Gradient */}
-              <h1 className="font-display-lg text-4xl md:text-5xl lg:text-6xl text-white mb-6 leading-[1.05] text-center font-bold" data-aos="fade-up">
-                Your Preferred
-                <span className="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-secondary via-secondary-fixed to-[#d4a700] font-bold">
-                  Reinsurance
+      <main className="pt-24 lg:pt-28 pb-16 bg-[#FAF8F5]">
+        {/* ========================================================================= */}
+        {/* HERO SECTION - SPLIT TWO-COLUMN ARCHITECTURAL EDITORIAL LAYOUT */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:pb-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+            {/* Left Column: Editorial Headline, Lead Copy, Trust Metrics & CTA */}
+            <div className="lg:col-span-7 flex flex-col justify-center" data-aos="fade-right">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="w-2 h-2 bg-brand-azure rounded-full"></span>
+                <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                  ABOUT GUARDIAN REINSURANCE • UGANDA
                 </span>
-                <span className="block mt-2 text-white/95 font-bold">Broker</span>
+              </div>
+
+              <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-[3.25rem] xl:text-[3.75rem] text-charcoal font-normal leading-[1.1] tracking-tight mb-6">
+                Your preferred reinsurance broker in Uganda and East Africa.
               </h1>
-              
-              {/* Premium Description */}
-              <p className="font-body-lg text-lg md:text-xl text-white/75 mb-10 max-w-3xl mx-auto leading-relaxed text-center font-light" data-aos="fade-up" data-aos-delay="100">
-                Guardian Reinsurance Brokers delivers innovative and forward-looking reinsurance services with unwavering commitment to integrity, expertise, and client success.
+
+              <p className="text-base sm:text-lg text-charcoal-muted leading-relaxed mb-8 max-w-xl font-light">
+                Combining the personalized attention of a premier boutique broker with the placement muscle of leading African and global reinsurance syndicates.
               </p>
 
-              {/* Stats Grid - Modern Cards - Fixed Mobile Overflow */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
-                <div className="group relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 hover:bg-white/10 hover:border-secondary/30 transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 rounded-xl sm:rounded-2xl transition-opacity"></div>
-                  <div className="relative">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform mx-auto">
-                      <span className="material-symbols-outlined text-secondary-fixed text-lg sm:text-xl">workspace_premium</span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 text-center leading-none">15+</div>
-                    <div className="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider font-medium text-center leading-tight">Years<br className="sm:hidden" /> Experience</div>
-                  </div>
+              {/* Trust Indicators / Strategic Pillars */}
+              <div className="grid grid-cols-2 gap-6 py-6 border-y border-[#E5E0D8] mb-8 max-w-xl" data-aos="fade-up" data-aos-delay="100">
+                <div>
+                  <span className="text-xl sm:text-2xl font-normal text-charcoal editorial-heading block">
+                    IRA Regulated
+                  </span>
+                  <span className="text-xs text-charcoal-muted tracking-wide mt-1 block">
+                    Licensed Reinsurance Broker (Uganda)
+                  </span>
                 </div>
-
-                <div className="group relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 hover:bg-white/10 hover:border-secondary/30 transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 rounded-xl sm:rounded-2xl transition-opacity"></div>
-                  <div className="relative">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform mx-auto">
-                      <span className="material-symbols-outlined text-secondary-fixed text-lg sm:text-xl">handshake</span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 text-center leading-none">120+</div>
-                    <div className="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider font-medium text-center leading-tight">Global<br className="sm:hidden" /> Markets</div>
-                  </div>
-                </div>
-
-                <div className="group relative bg-white/5 backdrop-blur-2xl border border-white/10 rounded-xl sm:rounded-2xl p-3 sm:p-5 hover:bg-white/10 hover:border-secondary/30 transition-all">
-                  <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 to-transparent opacity-0 group-hover:opacity-100 rounded-xl sm:rounded-2xl transition-opacity"></div>
-                  <div className="relative">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-secondary/20 rounded-lg sm:rounded-xl flex items-center justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform mx-auto">
-                      <span className="material-symbols-outlined text-secondary-fixed text-lg sm:text-xl">trending_up</span>
-                    </div>
-                    <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-1 text-center leading-none">99.8%</div>
-                    <div className="text-[10px] sm:text-xs text-white/60 uppercase tracking-wider font-medium text-center leading-tight">Success<br className="sm:hidden" /> Rate</div>
-                  </div>
+                <div>
+                  <span className="text-xl sm:text-2xl font-normal text-charcoal editorial-heading block">
+                    Pan-African Reach
+                  </span>
+                  <span className="text-xs text-charcoal-muted tracking-wide mt-1 block">
+                    Syndications across continental & global desks
+                  </span>
                 </div>
               </div>
-            </div>
-          </div>
 
-          {/* Elegant Bottom Wave */}
-          <div className="absolute bottom-0 left-0 right-0">
-            <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-auto">
-              <path d="M0 80L60 72.5C120 65 240 50 360 42.5C480 35 600 35 720 40C840 45 960 55 1080 57.5C1200 60 1320 55 1380 52.5L1440 50V80H1380C1320 80 1200 80 1080 80C960 80 840 80 720 80C600 80 480 80 360 80C240 80 120 80 60 80H0Z" fill="currentColor" className="text-white"/>
-            </svg>
-          </div>
-        </section>
-        {/* Our Values */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-16">
-              <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                Why Choose Us
-              </span>
-              <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-4">
-                Our Core Values
-              </h2>
-              <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-                The principles that guide our approach to reinsurance broking and client partnerships.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {values.map((value, index) => (
-                <div 
-                  key={index}
-                  className="group bg-gradient-to-br from-surface to-surface-muted p-8 rounded-2xl border-2 border-outline-variant/30 hover:border-secondary/50 hover:shadow-2xl transition-all duration-300"
+              {/* CTAs */}
+              <div className="flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="150">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all duration-150 shadow-sm"
                 >
-                  <div className="w-16 h-16 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-4xl text-primary">
-                      {value.icon}
+                  <span>Partner With Us</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </Link>
+                <Link
+                  to="/products"
+                  className="inline-flex items-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150"
+                >
+                  <span>Our Solutions</span>
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column: Authentic Leadership Photo in Natural Portrait Framing */}
+            <div className="lg:col-span-5" data-aos="fade-left" data-aos-delay="100">
+              <div className="relative border border-[#E5E0D8] bg-[#F5F2EB] shadow-md group overflow-hidden">
+                <img
+                  src="/images/team-leadership.jpg"
+                  alt="Guardian Reinsurance leadership team representing the firm at the African Insurance Assembly (FANAF)"
+                  className="w-full h-[480px] sm:h-[560px] lg:h-[620px] object-cover object-[center_32%] transition-transform duration-700 group-hover:scale-[1.02]"
+                />
+                
+                {/* Subtle vignette at the bottom */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
+
+                {/* Floating Architectural Badge */}
+                <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-brand-azure">
+                      Continental Representation
                     </span>
                   </div>
-                  <h3 className="font-headline-sm text-xl text-primary mb-3">
-                    {value.title}
+                  <h3 className="editorial-heading text-base sm:text-lg font-normal text-charcoal leading-snug">
+                    Leadership at the African Insurance Assembly (FANAF)
                   </h3>
-                  <p className="text-text-secondary leading-relaxed">
-                    {value.description}
+                  <p className="text-[11px] sm:text-xs text-charcoal-muted mt-1 leading-relaxed">
+                    Actively shaping reinsurance capacity, treaty agreements, and regional partnerships across Africa.
                   </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Our Story */}
-        <section className="py-20 bg-surface-muted">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="/images/expertise.jpg" 
-                    alt="Guardian Reinsurance Office" 
-                    className="w-full h-[600px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent"></div>
-                </div>
-                
-                {/* Floating Stats Card */}
-                <div className="absolute -bottom-8 -right-8 bg-white p-8 rounded-2xl shadow-2xl border-2 border-outline-variant/30">
-                  <div className="text-center">
-                    <div className="text-5xl font-bold text-primary mb-2">A+</div>
-                    <div className="text-sm text-text-secondary uppercase tracking-wider">Reinsurer Rating</div>
-                  </div>
-                </div>
-                
-                {/* Decorative Element */}
-                <div className="absolute -top-8 -left-8 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -z-10"></div>
-              </div>
-
-              <div>
-                <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                  Our Story
-                </span>
-                <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-6">
-                  Building Trust Since Day One
-                </h2>
-                <div className="space-y-4 text-text-secondary text-lg leading-relaxed">
-                  <p>
-                    Guardian Reinsurance Brokers was established with a clear mission: to provide exceptional reinsurance broking services that combine technical excellence with personalized client relationships.
-                  </p>
-                  <p>
-                    Over the years, we have built strong partnerships with leading reinsurers worldwide, enabling us to secure optimal terms and capacity for our clients across all lines of business.
-                  </p>
-                  <p>
-                    Our team of experienced professionals brings deep expertise in treaty broking, facultative placements, claims recoveries, and technical accounting—ensuring comprehensive support throughout the reinsurance lifecycle.
-                  </p>
-                  <p>
-                    Today, we stand as a trusted partner to insurance companies across East Africa and beyond, recognized for our integrity, innovation, and unwavering commitment to client success.
-                  </p>
-                </div>
-
-                <div className="mt-8 flex flex-wrap gap-4">
-                  <a 
-                    href="#contact"
-                    className="inline-flex items-center gap-2 bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-tertiary hover:shadow-xl transition-all"
-                  >
-                    <span>Partner With Us</span>
-                    <span className="material-symbols-outlined">arrow_forward</span>
-                  </a>
-                  <a 
-                    href="/products"
-                    className="inline-flex items-center gap-2 border-2 border-primary text-primary px-8 py-4 rounded-xl font-semibold hover:bg-primary hover:text-white transition-all"
-                  >
-                    <span>Our Services</span>
-                  </a>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Our Team */}
-        <section className="py-20 bg-white">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="text-center mb-16">
-              <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                Our People
+        {/* ========================================================================= */}
+        {/* OUR STORY & MISSION */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-6 space-y-6" data-aos="fade-right">
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+                OUR HERITAGE
               </span>
-              <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-4">
-                Expert Team Structure
+              <h2 className="editorial-heading text-3xl sm:text-4xl lg:text-5xl text-charcoal font-normal leading-tight">
+                Building trust since day one.
               </h2>
-              <p className="text-text-secondary text-lg max-w-2xl mx-auto">
-                Seasoned professionals dedicated to delivering excellence in reinsurance broking.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              {team.map((member, index) => (
-                <div 
-                  key={index}
-                  className="bg-gradient-to-br from-primary/5 to-secondary/5 p-8 rounded-2xl border border-outline-variant/30 hover:shadow-xl transition-all group"
-                >
-                  <div className="w-16 h-16 bg-white rounded-xl flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
-                    <span className="material-symbols-outlined text-4xl text-primary">group</span>
-                  </div>
-                  <h3 className="font-headline-sm text-xl text-primary mb-3">
-                    {member.role}
-                  </h3>
-                  <p className="text-text-secondary leading-relaxed">
-                    {member.description}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Sustainability Approach */}
-        <section className="py-20 bg-surface-muted">
-          <div className="container mx-auto px-6 md:px-12 lg:px-16">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-              <div>
-                <span className="text-secondary font-label-caps text-label-caps block mb-4 uppercase tracking-widest">
-                  Sustainability
-                </span>
-                <h2 className="font-headline-lg text-3xl md:text-5xl text-primary mb-6">
-                  Our Approach to Sustainability
-                </h2>
-                <p className="text-text-secondary text-lg mb-8 leading-relaxed">
-                  We recognize our responsibility to contribute positively to society and the environment. Our sustainability initiatives focus on:
+              <div className="space-y-4 text-sm sm:text-base text-charcoal-muted leading-relaxed">
+                <p>
+                  Guardian Reinsurance Brokers was established with a singular, resolute mission: to provide exceptional reinsurance broking services that combine clinical technical excellence with personalized, high-trust client relationships.
                 </p>
-
-                <div className="space-y-4">
-                  {[
-                    {
-                      title: 'Environmental Stewardship',
-                      description: 'Minimizing our carbon footprint through digital operations and paperless processes.'
-                    },
-                    {
-                      title: 'Social Responsibility',
-                      description: 'Supporting local communities and promoting diversity within our organization.'
-                    },
-                    {
-                      title: 'Governance Excellence',
-                      description: 'Maintaining the highest standards of ethical conduct and corporate governance.'
-                    },
-                    {
-                      title: 'Sustainable Risk Solutions',
-                      description: 'Advising clients on climate-related risks and sustainable insurance practices.'
-                    }
-                  ].map((item, index) => (
-                    <div key={index} className="flex items-start gap-4 bg-white p-6 rounded-xl border border-outline-variant/30 hover:shadow-lg transition-all group">
-                      <div className="w-12 h-12 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                        <span className="material-symbols-outlined text-primary">eco</span>
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-primary mb-1">{item.title}</h4>
-                        <p className="text-text-secondary text-sm">{item.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
+                <p>
+                  Over the years, we have forged steadfast partnerships with top-tier reinsurers across Africa, Europe, and London. This expansive network enables us to secure optimal treaty terms and specialized capacity across all classes of general and life business.
+                </p>
+                <p>
+                  Today, licensed and regulated by the Insurance Regulatory Authority of Uganda (IRA), Guardian Re stands as a pillar of stability for cedants seeking thoughtful risk structures, prompt claims recovery, and uncompromising integrity.
+                </p>
               </div>
 
-              <div className="relative">
-                <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                  <img 
-                    src="/images/skyline.jpg" 
-                    alt="Sustainability" 
-                    className="w-full h-[600px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-primary/20 to-transparent"></div>
-                  <div className="absolute bottom-8 left-8 right-8">
-                    <div className="bg-white/10 backdrop-blur-xl p-6 rounded-xl border border-white/20">
-                      <h4 className="text-white font-semibold text-xl mb-2">Committed to a Better Future</h4>
-                      <p className="text-white/80 text-sm">Integrating sustainability into every aspect of our operations.</p>
-                    </div>
+              <div className="pt-2 flex items-center gap-4">
+                <div className="p-4 bg-white border border-[#E5E0D8] border-l-4 border-l-brand-azure flex items-center gap-3">
+                  <span className="material-symbols-outlined text-brand-azure text-2xl">verified</span>
+                  <div>
+                    <p className="text-xs font-bold text-charcoal">Licensed Reinsurance Broker</p>
+                    <p className="text-[11px] text-charcoal-muted">Insurance Regulatory Authority of Uganda (IRA)</p>
                   </div>
                 </div>
-                
-                {/* Decorative Element */}
-                <div className="absolute -bottom-8 -right-8 w-64 h-64 bg-secondary/20 rounded-full blur-3xl -z-10"></div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-6" data-aos="fade-left" data-aos-delay="100">
+              <div className="border border-[#E5E0D8] shadow-sm overflow-hidden">
+                <img
+                  src="/images/meeting-boardroom.jpg"
+                  alt="Boardroom strategic consultation with Guardian Re brokers in Kampala"
+                  className="w-full h-[400px] sm:h-[480px] object-cover"
+                />
               </div>
             </div>
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary to-tertiary-container relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-              backgroundSize: '32px 32px'
-            }}></div>
+        {/* ========================================================================= */}
+        {/* CORE VALUES / FIDUCIARY CHARTER - UNIQUE MINIMAL ARCHITECTURAL MATRIX */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            {/* Left Anchor Column: Fiduciary Statement & Charter */}
+            <div className="lg:col-span-4 lg:sticky lg:top-32 self-start space-y-6" data-aos="fade-right">
+              <div>
+                <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-3 font-mono">
+                  FIDUCIARY CHARTER
+                </span>
+                <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal leading-tight">
+                  Principles that govern every placement.
+                </h2>
+              </div>
+
+              <p className="text-sm text-charcoal-muted leading-relaxed font-light">
+                In an industry defined by volatility and risk aggregation, our values are operational protocols enforced across every treaty structure, slip wording, and loss recovery negotiation.
+              </p>
+
+              <div className="pt-6 border-t border-[#E5E0D8] space-y-2">
+                <div className="flex items-center gap-2 text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
+                  <span className="w-1.5 h-1.5 bg-brand-navy rounded-full"></span>
+                  <span>Fiduciary Standard</span>
+                </div>
+                <p className="text-xs text-charcoal-muted leading-relaxed font-light">
+                  Operating with absolute transparency and strict counterparty discretion under IRA governance.
+                </p>
+              </div>
+            </div>
+
+            {/* Right Column: Unified Single-Surface Architectural Matrix */}
+            <div className="lg:col-span-8" data-aos="fade-left" data-aos-delay="100">
+              <div className="border border-[#E5E0D8] bg-white divide-y divide-[#E5E0D8] shadow-xs">
+                {[0, 2, 4].map((startIndex) => (
+                  <div
+                    key={startIndex}
+                    className="grid grid-cols-1 sm:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x divide-[#E5E0D8]"
+                  >
+                    {values.slice(startIndex, startIndex + 2).map((v, idx) => {
+                      const num = startIndex + idx + 1;
+                      return (
+                        <div
+                          key={idx}
+                          className="p-8 sm:p-9 hover:bg-[#FAF8F5] transition-colors duration-200 flex flex-col justify-between group min-h-[220px]"
+                        >
+                          <div>
+                            <div className="flex items-center justify-between mb-4">
+                              <span className="text-xs font-mono text-charcoal-muted/70 tracking-widest uppercase">
+                                0{num}
+                              </span>
+                              <span className="material-symbols-outlined text-lg text-charcoal-muted/60 group-hover:text-brand-navy transition-colors">
+                                {v.icon}
+                              </span>
+                            </div>
+                            <h3 className="editorial-heading text-xl sm:text-2xl text-charcoal font-normal mb-2.5 group-hover:text-brand-navy transition-colors">
+                              {v.title}
+                            </h3>
+                          </div>
+                          <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light mt-2">
+                            {v.description}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* OPERATIONAL TEAMS - ARCHITECTURAL HORIZONTAL PRACTICE LEDGER */}
+        {/* ========================================================================= */}
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 border-t border-[#E5E0D8]">
+          {/* Section Header */}
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8" data-aos="fade-up">
+            <div>
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-2 font-mono">
+                ORGANIZATIONAL STRUCTURE
+              </span>
+              <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal">
+                Specialized Desks & Practice Groups
+              </h2>
+            </div>
+            <p className="text-xs sm:text-sm text-charcoal-muted max-w-md font-light leading-relaxed">
+              Dedicated broking divisions in Kampala providing specialized portfolio structuring, direct capacity syndication, and post-loss advocacy.
+            </p>
           </div>
 
-          <div className="container mx-auto px-6 md:px-12 lg:px-16 relative z-10 text-center">
-            <span className="text-secondary-fixed font-label-caps text-label-caps block mb-6 uppercase tracking-widest">
-              Ready to Get Started?
-            </span>
-            <h2 className="font-display-lg text-4xl md:text-6xl text-white mb-6">
-              Let's Build a <span className="text-secondary-fixed">Partnership</span>
-            </h2>
-            <p className="font-body-lg text-xl text-white/70 mb-10 max-w-2xl mx-auto">
-              Experience the Guardian Reinsurance difference. Contact us today to discuss your reinsurance needs.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
-                to="/contact"
-                className="inline-flex items-center justify-center gap-2 bg-secondary-container text-primary px-10 py-5 rounded-xl font-semibold hover:bg-secondary hover:shadow-2xl transition-all"
-              >
-                <span>Get in Touch</span>
-                <span className="material-symbols-outlined">arrow_forward</span>
-              </Link>
-              <Link 
-                to="/products"
-                className="inline-flex items-center justify-center gap-2 border-2 border-white/30 text-white px-10 py-5 rounded-xl font-semibold hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-xl"
-              >
-                <span>Explore Services</span>
-              </Link>
+          {/* Enclosed Architectural Ledger Table */}
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            className="border border-[#E5E0D8] bg-white divide-y divide-[#E5E0D8] shadow-xs"
+          >
+            {/* Table Column Headers (Desktop) */}
+            <div className="hidden lg:grid grid-cols-12 gap-6 px-6 sm:px-8 py-3.5 bg-[#F5F2EB]/70 border-b border-[#E5E0D8] text-[10px] font-mono font-semibold tracking-wider uppercase text-charcoal-muted">
+              <div className="col-span-4">Practice Desk & Division</div>
+              <div className="col-span-5">Operational Mandate & Portfolio Scope</div>
+              <div className="col-span-3 text-right">Direct Inquiry</div>
             </div>
+
+            {/* Desk Rows */}
+            {team.map((t, idx) => (
+              <div
+                key={idx}
+                className="py-5 sm:py-6 px-6 sm:px-8 hover:bg-[#FAF8F5] transition-colors duration-150 group"
+              >
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
+                  {/* Column 1: Index + Desk Identity + Title (4 cols) */}
+                  <div className="lg:col-span-4 flex items-start gap-3.5">
+                    <span className="text-xs font-mono text-charcoal-muted/50 tracking-wider pt-0.5 shrink-0">
+                      0{idx + 1}
+                    </span>
+                    <div>
+                      <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-brand-navy block">
+                        {t.role}
+                      </span>
+                      <h3 className="editorial-heading text-lg sm:text-xl text-charcoal font-normal mt-0.5 leading-snug group-hover:text-brand-navy transition-colors">
+                        {t.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Column 2: Mandate Narrative + Focus Tag (5 cols) */}
+                  <div className="lg:col-span-5 space-y-1.5">
+                    <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light">
+                      {t.description}
+                    </p>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1 h-1 bg-brand-azure rounded-full shrink-0"></span>
+                      <span className="text-[11px] font-mono text-charcoal-muted/80">
+                        Scope: {t.focus}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Column 3: Desk Action (3 cols) */}
+                  <div className="lg:col-span-3 flex lg:justify-end items-center pt-1 lg:pt-0">
+                    <Link
+                      to="/contact"
+                      className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E0D8] bg-white text-xs font-semibold text-charcoal uppercase tracking-wider group-hover:border-charcoal/40 hover:!bg-brand-navy hover:!text-white hover:!border-brand-navy transition-all duration-150"
+                    >
+                      <span>Consult Desk</span>
+                      <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">
+                        arrow_forward
+                      </span>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
       </main>
