@@ -37,37 +37,6 @@ const About = () => {
     }
   ];
 
-  const team = [
-    {
-      icon: 'domain',
-      role: 'Executive Leadership',
-      title: 'Strategic Direction & Governance',
-      description: 'Guiding long-term institutional vision, regulatory alignment, and senior relationships with international reinsurers.',
-      focus: 'Board Oversight & IRA Governance'
-    },
-    {
-      icon: 'account_balance',
-      role: 'Treaty Broking Desk',
-      title: 'Portfolio Architecture & Placement',
-      description: 'Specialists in proportional and non-proportional treaty structuring, exposure aggregation, and competitive capacity syndication.',
-      focus: 'Life & General Treaty Portfolios'
-    },
-    {
-      icon: 'hub',
-      role: 'Facultative & Special Risks',
-      title: 'Single-Risk Placement',
-      description: 'Rapid syndication for high-value infrastructure, energy, aviation, and complex commercial exposures.',
-      focus: 'Aviation, Marine & Energy Lines'
-    },
-    {
-      icon: 'receipt_long',
-      role: 'Technical Accounting & Claims',
-      title: 'Financial Integrity & Advocacy',
-      description: 'Actuarial reconciliation, claims recovery acceleration, and adherence to Insurance Regulatory Authority standards.',
-      focus: 'Fast-Track Cash Calls & Audits'
-    }
-  ];
-
   return (
     <>
       <Header />
@@ -133,12 +102,12 @@ const About = () => {
               </div>
             </div>
 
-            {/* Right Column: Authentic Leadership Photo in Natural Portrait Framing */}
+            {/* Right Column: Kampala Executive Desk Portrait Framing */}
             <div className="lg:col-span-5" data-aos="fade-left" data-aos-delay="100">
               <div className="relative border border-[#E5E0D8] bg-[#F5F2EB] shadow-md group overflow-hidden">
                 <img
-                  src="/images/team-leadership.jpg"
-                  alt="Guardian Reinsurance leadership team representing the firm at the African Insurance Assembly (FANAF)"
+                  src="/images/hero-editorial.jpg"
+                  alt="Guardian Reinsurance senior Ugandan executive team in boardroom consultation in Kampala"
                   className="w-full h-[340px] sm:h-[480px] lg:h-[620px] object-cover object-[center_32%] transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 
@@ -150,14 +119,14 @@ const About = () => {
                   <div className="flex items-center gap-2 mb-1">
                     <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-brand-azure">
-                      Continental Representation
+                      Kampala Executive Desk
                     </span>
                   </div>
                   <h3 className="editorial-heading text-base sm:text-lg font-normal text-charcoal leading-snug">
-                    Leadership at the African Insurance Assembly (FANAF)
+                    Underwriting & Treaty Advisory
                   </h3>
                   <p className="text-[11px] sm:text-xs text-charcoal-muted mt-1 leading-relaxed">
-                    Actively shaping reinsurance capacity, treaty agreements, and regional partnerships across Africa.
+                    Combining local market intimacy with international placement reach under IRA governance.
                   </p>
                 </div>
               </div>
@@ -285,87 +254,108 @@ const About = () => {
         </section>
 
         {/* ========================================================================= */}
-        {/* OPERATIONAL TEAMS - ARCHITECTURAL HORIZONTAL PRACTICE LEDGER */}
+        {/* OUR TEAM SECTION */}
         {/* ========================================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16 border-t border-[#E5E0D8]">
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8" data-aos="fade-up">
-            <div>
-              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-2 font-mono">
-                ORGANIZATIONAL STRUCTURE
-              </span>
-              <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal">
-                Specialized Desks & Practice Groups
-              </h2>
-            </div>
-            <p className="text-xs sm:text-sm text-charcoal-muted max-w-md font-light leading-relaxed">
-              Dedicated broking divisions in Kampala providing specialized portfolio structuring, direct capacity syndication, and post-loss advocacy.
-            </p>
-          </div>
-
-          {/* Enclosed Architectural Ledger Table */}
-          <div
-            data-aos="fade-up"
-            data-aos-delay="100"
-            className="border border-[#E5E0D8] bg-white divide-y divide-[#E5E0D8] shadow-xs"
-          >
-            {/* Table Column Headers (Desktop) */}
-            <div className="hidden lg:grid grid-cols-12 gap-6 px-6 sm:px-8 py-3.5 bg-[#F5F2EB]/70 border-b border-[#E5E0D8] text-[10px] font-mono font-semibold tracking-wider uppercase text-charcoal-muted">
-              <div className="col-span-4">Practice Desk & Division</div>
-              <div className="col-span-5">Operational Mandate & Portfolio Scope</div>
-              <div className="col-span-3 text-right">Direct Inquiry</div>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            {/* Left Column: Authentic Team Photograph */}
+            <div className="lg:col-span-6" data-aos="fade-right">
+              <div className="relative border border-[#E5E0D8] bg-white shadow-sm overflow-hidden group">
+                <img
+                  src="/images/team-leadership.jpg"
+                  alt="Guardian Reinsurance executive leadership team representing the firm at the African Insurance Assembly"
+                  className="w-full h-[380px] sm:h-[480px] lg:h-[540px] object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-[1.01]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
+                
+                {/* Clean Editorial Caption */}
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 border-l-4 border-brand-navy border border-[#E5E0D8] shadow-md">
+                  <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-brand-navy block mb-1">
+                    Leadership Delegation • Continental Assembly (FANAF)
+                  </span>
+                  <p className="text-xs sm:text-sm font-normal text-charcoal leading-snug">
+                    Senior executives representing Guardian Reinsurance Brokers Uganda in bilateral syndications and market placements.
+                  </p>
+                </div>
+              </div>
             </div>
 
-            {/* Desk Rows */}
-            {team.map((t, idx) => (
-              <div
-                key={idx}
-                className="py-5 sm:py-6 px-6 sm:px-8 hover:bg-[#FAF8F5] transition-colors duration-150 group"
-              >
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-6 items-center">
-                  {/* Column 1: Index + Desk Identity + Title (4 cols) */}
-                  <div className="lg:col-span-4 flex items-start gap-3.5">
-                    <span className="text-xs font-mono text-charcoal-muted/50 tracking-wider pt-0.5 shrink-0">
-                      0{idx + 1}
-                    </span>
-                    <div>
-                      <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-brand-navy block">
-                        {t.role}
-                      </span>
-                      <h3 className="editorial-heading text-lg sm:text-xl text-charcoal font-normal mt-0.5 leading-snug group-hover:text-brand-navy transition-colors">
-                        {t.title}
-                      </h3>
-                    </div>
-                  </div>
+            {/* Right Column: Corporate Narrative & Institutional Standards */}
+            <div className="lg:col-span-6 space-y-6" data-aos="fade-left" data-aos-delay="100">
+              <div>
+                <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-3 font-mono">
+                  OUR TEAM
+                </span>
+                <h2 className="editorial-heading text-3xl sm:text-4xl lg:text-5xl text-charcoal font-normal leading-tight">
+                  Experienced brokers, dedicated partners.
+                </h2>
+              </div>
 
-                  {/* Column 2: Mandate Narrative + Focus Tag (5 cols) */}
-                  <div className="lg:col-span-5 space-y-1.5">
-                    <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light">
-                      {t.description}
+              <div className="space-y-4 text-sm sm:text-base text-charcoal-muted font-light leading-relaxed">
+                <p>
+                  At Guardian Reinsurance Brokers, our strength lies in the technical depth and professional integrity of our people. Headquartered in Kampala, our broking team brings together seasoned reinsurance practitioners, technical accountants, and risk analysts with decades of combined experience across East African and continental markets.
+                </p>
+                <p>
+                  We operate as true fiduciary partners for our cedants. Rather than relying on off-the-shelf placement slips, our brokers engage directly with insurance executives to understand capital requirements, evaluate retention limits, and negotiate optimal terms with top-tier African and international syndicates.
+                </p>
+              </div>
+
+              {/* Three Fiduciary Principles */}
+              <div className="space-y-3.5 pt-2">
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                  <span className="material-symbols-outlined text-brand-navy text-xl shrink-0 mt-0.5">verified_user</span>
+                  <div>
+                    <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
+                      Senior Executive Oversight
+                    </h4>
+                    <p className="text-xs text-charcoal-muted mt-0.5 leading-relaxed font-light">
+                      Every treaty renewal, facultative slip, and claims recovery is personally stewarded by senior broking directors.
                     </p>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1 h-1 bg-brand-azure rounded-full shrink-0"></span>
-                      <span className="text-[11px] font-mono text-charcoal-muted/80">
-                        Scope: {t.focus}
-                      </span>
-                    </div>
                   </div>
+                </div>
 
-                  {/* Column 3: Desk Action (3 cols) */}
-                  <div className="lg:col-span-3 flex lg:justify-end items-center pt-1 lg:pt-0">
-                    <Link
-                      to="/contact"
-                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 border border-[#E5E0D8] bg-white text-xs font-semibold text-charcoal uppercase tracking-wider group-hover:border-charcoal/40 hover:!bg-brand-navy hover:!text-white hover:!border-brand-navy transition-all duration-150 text-center"
-                    >
-                      <span>Consult Desk</span>
-                      <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">
-                        arrow_forward
-                      </span>
-                    </Link>
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                  <span className="material-symbols-outlined text-brand-azure text-xl shrink-0 mt-0.5">calculate</span>
+                  <div>
+                    <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
+                      Actuarial & Technical Rigor
+                    </h4>
+                    <p className="text-xs text-charcoal-muted mt-0.5 leading-relaxed font-light">
+                      Meticulous exposure modeling, slip wording audits, and strict compliance with Insurance Regulatory Authority (IRA) standards.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                  <span className="material-symbols-outlined text-brand-navy text-xl shrink-0 mt-0.5">public</span>
+                  <div>
+                    <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
+                      Continental & Global Syndication
+                    </h4>
+                    <p className="text-xs text-charcoal-muted mt-0.5 leading-relaxed font-light">
+                      Direct access to Africa Re, Continental Re, ZEP-RE, WAICA Re, Ghana Re, and Lloyd’s of London underwriting syndicates.
+                    </p>
                   </div>
                 </div>
               </div>
-            ))}
+
+              {/* Action Buttons */}
+              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                <Link
+                  to="/contact"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm text-center"
+                >
+                  <span>Connect With Our Team</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </Link>
+                <a
+                  href="tel:+256414344500"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all text-center"
+                >
+                  <span>Call Desk: +256 414 344 500</span>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>

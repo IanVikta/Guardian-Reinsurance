@@ -6,14 +6,25 @@ const Loader = ({ onLoaded }) => {
   const [isDone, setIsDone] = useState(false);
 
   useEffect(() => {
-    // Smooth, realistic corporate loading progression curve
+    // Lock background scrolling on both html and body while loader is active
+    const originalHtmlOverflow = document.documentElement.style.overflow;
+    const originalBodyOverflow = document.body.style.overflow;
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.documentElement.style.overflow = originalHtmlOverflow;
+      document.body.style.overflow = originalBodyOverflow;
+    };
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           clearInterval(interval);
           return 100;
         }
-        // Accelerate smoothly through loading steps
         const step = Math.max(3, Math.floor((100 - prev) * 0.22));
         return Math.min(100, prev + step);
       });
@@ -24,12 +35,10 @@ const Loader = ({ onLoaded }) => {
 
   useEffect(() => {
     if (progress === 100) {
-      // Small pause at 100% for visual polish
       const fadeTimer = setTimeout(() => {
         setIsFading(true);
       }, 250);
 
-      // Complete unmount after fade transition finishes
       const doneTimer = setTimeout(() => {
         setIsDone(true);
         if (onLoaded) onLoaded();
@@ -46,24 +55,54 @@ const Loader = ({ onLoaded }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] grid place-items-center w-full min-h-[100dvh] h-[100dvh] bg-[#FAF8F5] transition-opacity duration-600 ease-out p-4 m-0 overflow-hidden ${
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: '100%',
+        height: '100dvh',
+        backgroundColor: '#FAF8F5',
+        zIndex: 99999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        margin: 0,
+        padding: '16px',
+        boxSizing: 'border-box'
+      }}
+      className={`transition-opacity duration-500 ease-out select-none ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       role="status"
       aria-label="Loading Guardian Reinsurance portal"
     >
-      <div className="flex flex-col items-center justify-center w-full max-w-xs text-center px-4 mx-auto select-none">
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center',
+          width: '100%',
+          maxWidth: '280px',
+          margin: '0 auto',
+          transform: 'translateY(-24px)'
+        }}
+        className="sm:!transform-none"
+      >
         {/* Official Brand Emblem */}
-        <div className="relative mb-5 flex justify-center w-full">
+        <div className="flex justify-center mb-4 w-full">
           <img
             src="/images/guardian-logo-cropped.png"
             alt="Guardian Reinsurance Brokers Uganda"
-            className="w-20 sm:w-24 h-auto object-contain mx-auto select-none"
+            className="w-24 sm:w-28 h-auto object-contain mx-auto select-none"
           />
         </div>
 
         {/* Minimal Hairline Progress Track */}
-        <div className="w-36 sm:w-44 h-[1.5px] bg-[#E5E0D8] overflow-hidden mb-3.5 mx-auto">
+        <div className="w-32 sm:w-40 h-[2px] bg-[#E5E0D8] overflow-hidden mb-3 mx-auto">
           <div
             className="h-full bg-brand-navy transition-all duration-100 ease-out"
             style={{ width: `${progress}%` }}
@@ -71,14 +110,9 @@ const Loader = ({ onLoaded }) => {
         </div>
 
         {/* Classy Corporate Institutional Typography */}
-        <div className="space-y-0.5 select-none text-center">
-          <p className="text-[10px] font-mono font-semibold tracking-[0.25em] uppercase text-charcoal/85">
-            GUARDIAN REINSURANCE
-          </p>
-          <p className="text-[9px] font-mono tracking-[0.2em] uppercase text-charcoal-muted/60">
-            IRA LICENSED • UGANDA
-          </p>
-        </div>
+        <p className="text-[10px] font-mono tracking-[0.25em] uppercase text-charcoal-muted/75 select-none text-center">
+          IRA LICENSED • UGANDA
+        </p>
       </div>
     </div>
   );
