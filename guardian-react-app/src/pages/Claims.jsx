@@ -192,7 +192,7 @@ const Claims = () => {
               </p>
               <a
                 href="#claim-notification"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm text-center"
               >
                 <span>Notify a Claim</span>
                 <span className="material-symbols-outlined text-sm">arrow_downward</span>
@@ -205,10 +205,10 @@ const Claims = () => {
             <img
               src="/images/accounting-desk.jpg"
               alt="Claims document reconciliation and technical accounting"
-              className="w-full h-[320px] sm:h-[450px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+              className="w-full h-[280px] sm:h-[450px] lg:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
-            <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md px-5 py-3 border-l-4 border-l-brand-navy border border-[#E5E0D8] shadow-sm max-w-md">
+            <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-6 sm:left-6 max-w-[calc(100%-2rem)] sm:max-w-md bg-white/95 backdrop-blur-md px-4 py-3 sm:px-5 sm:py-3 border-l-4 border-l-brand-navy border border-[#E5E0D8] shadow-sm">
               <p className="text-xs font-bold text-brand-navy uppercase tracking-wider">
                 Uncompromising Advocacy
               </p>

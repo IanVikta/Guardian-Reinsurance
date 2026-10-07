@@ -128,17 +128,17 @@ const Home = () => {
               <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed mb-6 max-w-lg">
                 Delivering bespoke treaty structures, specialized facultative capacity, and rapid claims recoveries across Uganda and East Africa. Engineered with clinical precision and institutional counterparty trust.
               </p>
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all duration-150 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all duration-150 shadow-sm text-center"
                 >
                   <span>Request Broking Terms</span>
                   <span className="material-symbols-outlined text-base">arrow_forward</span>
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150 text-center"
                 >
                   <span>Our Heritage</span>
                 </Link>
@@ -151,14 +151,14 @@ const Home = () => {
             <img
               src="/images/hero-editorial.jpg"
               alt="Guardian Reinsurance senior Ugandan executive team in boardroom consultation in Kampala"
-              className="w-full h-[360px] sm:h-[480px] lg:h-[580px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
+              className="w-full h-[320px] sm:h-[480px] lg:h-[580px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
             />
             {/* Subtle natural vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
 
             {/* Sleek Sharp Architectural Overlay Badge */}
-            <div className="absolute bottom-6 left-6 sm:bottom-8 sm:left-8 bg-white/95 backdrop-blur-md px-5 py-3 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg flex items-center gap-4">
-              <span className="w-2.5 h-2.5 bg-emerald-500 animate-pulse"></span>
+            <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-8 sm:left-8 max-w-[calc(100%-2rem)] sm:max-w-md bg-white/95 backdrop-blur-md px-4 py-3 sm:px-5 sm:py-3 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg flex items-center gap-3 sm:gap-4">
+              <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full shrink-0 animate-pulse"></span>
               <div>
                 <p className="text-xs font-semibold text-charcoal tracking-wide">
                   Kampala Broking Desk • International Syndication Power
@@ -303,7 +303,7 @@ const Home = () => {
                   className="w-full h-[400px] sm:h-[500px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6 right-6 p-4 bg-white/95 backdrop-blur-md border border-[#E5E0D8] border-l-4 border-l-brand-navy">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 p-4 bg-white/95 backdrop-blur-md border border-[#E5E0D8] border-l-4 border-l-brand-navy shadow-sm">
                   <p className="text-xs font-semibold text-brand-navy uppercase tracking-wider">
                     Institutional Governance
                   </p>
@@ -585,7 +585,7 @@ const Home = () => {
                   className="w-full h-[420px] sm:h-[520px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-                <div className="absolute bottom-6 left-6 bg-white/95 backdrop-blur-md px-5 py-3 border-l-4 border-brand-navy border border-[#E5E0D8] shadow-sm text-xs font-semibold text-brand-navy">
+                <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-6 sm:left-6 max-w-[calc(100%-2rem)] sm:max-w-md bg-white/95 backdrop-blur-md px-4 py-3 sm:px-5 sm:py-3 border-l-4 border-brand-navy border border-[#E5E0D8] shadow-sm text-xs font-semibold text-brand-navy">
                   Strategic Council • Kampala Boardroom
                 </div>
               </div>

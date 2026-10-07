@@ -24,6 +24,23 @@
   .material-symbols-outlined {
     font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
   }
+
+  /* Mobile touch & highlight normalization */
+  button, input, select, textarea, a {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* Prevent disruptive iOS Safari auto-zoom on form focus */
+  @media screen and (max-width: 767px) {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+  }
 }
 
 @layer utilities {

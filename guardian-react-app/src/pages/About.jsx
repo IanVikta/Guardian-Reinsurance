@@ -116,17 +116,17 @@ const About = () => {
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-wrap items-center gap-4" data-aos="fade-up" data-aos-delay="150">
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto" data-aos="fade-up" data-aos-delay="150">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all duration-150 shadow-sm"
+                  className="inline-flex items-center justify-center gap-2.5 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all duration-150 shadow-sm"
                 >
                   <span>Partner With Us</span>
                   <span className="material-symbols-outlined text-sm">arrow_forward</span>
                 </Link>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150 text-center"
                 >
                   <span>Our Solutions</span>
                 </Link>
@@ -139,14 +139,14 @@ const About = () => {
                 <img
                   src="/images/team-leadership.jpg"
                   alt="Guardian Reinsurance leadership team representing the firm at the African Insurance Assembly (FANAF)"
-                  className="w-full h-[480px] sm:h-[560px] lg:h-[620px] object-cover object-[center_32%] transition-transform duration-700 group-hover:scale-[1.02]"
+                  className="w-full h-[340px] sm:h-[480px] lg:h-[620px] object-cover object-[center_32%] transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 
                 {/* Subtle vignette at the bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
 
                 {/* Floating Architectural Badge */}
-                <div className="absolute bottom-5 left-5 right-5 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg">
+                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
                     <span className="text-[10px] font-bold uppercase tracking-widest text-brand-azure">
@@ -355,7 +355,7 @@ const About = () => {
                   <div className="lg:col-span-3 flex lg:justify-end items-center pt-1 lg:pt-0">
                     <Link
                       to="/contact"
-                      className="inline-flex items-center gap-2 px-4 py-2 border border-[#E5E0D8] bg-white text-xs font-semibold text-charcoal uppercase tracking-wider group-hover:border-charcoal/40 hover:!bg-brand-navy hover:!text-white hover:!border-brand-navy transition-all duration-150"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 sm:py-2 border border-[#E5E0D8] bg-white text-xs font-semibold text-charcoal uppercase tracking-wider group-hover:border-charcoal/40 hover:!bg-brand-navy hover:!text-white hover:!border-brand-navy transition-all duration-150 text-center"
                     >
                       <span>Consult Desk</span>
                       <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5">

@@ -193,7 +193,7 @@ const Products = () => {
               </p>
               <a
                 href="#quote-form"
-                className="inline-flex items-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm text-center"
               >
                 <span>Request Broking Terms</span>
                 <span className="material-symbols-outlined text-sm">arrow_downward</span>
@@ -202,12 +202,12 @@ const Products = () => {
           </div>
 
           {/* Solution Selector Tabs - Sleek Sharp Rectilinear Tabs */}
-          <div className="flex flex-wrap gap-2 pt-6 border-t border-[#E5E0D8]" data-aos="fade-up" data-aos-delay="150">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 pt-6 border-t border-[#E5E0D8]" data-aos="fade-up" data-aos-delay="150">
             {productsList.map((p) => (
               <button
                 key={p.id}
                 onClick={() => setSelectedProduct(p.id)}
-                className={`px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-150 border ${
+                className={`px-4 sm:px-5 py-2.5 text-xs font-semibold tracking-wider uppercase transition-all duration-150 border text-center ${
                   selectedProduct === p.id
                     ? 'bg-brand-navy text-white border-brand-navy shadow-sm'
                     : 'bg-white border-[#E5E0D8] text-charcoal-muted hover:text-charcoal hover:border-brand-navy/30'
@@ -266,16 +266,16 @@ const Products = () => {
                       </ul>
                     </div>
 
-                    <div className="pt-4 flex flex-wrap gap-4">
+                    <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                       <a
                         href="#quote-form"
-                        className="px-6 py-3 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm"
+                        className="px-6 py-3.5 sm:py-3 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-colors shadow-sm text-center"
                       >
                         Engage On {p.title}
                       </a>
                       <Link
                         to="/contact"
-                        className="px-6 py-3 border border-charcoal/30 text-charcoal text-xs font-semibold tracking-widest uppercase hover:bg-white transition-colors"
+                        className="px-6 py-3.5 sm:py-3 border border-charcoal/30 text-charcoal text-xs font-semibold tracking-widest uppercase hover:bg-white transition-colors text-center"
                       >
                         Speak to Broker
                       </Link>
@@ -283,7 +283,7 @@ const Products = () => {
                   </div>
 
                   <div className="lg:col-span-6">
-                    <div className="border border-[#E5E0D8] h-[340px] sm:h-[420px] relative shadow-sm overflow-hidden">
+                    <div className="border border-[#E5E0D8] h-[260px] sm:h-[400px] lg:h-[420px] relative shadow-sm overflow-hidden">
                       <img
                         src={p.image}
                         alt={p.title}

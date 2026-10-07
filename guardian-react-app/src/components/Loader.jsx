@@ -46,15 +46,15 @@ const Loader = ({ onLoaded }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FAF8F5] transition-opacity duration-600 ease-out ${
+      className={`fixed inset-0 z-[9999] grid place-items-center w-full min-h-[100dvh] h-[100dvh] bg-[#FAF8F5] transition-opacity duration-600 ease-out p-4 m-0 overflow-hidden ${
         isFading ? 'opacity-0 pointer-events-none' : 'opacity-100'
       }`}
       role="status"
       aria-label="Loading Guardian Reinsurance portal"
     >
-      <div className="flex flex-col items-center max-w-xs text-center px-6">
+      <div className="flex flex-col items-center justify-center w-full max-w-xs text-center px-4 mx-auto select-none">
         {/* Official Brand Emblem */}
-        <div className="relative mb-6">
+        <div className="relative mb-5 flex justify-center w-full">
           <img
             src="/images/guardian-logo-cropped.png"
             alt="Guardian Reinsurance Brokers Uganda"
@@ -63,7 +63,7 @@ const Loader = ({ onLoaded }) => {
         </div>
 
         {/* Minimal Hairline Progress Track */}
-        <div className="w-36 sm:w-44 h-[1.5px] bg-[#E5E0D8] overflow-hidden mb-3.5">
+        <div className="w-36 sm:w-44 h-[1.5px] bg-[#E5E0D8] overflow-hidden mb-3.5 mx-auto">
           <div
             className="h-full bg-brand-navy transition-all duration-100 ease-out"
             style={{ width: `${progress}%` }}
@@ -71,7 +71,7 @@ const Loader = ({ onLoaded }) => {
         </div>
 
         {/* Classy Corporate Institutional Typography */}
-        <div className="space-y-0.5 select-none">
+        <div className="space-y-0.5 select-none text-center">
           <p className="text-[10px] font-mono font-semibold tracking-[0.25em] uppercase text-charcoal/85">
             GUARDIAN REINSURANCE
           </p>

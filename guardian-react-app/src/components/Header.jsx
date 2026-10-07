@@ -74,22 +74,22 @@ const Header = () => {
             </nav>
 
             {/* Action Button & Mobile Menu Trigger */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <Link
                 to="/contact"
-                className="inline-flex items-center justify-center px-6 py-2.5 text-xs font-semibold tracking-widest uppercase bg-brand-navy text-white hover:bg-brand-blue border border-brand-navy transition-all duration-200 shadow-sm"
+                className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold tracking-widest uppercase bg-brand-navy text-white hover:bg-brand-blue border border-brand-navy transition-all duration-200 shadow-sm"
               >
                 Get in Touch
               </Link>
 
-              {/* Mobile Hamburger Button */}
+              {/* Mobile Hamburger Button - Clean & Borderless */}
               <button
                 type="button"
-                className="lg:hidden p-2 text-charcoal hover:text-brand-navy border border-warm-border hover:bg-warm-card transition-colors"
+                className="lg:hidden p-2 text-charcoal hover:text-brand-navy border-0 outline-none focus:outline-none focus:ring-0 ring-0 shadow-none bg-transparent active:bg-transparent transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
               >
-                <span className="material-symbols-outlined text-2xl">
+                <span className="material-symbols-outlined text-2xl select-none">
                   {mobileMenuOpen ? 'close' : 'menu'}
                 </span>
               </button>
@@ -118,11 +118,13 @@ const Header = () => {
               alt="Guardian Reinsurance Brokers"
               className="h-10 w-auto object-contain"
             />
+            {/* Borderless Close Button */}
             <button
               onClick={() => setMobileMenuOpen(false)}
-              className="p-1 border border-warm-border text-charcoal hover:bg-warm-card transition-colors"
+              className="p-1.5 text-charcoal hover:text-brand-navy border-0 outline-none focus:outline-none focus:ring-0 ring-0 shadow-none bg-transparent active:bg-transparent transition-colors"
+              aria-label="Close menu"
             >
-              <span className="material-symbols-outlined text-xl">close</span>
+              <span className="material-symbols-outlined text-2xl select-none">close</span>
             </button>
           </div>
 
@@ -144,16 +146,21 @@ const Header = () => {
           </nav>
         </div>
 
-        <div className="pt-6 border-t border-[#E7E2D9] space-y-3">
+        <div className="pt-6 border-t border-[#E7E2D9] space-y-4">
           <Link
             to="/contact"
             onClick={() => setMobileMenuOpen(false)}
-            className="w-full flex items-center justify-center py-3 bg-brand-navy text-white text-xs uppercase tracking-widest font-semibold hover:bg-brand-blue transition-colors shadow-sm"
+            className="w-full flex items-center justify-center py-3.5 bg-brand-navy text-white text-xs uppercase tracking-widest font-semibold hover:bg-brand-blue transition-colors shadow-sm"
           >
             Get in Touch
           </Link>
-          <div className="text-center text-xs text-charcoal-muted">
-            Kampala, Uganda • Licensed by IRA
+          <div className="space-y-1.5 text-xs text-center font-mono text-charcoal-muted">
+            <a href="tel:+256414344500" className="block text-brand-navy font-semibold hover:underline">
+              +256 414 344 500
+            </a>
+            <p className="text-[11px] text-charcoal-muted/70">
+              Kampala, Uganda • IRA Licensed
+            </p>
           </div>
         </div>
       </div>

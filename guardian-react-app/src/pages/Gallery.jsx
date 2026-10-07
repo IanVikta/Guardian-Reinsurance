@@ -169,13 +169,13 @@ const Gallery = () => {
             </p>
           </div>
 
-          {/* Minimal Text Filter Tabs */}
-          <div className="flex items-center gap-6 sm:gap-8 pt-8 mt-8 border-t border-[#E5E0D8]">
+          {/* Minimal Text Filter Tabs - Touch Friendly Horizontal Scroll on Mobile */}
+          <div className="flex items-center gap-5 sm:gap-8 pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-[#E5E0D8] overflow-x-auto whitespace-nowrap">
             {filterTabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveFilter(tab.id)}
-                className={`text-xs uppercase tracking-wider transition-colors pb-2 -mb-px border-b-2 font-mono ${
+                className={`text-xs uppercase tracking-wider transition-colors pb-2 -mb-px border-b-2 font-mono shrink-0 ${
                   activeFilter === tab.id
                     ? 'border-brand-navy text-brand-navy font-semibold'
                     : 'border-transparent text-charcoal-muted hover:text-charcoal'

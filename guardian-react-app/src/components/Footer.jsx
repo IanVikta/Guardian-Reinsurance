@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Direct Broking Channels */}
-          <div className="flex flex-wrap sm:flex-nowrap items-center gap-8 text-xs font-mono text-slate-300 lg:border-l lg:border-white/[0.08] lg:pl-8">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-6 sm:gap-8 text-xs font-mono text-slate-300 lg:border-l lg:border-white/[0.08] lg:pl-8">
             <div>
               <span className="text-[10px] text-slate-400 uppercase tracking-widest block mb-0.5">
                 Direct Switchboard

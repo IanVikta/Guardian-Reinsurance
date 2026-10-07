@@ -321,12 +321,12 @@ const Contact = () => {
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center gap-3 w-full sm:w-auto">
                 <a
                   href="https://www.google.com/maps/place/Guardian+Reinsurance+Brokers+Uganda+Limited/@0.3130511,32.5825015,17z"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-navy text-white text-xs font-semibold tracking-wider uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-brand-navy text-white text-xs font-semibold tracking-wider uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm text-center"
                 >
                   <span className="material-symbols-outlined text-sm">directions</span>
                   <span>Get Directions on Google Maps</span>
@@ -335,7 +335,7 @@ const Contact = () => {
             </div>
 
             {/* Interactive Embedded Google Map */}
-            <div className="relative w-full h-[400px] sm:h-[480px] lg:h-[520px] border border-[#E5E0D8] overflow-hidden bg-[#FAF8F5]">
+            <div className="relative w-full h-[320px] sm:h-[480px] lg:h-[520px] border border-[#E5E0D8] overflow-hidden bg-[#FAF8F5]">
               <iframe
                 title="Guardian Reinsurance Brokers Uganda Limited Headquarters"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7587668626993!2d32.582501511241425!3d0.3130510640281853!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177dbc7e85574a55%3A0xaa1a85780e659fb0!2sGuardian%20Reinsurance%20Brokers%20Uganda%20Limited!5e0!3m2!1sen!2sug!4v1791329541785!5m2!1sen!2sug"
