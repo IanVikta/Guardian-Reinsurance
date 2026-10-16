@@ -158,7 +158,7 @@ const About = () => {
                 </p>
               </div>
 
-              <div className="pt-2 flex items-center gap-4">
+              <div className="pt-2 flex items-center gap-4" data-aos="fade-up" data-aos-delay="150">
                 <div className="p-4 bg-white border border-[#E5E0D8] border-l-4 border-l-brand-azure flex items-center gap-3">
                   <span className="material-symbols-outlined text-brand-azure text-2xl">verified</span>
                   <div>
@@ -226,6 +226,8 @@ const About = () => {
                       return (
                         <div
                           key={idx}
+                          data-aos="fade-up"
+                          data-aos-delay={num * 70}
                           className={`p-8 sm:p-9 transition-colors duration-200 flex flex-col justify-between group min-h-[220px] ${isNavy ? 'bg-brand-navy hover:bg-brand-blue' : 'hover:bg-[#FAF8F5]'}`}
                         >
                           <div>
@@ -302,7 +304,7 @@ const About = () => {
 
               {/* Three Fiduciary Principles */}
               <div className="order-4 lg:order-none lg:col-span-12 lg:row-start-3 lg:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5" data-aos="fade-up" data-aos-delay="100">
                   <span className="material-symbols-outlined text-brand-navy text-xl shrink-0 mt-0.5">verified_user</span>
                   <div>
                     <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
@@ -314,7 +316,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5" data-aos="fade-up" data-aos-delay="180">
                   <span className="material-symbols-outlined text-brand-azure text-xl shrink-0 mt-0.5">calculate</span>
                   <div>
                     <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
@@ -326,7 +328,7 @@ const About = () => {
                   </div>
                 </div>
 
-                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
+                <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5" data-aos="fade-up" data-aos-delay="260">
                   <span className="material-symbols-outlined text-brand-navy text-xl shrink-0 mt-0.5">public</span>
                   <div>
                     <h4 className="text-xs font-semibold text-charcoal uppercase tracking-wider font-mono">
@@ -340,7 +342,7 @@ const About = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="order-5 lg:order-none lg:col-span-12 lg:row-start-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="order-5 lg:order-none lg:col-span-12 lg:row-start-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3" data-aos="fade-up" data-aos-delay="320">
                 <Link
                   to="/contact"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm text-center"

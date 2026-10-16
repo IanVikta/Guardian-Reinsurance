@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { subscribeNewsletter } from '../services/api';
 
 const articles = [
   {
@@ -130,14 +131,19 @@ const Blog = () => {
 
     if (!err) {
       setIsSubmittingNewsletter(true);
-      setTimeout(() => {
-        setIsSubmittingNewsletter(false);
-        setNewsletterSubscribed(true);
-        setNewsletterEmail('');
-        setNewsletterError('');
-        setNewsletterTouched(false);
-        setTimeout(() => setNewsletterSubscribed(false), 6000);
-      }, 500);
+      subscribeNewsletter(newsletterEmail)
+        .then(() => {
+          setIsSubmittingNewsletter(false);
+          setNewsletterSubscribed(true);
+          setNewsletterEmail('');
+          setNewsletterError('');
+          setNewsletterTouched(false);
+          setTimeout(() => setNewsletterSubscribed(false), 7000);
+        })
+        .catch((e) => {
+          setIsSubmittingNewsletter(false);
+          setNewsletterError(e.message || 'Subscription failed. Please try again.');
+        });
     }
   };
 

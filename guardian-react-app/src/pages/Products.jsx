@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { submitQuote } from '../services/api';
 
 const Products = () => {
   const [selectedProduct, setSelectedProduct] = useState('treaty');
@@ -82,20 +83,25 @@ const Products = () => {
 
     if (Object.keys(errors).length === 0) {
       setIsSubmittingQuote(true);
-      setTimeout(() => {
-        setIsSubmittingQuote(false);
-        setQuoteSubmitted(true);
-        setQuoteData({
-          companyName: '',
-          contactPerson: '',
-          email: '',
-          service: 'treaty',
-          message: ''
+      submitQuote(quoteData)
+        .then(() => {
+          setIsSubmittingQuote(false);
+          setQuoteSubmitted(true);
+          setQuoteData({
+            companyName: '',
+            contactPerson: '',
+            email: '',
+            service: 'treaty',
+            message: ''
+          });
+          setQuoteTouched({});
+          setQuoteErrors({});
+          setTimeout(() => setQuoteSubmitted(false), 8000);
+        })
+        .catch((err) => {
+          setIsSubmittingQuote(false);
+          setQuoteErrors({ form: err.message || 'Unable to submit terms request. Please try again or reach our Kampala desk directly.' });
         });
-        setQuoteTouched({});
-        setQuoteErrors({});
-        setTimeout(() => setQuoteSubmitted(false), 7000);
-      }, 500);
     }
   };
 
@@ -389,6 +395,12 @@ const Products = () => {
                   </div>
                 ) : (
                   <form onSubmit={handleQuoteSubmit} noValidate className="space-y-5">
+                    {quoteErrors.form && (
+                      <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-start gap-2.5">
+                        <span className="material-symbols-outlined text-base shrink-0 mt-0.5">error</span>
+                        <p className="leading-relaxed font-light">{quoteErrors.form}</p>
+                      </div>
+                    )}
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                         <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">

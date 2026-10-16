@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
 const Home = () => {
   const [activeTestimonial, setActiveTestimonial] = useState(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.defaultMuted = true;
+      videoRef.current.muted = true;
+      videoRef.current.play().catch(() => {
+        // Autoplay policy or low power mode fallback
+      });
+    }
+  }, []);
 
   const partners = [
     {
@@ -62,6 +73,20 @@ const Home = () => {
       rating: 'AM Best: B+',
       type: 'Treaty Placement',
       region: 'CIMA Region'
+    },
+    {
+      name: 'IBAU',
+      fullName: 'Insurance Brokers Association of Uganda',
+      rating: 'Apex Body',
+      type: 'Industry Brokerage Body',
+      region: 'Uganda'
+    },
+    {
+      name: 'ITC',
+      fullName: 'Insurance Training College',
+      rating: 'Certified',
+      type: 'Professional Standards & Training',
+      region: 'Uganda & Regional'
     }
   ];
 
@@ -110,13 +135,16 @@ const Home = () => {
         {/* ========================================================================= */}
         <section className="relative overflow-hidden min-h-[640px] lg:min-h-[85vh] flex items-end bg-brand-navy">
           <video
+            ref={videoRef}
             className="absolute inset-0 w-full h-full object-cover"
             src="/videos/reinsurance.mp4"
             autoPlay
             muted
             loop
             playsInline
+            webkit-playsinline="true"
             preload="auto"
+            poster="/images/hero-editorial.jpg"
             aria-hidden="true"
           />
           {/* Readability overlays */}
@@ -177,35 +205,45 @@ const Home = () => {
               </p>
             </div>
 
-            {/* Partners Minimal Corporate Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {partners.map((p, idx) => (
-                <div
-                  key={idx}
-                  data-aos="fade-up"
-                  data-aos-delay={idx * 40}
-                  className="bg-white border border-[#E5E0D8] p-6 hover:border-brand-navy transition-colors duration-200 flex flex-col justify-between shadow-xs"
-                >
-                  <div>
-                    <div className="flex items-baseline justify-between gap-3 mb-2">
-                      <h3 className="font-semibold text-base text-charcoal tracking-tight">
-                        {p.name}
-                      </h3>
-                      <span className="text-[11px] font-mono text-charcoal-muted">
-                        {p.rating}
-                      </span>
+            {/* Partners Minimal Corporate Grid - 5 Up, 5 Down */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5">
+              {partners.map((p, idx) => {
+                // Checkerboard alternation: row 0 (0..4) is [0, 1, 0, 1, 0], row 1 (5..9) is [1, 0, 1, 0, 1]
+                const isDark = (Math.floor(idx / 5) + (idx % 5)) % 2 === 1;
+                return (
+                  <div
+                    key={idx}
+                    data-aos="fade-up"
+                    data-aos-delay={(idx % 5) * 70 + Math.floor(idx / 5) * 80}
+                    className={`p-6 transition-all duration-200 flex flex-col justify-between shadow-xs border ${
+                      isDark
+                        ? 'bg-brand-navy border-brand-navy hover:bg-brand-blue text-white'
+                        : 'bg-white border-[#E5E0D8] hover:border-brand-navy'
+                    }`}
+                  >
+                    <div>
+                      <div className="flex items-baseline justify-between gap-3 mb-2">
+                        <h3 className={`font-semibold text-base tracking-tight ${isDark ? 'text-white' : 'text-charcoal'}`}>
+                          {p.name}
+                        </h3>
+                        <span className={`text-[11px] font-mono ${isDark ? 'text-white/70' : 'text-charcoal-muted'}`}>
+                          {p.rating}
+                        </span>
+                      </div>
+                      <p className={`text-xs font-light leading-relaxed ${isDark ? 'text-white/80' : 'text-charcoal-muted'}`}>
+                        {p.fullName}
+                      </p>
                     </div>
-                    <p className="text-xs text-charcoal-muted font-light leading-relaxed">
-                      {p.fullName}
-                    </p>
-                  </div>
 
-                  <div className="pt-4 mt-5 border-t border-[#F0ECE4] flex items-center justify-between text-xs">
-                    <span className="text-charcoal-muted text-[11px] font-light">{p.type}</span>
-                    <span className="text-[10px] uppercase font-mono tracking-wider text-charcoal-muted">{p.region}</span>
+                    <div className={`pt-4 mt-5 border-t flex items-center justify-between text-xs ${
+                      isDark ? 'border-white/15' : 'border-[#F0ECE4]'
+                    }`}>
+                      <span className={`text-[11px] font-light ${isDark ? 'text-white/75' : 'text-charcoal-muted'}`}>{p.type}</span>
+                      <span className={`text-[10px] uppercase font-mono tracking-wider ${isDark ? 'text-white/60' : 'text-charcoal-muted'}`}>{p.region}</span>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Lloyd's & Global Syndication Banner */}
@@ -248,7 +286,7 @@ const Home = () => {
 
               {/* Numbers Grid */}
               <div className="grid grid-cols-2 gap-8 pt-4">
-                <div className="border-l-2 border-brand-navy pl-4">
+                <div className="border-l-2 border-brand-navy pl-4" data-aos="fade-up" data-aos-delay="100">
                   <div className="flex items-baseline gap-1">
                     <span className="editorial-heading text-4xl sm:text-5xl font-medium text-charcoal">99.8</span>
                     <span className="text-lg font-sans text-brand-azure font-semibold">%</span>
@@ -256,7 +294,7 @@ const Home = () => {
                   <p className="text-xs sm:text-sm text-charcoal-muted mt-1">Placement Success Rate</p>
                 </div>
 
-                <div className="border-l-2 border-brand-azure pl-4">
+                <div className="border-l-2 border-brand-azure pl-4" data-aos="fade-up" data-aos-delay="180">
                   <div className="flex items-baseline gap-1">
                     <span className="editorial-heading text-4xl sm:text-5xl font-medium text-charcoal">120</span>
                     <span className="text-lg font-sans text-brand-navy font-semibold">+</span>
@@ -264,7 +302,7 @@ const Home = () => {
                   <p className="text-xs sm:text-sm text-charcoal-muted mt-1">Global Reinsurance Markets</p>
                 </div>
 
-                <div className="border-l-2 border-brand-navy pl-4">
+                <div className="border-l-2 border-brand-navy pl-4" data-aos="fade-up" data-aos-delay="260">
                   <div className="flex items-baseline gap-1">
                     <span className="editorial-heading text-4xl sm:text-5xl font-medium text-charcoal">15</span>
                     <span className="text-lg font-sans text-brand-azure font-semibold">+</span>
@@ -272,7 +310,7 @@ const Home = () => {
                   <p className="text-xs sm:text-sm text-charcoal-muted mt-1">Years Market Expertise</p>
                 </div>
 
-                <div className="border-l-2 border-brand-azure pl-4">
+                <div className="border-l-2 border-brand-azure pl-4" data-aos="fade-up" data-aos-delay="340">
                   <div className="flex items-baseline gap-1">
                     <span className="editorial-heading text-4xl sm:text-5xl font-medium text-charcoal">24/7</span>
                   </div>
@@ -356,23 +394,23 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Card 2: Treaty Broking */}
-            <div className="bg-[#FAF8F5] border border-[#E5E0D8] p-8 flex flex-col justify-between h-[320px] sm:h-[350px] hover:border-brand-navy/40 transition-all duration-200" data-aos="fade-up" data-aos-delay="100">
+            {/* Card 2: Treaty Broking (Navy Inverted) */}
+            <div className="bg-brand-navy border border-brand-navy p-8 flex flex-col justify-between h-[320px] sm:h-[350px] shadow-sm hover:bg-brand-blue transition-all duration-200" data-aos="fade-up" data-aos-delay="100">
               <div>
-                <div className="w-10 h-10 bg-brand-navy text-white flex items-center justify-center mb-6 shadow-sm">
+                <div className="w-10 h-10 bg-white text-brand-navy flex items-center justify-center mb-6 shadow-sm">
                   <span className="material-symbols-outlined text-xl">account_balance</span>
                 </div>
-                <h3 className="editorial-heading text-2xl text-charcoal font-normal mb-3">
+                <h3 className="editorial-heading text-2xl text-white font-normal mb-3">
                   Treaty Broking
                 </h3>
-                <p className="text-sm text-charcoal-muted leading-relaxed">
+                <p className="text-sm text-white/80 leading-relaxed font-light">
                   Proportional and non-proportional treaty structures engineered with clinical precision to safeguard aggregate risk portfolios against catastrophic shocks.
                 </p>
               </div>
               <div>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-brand-navy hover:text-brand-azure transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-white hover:text-brand-azure transition-colors"
                 >
                   <span>Learn More</span>
                   <span className="material-symbols-outlined text-base">arrow_forward</span>
@@ -428,23 +466,23 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Card 5: Technical Accounting */}
-            <div className="bg-[#FAF8F5] border border-[#E5E0D8] p-8 flex flex-col justify-between h-[320px] sm:h-[350px] hover:border-brand-navy/40 transition-all duration-200" data-aos="fade-up" data-aos-delay="250">
+            {/* Card 5: Technical Accounting (Navy Inverted) */}
+            <div className="bg-brand-navy border border-brand-navy p-8 flex flex-col justify-between h-[320px] sm:h-[350px] shadow-sm hover:bg-brand-blue transition-all duration-200" data-aos="fade-up" data-aos-delay="250">
               <div>
                 <div className="w-10 h-10 bg-brand-azure text-white flex items-center justify-center mb-6 shadow-sm">
                   <span className="material-symbols-outlined text-xl">calculate</span>
                 </div>
-                <h3 className="editorial-heading text-2xl text-charcoal font-normal mb-3">
+                <h3 className="editorial-heading text-2xl text-white font-normal mb-3">
                   Technical Accounting
                 </h3>
-                <p className="text-sm text-charcoal-muted leading-relaxed">
+                <p className="text-sm text-white/80 leading-relaxed font-light">
                   Financial integrity and rigorous audit compliance at every stage. Managing complex premium reconciliation, commission splits, and border reporting.
                 </p>
               </div>
               <div>
                 <Link
                   to="/products"
-                  className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-brand-navy hover:text-brand-azure transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-white hover:text-brand-azure transition-colors"
                 >
                   <span>Learn More</span>
                   <span className="material-symbols-outlined text-base">arrow_forward</span>
@@ -594,7 +632,7 @@ const Home = () => {
 
               {/* Checklist Items - Sharp Minimalist Icons */}
               <div className="space-y-5 pt-3">
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="100">
                   <div className="w-6 h-6 bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
                     <span className="material-symbols-outlined text-sm">check</span>
                   </div>
@@ -608,7 +646,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="160">
                   <div className="w-6 h-6 bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
                     <span className="material-symbols-outlined text-sm">check</span>
                   </div>
@@ -622,7 +660,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="220">
                   <div className="w-6 h-6 bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
                     <span className="material-symbols-outlined text-sm">check</span>
                   </div>
@@ -636,7 +674,7 @@ const Home = () => {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
+                <div className="flex items-start gap-4" data-aos="fade-up" data-aos-delay="280">
                   <div className="w-6 h-6 bg-brand-navy text-white flex items-center justify-center shrink-0 mt-0.5">
                     <span className="material-symbols-outlined text-sm">check</span>
                   </div>
@@ -668,7 +706,7 @@ const Home = () => {
             <p className="text-sm sm:text-base text-charcoal-muted max-w-xl mx-auto mb-8 leading-relaxed">
               Connect directly with our senior broking executives for a confidential consultation on your treaty renewals and facultative placements.
             </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4" data-aos="fade-up" data-aos-delay="150">
               <Link
                 to="/contact"
                 className="w-full sm:w-auto px-8 py-4 bg-brand-navy text-white text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-brand-blue transition-all shadow-sm"

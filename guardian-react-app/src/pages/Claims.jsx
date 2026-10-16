@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { submitClaim } from '../services/api';
 
 const Claims = () => {
   const [claimData, setClaimData] = useState({
@@ -86,20 +87,25 @@ const Claims = () => {
 
     if (Object.keys(errors).length === 0) {
       setIsSubmittingClaim(true);
-      setTimeout(() => {
-        setIsSubmittingClaim(false);
-        setClaimSubmitted(true);
-        setClaimData({
-          cedantName: '',
-          slipNumber: '',
-          dateOfLoss: '',
-          estimatedAmount: '',
-          description: ''
+      submitClaim(claimData)
+        .then(() => {
+          setIsSubmittingClaim(false);
+          setClaimSubmitted(true);
+          setClaimData({
+            cedantName: '',
+            slipNumber: '',
+            dateOfLoss: '',
+            estimatedAmount: '',
+            description: ''
+          });
+          setClaimTouched({});
+          setClaimErrors({});
+          setTimeout(() => setClaimSubmitted(false), 8000);
+        })
+        .catch((err) => {
+          setIsSubmittingClaim(false);
+          setClaimErrors({ form: err.message || 'Unable to register claim docket. Please try again or contact our emergency claims desk.' });
         });
-        setClaimTouched({});
-        setClaimErrors({});
-        setTimeout(() => setClaimSubmitted(false), 7000);
-      }, 500);
     }
   };
 
@@ -409,6 +415,12 @@ const Claims = () => {
               </div>
             ) : (
               <form onSubmit={handleSubmitClaim} noValidate className="space-y-5">
+                {claimErrors.form && (
+                  <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-start gap-2.5">
+                    <span className="material-symbols-outlined text-base shrink-0 mt-0.5">error</span>
+                    <p className="leading-relaxed font-light">{claimErrors.form}</p>
+                  </div>
+                )}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold uppercase tracking-wider text-charcoal mb-2">

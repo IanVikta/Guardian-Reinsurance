@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { submitContact } from '../services/api';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -88,22 +89,42 @@ const Contact = () => {
 
     if (Object.keys(formErrors).length === 0) {
       setIsSubmitting(true);
-      setTimeout(() => {
-        setIsSubmitting(false);
-        setSubmitted(true);
-        setFormData({
-          name: '',
-          email: '',
-          phone: '',
-          company: '',
-          service: 'Treaty Broking',
-          urgency: 'Standard Review',
-          message: ''
+      const urgencyMap = {
+        'Standard Review': 'standard',
+        'Priority Review': 'priority',
+        'Immediate Catastrophe': 'urgent'
+      };
+      const payload = {
+        name: formData.name,
+        company: formData.company,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        urgency: urgencyMap[formData.urgency] || 'standard',
+        message: formData.message,
+      };
+
+      submitContact(payload)
+        .then(() => {
+          setIsSubmitting(false);
+          setSubmitted(true);
+          setFormData({
+            name: '',
+            email: '',
+            phone: '',
+            company: '',
+            service: 'Treaty Broking',
+            urgency: 'Standard Review',
+            message: ''
+          });
+          setTouched({});
+          setErrors({});
+          setTimeout(() => setSubmitted(false), 8000);
+        })
+        .catch((err) => {
+          setIsSubmitting(false);
+          setErrors({ form: err.message || 'Unable to submit inquiry. Please try again or contact our Kampala desk directly.' });
         });
-        setTouched({});
-        setErrors({});
-        setTimeout(() => setSubmitted(false), 7000);
-      }, 500);
     }
   };
 
@@ -384,6 +405,12 @@ const Contact = () => {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-6">
+                  {errors.form && (
+                    <div className="p-4 bg-red-50 border border-red-200 text-red-700 text-xs flex items-start gap-2.5">
+                      <span className="material-symbols-outlined text-base shrink-0 mt-0.5">error</span>
+                      <p className="leading-relaxed font-light">{errors.form}</p>
+                    </div>
+                  )}
                   {/* Row 1: Name & Company */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
