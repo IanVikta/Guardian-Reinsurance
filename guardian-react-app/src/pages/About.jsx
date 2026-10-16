@@ -110,7 +110,7 @@ const About = () => {
                   alt="Guardian Reinsurance senior Ugandan executive team in boardroom consultation in Kampala"
                   className="w-full h-[340px] sm:h-[480px] lg:h-[620px] object-cover object-[center_32%] transition-transform duration-700 group-hover:scale-[1.02]"
                 />
-                
+
                 {/* Subtle vignette at the bottom */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>
 
@@ -172,8 +172,8 @@ const About = () => {
             <div className="lg:col-span-6" data-aos="fade-left" data-aos-delay="100">
               <div className="border border-[#E5E0D8] shadow-sm overflow-hidden">
                 <img
-                  src="/images/meeting-boardroom.jpg"
-                  alt="Boardroom strategic consultation with Guardian Re brokers in Kampala"
+                  src="/images/Professional%20Portrait%20with%20Certificates.jpg"
+                  alt="Guardian Re professional with certificates in Kampala"
                   className="w-full h-[400px] sm:h-[480px] object-cover"
                 />
               </div>
@@ -222,25 +222,26 @@ const About = () => {
                   >
                     {values.slice(startIndex, startIndex + 2).map((v, idx) => {
                       const num = startIndex + idx + 1;
+                       const isNavy = [1, 4, 5].includes(num);
                       return (
                         <div
                           key={idx}
-                          className="p-8 sm:p-9 hover:bg-[#FAF8F5] transition-colors duration-200 flex flex-col justify-between group min-h-[220px]"
+                          className={`p-8 sm:p-9 transition-colors duration-200 flex flex-col justify-between group min-h-[220px] ${isNavy ? 'bg-brand-navy hover:bg-brand-blue' : 'hover:bg-[#FAF8F5]'}`}
                         >
                           <div>
                             <div className="flex items-center justify-between mb-4">
-                              <span className="text-xs font-mono text-charcoal-muted/70 tracking-widest uppercase">
+                              <span className={`text-xs font-mono tracking-widest uppercase ${isNavy ? 'text-white/60' : 'text-charcoal-muted/70'}`}>
                                 0{num}
                               </span>
-                              <span className="material-symbols-outlined text-lg text-charcoal-muted/60 group-hover:text-brand-navy transition-colors">
+                              <span className={`material-symbols-outlined text-lg transition-colors ${isNavy ? 'text-white/70' : 'text-charcoal-muted/60 group-hover:text-brand-navy'}`}>
                                 {v.icon}
                               </span>
                             </div>
-                            <h3 className="editorial-heading text-xl sm:text-2xl text-charcoal font-normal mb-2.5 group-hover:text-brand-navy transition-colors">
+                            <h3 className={`editorial-heading text-xl sm:text-2xl font-normal mb-2.5 transition-colors ${isNavy ? 'text-white' : 'text-charcoal group-hover:text-brand-navy'}`}>
                               {v.title}
                             </h3>
                           </div>
-                          <p className="text-xs sm:text-sm text-charcoal-muted leading-relaxed font-light mt-2">
+                          <p className={`text-xs sm:text-sm leading-relaxed font-light mt-2 ${isNavy ? 'text-white/80' : 'text-charcoal-muted'}`}>
                             {v.description}
                           </p>
                         </div>
@@ -257,21 +258,20 @@ const About = () => {
         {/* OUR TEAM SECTION */}
         {/* ========================================================================= */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-            {/* Left Column: Authentic Team Photograph */}
-            <div className="lg:col-span-6" data-aos="fade-right">
-              <div className="relative border border-[#E5E0D8] bg-white shadow-sm overflow-hidden group">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-12 xl:gap-x-16 gap-y-8 lg:gap-y-6 items-start">
+            {/* Photograph: uncropped landscape, beside the intro text */}
+            <div className="order-3 lg:order-none lg:col-span-7 lg:col-start-1 lg:row-start-1 lg:row-span-2 lg:self-center" data-aos="fade-right">
+              <div className="border border-[#E5E0D8] bg-white shadow-sm overflow-hidden">
                 <img
-                  src="/images/team-leadership.jpg"
+                  src="/images/IMG_8627@3x.jpg"
                   alt="Guardian Reinsurance executive leadership team representing the firm at the African Insurance Assembly"
-                  className="w-full h-[380px] sm:h-[480px] lg:h-[540px] object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-[1.01]"
+                  className="w-full h-auto block"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none"></div>
-                
+
                 {/* Clean Editorial Caption */}
-                <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/95 backdrop-blur-md p-4 sm:p-5 border-l-4 border-brand-navy border border-[#E5E0D8] shadow-md">
+                <div className="p-4 sm:p-5 border-t border-[#E5E0D8] border-l-4 border-l-brand-navy bg-white">
                   <span className="text-[10px] font-mono font-semibold tracking-wider uppercase text-brand-navy block mb-1">
-                    Leadership Delegation • Continental Assembly (FANAF)
+                    The Guardian Reinsurance Team • Kampala
                   </span>
                   <p className="text-xs sm:text-sm font-normal text-charcoal leading-snug">
                     Senior executives representing Guardian Reinsurance Brokers Uganda in bilateral syndications and market placements.
@@ -280,9 +280,9 @@ const About = () => {
               </div>
             </div>
 
-            {/* Right Column: Corporate Narrative & Institutional Standards */}
-            <div className="lg:col-span-6 space-y-6" data-aos="fade-left" data-aos-delay="100">
-              <div>
+            {/* Narrative blocks are placed into the grid via order/col-span */}
+            <div className="contents">
+              <div className="order-1 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:self-end" data-aos="fade-left">
                 <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-3 font-mono">
                   OUR TEAM
                 </span>
@@ -291,7 +291,7 @@ const About = () => {
                 </h2>
               </div>
 
-              <div className="space-y-4 text-sm sm:text-base text-charcoal-muted font-light leading-relaxed">
+              <div className="order-2 lg:order-none lg:col-span-5 lg:col-start-8 lg:row-start-2 lg:self-start space-y-4 text-sm text-charcoal-muted font-light leading-relaxed" data-aos="fade-left" data-aos-delay="100">
                 <p>
                   At Guardian Reinsurance Brokers, our strength lies in the technical depth and professional integrity of our people. Headquartered in Kampala, our broking team brings together seasoned reinsurance practitioners, technical accountants, and risk analysts with decades of combined experience across East African and continental markets.
                 </p>
@@ -301,7 +301,7 @@ const About = () => {
               </div>
 
               {/* Three Fiduciary Principles */}
-              <div className="space-y-3.5 pt-2">
+              <div className="order-4 lg:order-none lg:col-span-12 lg:row-start-3 lg:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
                 <div className="p-4 bg-white border border-[#E5E0D8] flex items-start gap-3.5">
                   <span className="material-symbols-outlined text-brand-navy text-xl shrink-0 mt-0.5">verified_user</span>
                   <div>
@@ -340,7 +340,7 @@ const About = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <div className="order-5 lg:order-none lg:col-span-12 lg:row-start-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                 <Link
                   to="/contact"
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-brand-navy text-white text-xs font-semibold tracking-widest uppercase hover:bg-brand-blue border border-brand-navy transition-all shadow-sm text-center"

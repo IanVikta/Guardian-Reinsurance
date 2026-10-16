@@ -36,20 +36,21 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 w-full z-[100] transition-all duration-300 ${
           scrolled
-            ? 'bg-[#FAF8F5]/98 backdrop-blur-md border-b border-[#E5E0D8] shadow-sm py-3'
-            : 'bg-[#FAF8F5] border-b border-[#E5E0D8]/80 py-4'
+            ? 'bg-[#FAF8F5]/98 backdrop-blur-md border-b border-[#E5E0D8] shadow-sm py-2.5 sm:py-3'
+            : 'bg-[#FAF8F5] border-b border-[#E5E0D8]/80 py-3 sm:py-4'
         }`}
+        style={{ position: 'fixed', top: 0, left: 0, right: 0 }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+        <div className="w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between gap-2">
             {/* Logo */}
-            <Link to="/" className="flex items-center gap-3 group">
+            <Link to="/" className="flex items-center gap-2 group min-w-0 shrink">
               <img
                 src="/images/Guardian reinsurance brokers logo 1.png"
                 alt="Guardian Reinsurance Brokers (U) Ltd"
-                className="h-12 sm:h-14 w-auto object-contain transition-opacity duration-200 group-hover:opacity-90"
+                className="h-9 sm:h-12 md:h-14 w-auto max-w-[55vw] sm:max-w-none object-contain transition-opacity duration-200 group-hover:opacity-90"
               />
             </Link>
 
@@ -74,7 +75,7 @@ const Header = () => {
             </nav>
 
             {/* Action Button & Mobile Menu Trigger */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               <Link
                 to="/contact"
                 className="hidden sm:inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold tracking-widest uppercase bg-brand-navy text-white hover:bg-brand-blue border border-brand-navy transition-all duration-200 shadow-sm"
@@ -85,13 +86,18 @@ const Header = () => {
               {/* Mobile Hamburger Button - Clean & Borderless */}
               <button
                 type="button"
-                className="lg:hidden p-2 text-charcoal hover:text-brand-navy border-0 outline-none focus:outline-none focus:ring-0 ring-0 shadow-none bg-transparent active:bg-transparent transition-colors"
+                className="lg:hidden shrink-0 inline-flex items-center justify-center w-11 h-11 text-brand-navy bg-white border border-[#E5E0D8] hover:bg-[#F2EFE9] outline-none focus:outline-none active:bg-[#EFECE6] transition-colors"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle menu"
+                aria-expanded={mobileMenuOpen}
               >
-                <span className="material-symbols-outlined text-2xl select-none">
-                  {mobileMenuOpen ? 'close' : 'menu'}
-                </span>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
+                  {mobileMenuOpen ? (
+                    <path d="M6 6l12 12M18 6L6 18" />
+                  ) : (
+                    <path d="M4 7h16M4 12h16M4 17h16" />
+                  )}
+                </svg>
               </button>
             </div>
           </div>

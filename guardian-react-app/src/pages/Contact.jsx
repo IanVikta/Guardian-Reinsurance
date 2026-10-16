@@ -257,41 +257,28 @@ const Contact = () => {
                 key={idx}
                 data-aos="fade-up"
                 data-aos-delay={idx * 80}
-                className="group relative bg-white p-7 border border-[#E5E0D8] hover:border-brand-azure/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="bg-white p-6 border border-[#E5E0D8] hover:border-brand-navy transition-colors duration-200 flex flex-col justify-between"
               >
-                {/* Glowing Top Accent Line */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-navy via-brand-azure to-brand-cyan group-hover:h-1.5 transition-all duration-300"></div>
-
                 <div>
-                  {/* Icon & Badge Header */}
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-11 h-11 bg-gradient-to-br from-brand-navy to-brand-blue text-white rounded-lg flex items-center justify-center shadow-md shadow-brand-navy/15 group-hover:scale-110 group-hover:from-brand-azure group-hover:to-brand-blue transition-all duration-300">
-                      <span className="material-symbols-outlined text-xl">{info.icon}</span>
-                    </div>
-                    <span className="text-[10px] font-bold uppercase tracking-widest font-mono text-charcoal-muted px-2 py-0.5 bg-[#FAF8F5] border border-[#E5E0D8]">
-                      {info.badge}
-                    </span>
-                  </div>
+                  <span className="material-symbols-outlined text-brand-navy text-2xl block mb-4">{info.icon}</span>
 
-                  <h4 className="editorial-heading text-lg text-charcoal font-normal mb-2 group-hover:text-brand-navy transition-colors">
+                  <h4 className="text-[11px] font-semibold uppercase tracking-[0.2em] text-charcoal-muted mb-3">
                     {info.title}
                   </h4>
 
-                  <div className="text-xs sm:text-sm text-charcoal-muted space-y-1 font-light leading-relaxed mb-6">
+                  <div className="text-sm text-charcoal-muted space-y-1 font-light leading-relaxed mb-5">
                     <p className="font-medium text-charcoal">{info.primary}</p>
                     <p>{info.secondary}</p>
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-[#F0ECE4]">
-                  <a
-                    href={info.actionHref}
-                    className="inline-flex items-center gap-1.5 text-xs font-semibold tracking-widest uppercase text-brand-navy group-hover:text-brand-azure group-hover:translate-x-1 transition-all"
-                  >
-                    <span>{info.actionText}</span>
-                    <span className="material-symbols-outlined text-sm">arrow_forward</span>
-                  </a>
-                </div>
+                <a
+                  href={info.actionHref}
+                  className="inline-flex items-center gap-1.5 text-[11px] font-semibold tracking-widest uppercase text-brand-navy hover:text-brand-azure transition-colors"
+                >
+                  <span>{info.actionText}</span>
+                  <span className="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
               </div>
             ))}
           </div>

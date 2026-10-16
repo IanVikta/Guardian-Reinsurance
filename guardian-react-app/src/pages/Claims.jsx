@@ -322,22 +322,23 @@ const Claims = () => {
         {/* ========================================================================= */}
         {/* CORE CLAIMS STRENGTHS */}
         {/* ========================================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 border-t border-[#E5E0D8]">
+        <section className="bg-brand-navy">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             <div className="lg:col-span-5 space-y-6" data-aos="fade-right">
-              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
+              <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-white/60">
                 THE GUARDIAN STANDARD
               </span>
-              <h2 className="editorial-heading text-3xl sm:text-4xl text-charcoal font-normal leading-tight">
+              <h2 className="editorial-heading text-3xl sm:text-4xl text-white font-normal leading-tight">
                 Designed to eliminate friction, dispute, and delay.
               </h2>
-              <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-white/75 leading-relaxed">
                 Reinsurance claims must not be stalled by paperwork or conflicting interpretations. We maintain direct, seasoned dialogues with international loss adjusters and lead reinsurers to protect client liquidity.
               </p>
               <div className="pt-2">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-brand-navy hover:text-brand-azure"
+                  className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-white hover:text-brand-cyan transition-colors"
                 >
                   <span>Connect with Claims Desk</span>
                   <span className="material-symbols-outlined text-base">arrow_forward</span>
@@ -351,28 +352,41 @@ const Claims = () => {
                   key={idx}
                   data-aos="fade-up"
                   data-aos-delay={idx * 100}
-                  className="bg-white p-6 border border-[#E5E0D8] space-y-3 hover:border-brand-navy/40 transition-all duration-200"
+                  className="bg-white/5 p-6 border border-white/15 space-y-3 hover:bg-white/10 hover:border-white/35 transition-all duration-200"
                 >
-                  <div className="w-8 h-8 bg-brand-navy text-white flex items-center justify-center">
+                  <div className="w-8 h-8 bg-white text-brand-navy flex items-center justify-center">
                     <span className="material-symbols-outlined text-lg">{feat.icon}</span>
                   </div>
-                  <h4 className="text-sm font-semibold text-charcoal">
+                  <h4 className="text-sm font-semibold text-white">
                     {feat.title}
                   </h4>
-                  <p className="text-xs text-charcoal-muted leading-relaxed">
+                  <p className="text-xs text-white/70 leading-relaxed">
                     {feat.description}
                   </p>
                 </div>
               ))}
             </div>
           </div>
+          </div>
         </section>
 
         {/* ========================================================================= */}
         {/* CLAIMS NOTIFICATION FORM - Sharp Architecture */}
         {/* ========================================================================= */}
-        <section id="claim-notification" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#E5E0D8]">
-          <div className="max-w-3xl mx-auto bg-white p-8 sm:p-12 border border-[#E5E0D8] shadow-sm" data-aos="fade-up">
+        <section id="claim-notification" className="relative overflow-hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-[#E5E0D8]">
+          {/* Minimal background motif: faint dot grid + thin ring, faded at the edges */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none overflow-hidden"
+            style={{
+              backgroundImage: 'radial-gradient(rgba(27,38,89,0.14) 1px, transparent 1.5px)',
+              backgroundSize: '24px 24px',
+              WebkitMaskImage: 'radial-gradient(ellipse at center, #000 20%, transparent 75%)',
+              maskImage: 'radial-gradient(ellipse at center, #000 20%, transparent 75%)'
+            }}
+          ></div>
+          <div aria-hidden="true" className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[680px] h-[680px] rounded-full border border-brand-navy/10 pointer-events-none hidden md:block"></div>
+          <div className="relative max-w-3xl mx-auto bg-white p-8 sm:p-12 border border-[#E5E0D8] shadow-sm" data-aos="fade-up">
             <div className="text-center mb-8">
               <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted block mb-2">
                 OFFICIAL NOTICE OF LOSS

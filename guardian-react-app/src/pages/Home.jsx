@@ -104,28 +104,37 @@ const Home = () => {
     <>
       <Header />
 
-      <main className="pt-24 lg:pt-28 pb-16 bg-[#FAF8F5]">
+      <main className="pb-16 bg-[#FAF8F5]">
         {/* ========================================================================= */}
-        {/* 1. HERO SECTION - SLEEK ARCHITECTURAL EDITORIAL DESIGN */}
+        {/* 1. HERO SECTION - FULL-BLEED BACKGROUND VIDEO */}
         {/* ========================================================================= */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 lg:pb-16">
-          {/* Eyebrow */}
-          <div className="mb-4" data-aos="fade-down">
-            <span className="text-[11px] font-semibold tracking-[0.25em] uppercase text-charcoal-muted">
-              Guardian Reinsurance Brokers (U) Ltd • Kampala Desk
-            </span>
-          </div>
+        <section className="relative overflow-hidden min-h-[640px] lg:min-h-[85vh] flex items-end bg-brand-navy">
+          <video
+            className="absolute inset-0 w-full h-full object-cover"
+            src="/videos/reinsurance.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            aria-hidden="true"
+          />
+          {/* Readability overlays */}
+          <div className="absolute inset-0 bg-black/45 pointer-events-none"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30 pointer-events-none"></div>
+
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 lg:pt-44 pb-12 lg:pb-16">
 
           {/* Split Header: Big Serif on Left, Intro & CTA on Right */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-end mb-10">
             <div className="lg:col-span-7" data-aos="fade-right">
-              <h1 className="editorial-heading text-4xl sm:text-5xl lg:text-6xl text-charcoal font-normal leading-[1.08] tracking-tight">
+              <h1 className="editorial-heading text-3xl xs:text-4xl sm:text-5xl lg:text-6xl text-white font-normal leading-[1.12] sm:leading-[1.08] tracking-tight break-words">
                 Your trusted reinsurance partner, strategic & resilient.
               </h1>
             </div>
 
             <div className="lg:col-span-5 flex flex-col justify-end" data-aos="fade-left" data-aos-delay="100">
-              <p className="text-sm sm:text-base text-charcoal-muted leading-relaxed mb-6 max-w-lg">
+              <p className="text-sm sm:text-base text-white/85 leading-relaxed mb-6 max-w-lg">
                 Delivering bespoke treaty structures, specialized facultative capacity, and rapid claims recoveries across Uganda and East Africa. Engineered with clinical precision and institutional counterparty trust.
               </p>
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
@@ -138,7 +147,7 @@ const Home = () => {
                 </Link>
                 <Link
                   to="/about"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-charcoal/20 text-charcoal hover:border-charcoal hover:bg-white text-xs font-semibold tracking-wider uppercase transition-all duration-150 text-center"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 border border-white/50 text-white hover:border-white hover:bg-white hover:text-charcoal text-xs font-semibold tracking-wider uppercase transition-all duration-150 text-center"
                 >
                   <span>Our Heritage</span>
                 </Link>
@@ -146,28 +155,6 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Hero Wide Cinematic Photo - Sharp Architectural Geometry */}
-          <div className="relative border border-[#E5E0D8] shadow-sm group overflow-hidden" data-aos="fade-up" data-aos-delay="150">
-            <img
-              src="/images/hero-editorial.jpg"
-              alt="Guardian Reinsurance senior Ugandan executive team in boardroom consultation in Kampala"
-              className="w-full h-[320px] sm:h-[480px] lg:h-[580px] object-cover transition-transform duration-700 group-hover:scale-[1.01]"
-            />
-            {/* Subtle natural vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none"></div>
-
-            {/* Sleek Sharp Architectural Overlay Badge */}
-            <div className="absolute bottom-4 left-4 right-4 sm:right-auto sm:bottom-8 sm:left-8 max-w-[calc(100%-2rem)] sm:max-w-md bg-white/95 backdrop-blur-md px-4 py-3 sm:px-5 sm:py-3 border-l-4 border-brand-azure border border-[#E5E0D8] shadow-lg flex items-center gap-3 sm:gap-4">
-              <span className="w-2.5 h-2.5 bg-emerald-500 rounded-full shrink-0 animate-pulse"></span>
-              <div>
-                <p className="text-xs font-semibold text-charcoal tracking-wide">
-                  Kampala Broking Desk • International Syndication Power
-                </p>
-                <p className="text-[11px] text-charcoal-muted">
-                  Supervised by Insurance Regulatory Authority of Uganda (IRA)
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -580,8 +567,8 @@ const Home = () => {
             <div className="lg:col-span-6" data-aos="fade-right">
               <div className="border border-[#E5E0D8] shadow-sm group relative overflow-hidden">
                 <img
-                  src="/images/meeting-boardroom.jpg"
-                  alt="Boardroom strategic discussion with Guardian Re team in Kampala"
+                  src="/images/Elegant%20Corporate%20Event%20Group%20Portrait.jpg"
+                  alt="Guardian Re team and guests at a corporate event in Kampala"
                   className="w-full h-[420px] sm:h-[520px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
