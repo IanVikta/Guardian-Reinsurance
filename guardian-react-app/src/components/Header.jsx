@@ -50,7 +50,7 @@ const Header = () => {
               <img
                 src="/images/Guardian reinsurance brokers logo 1.png"
                 alt="Guardian Reinsurance Brokers (U) Ltd"
-                className="h-9 sm:h-12 md:h-14 w-auto max-w-[55vw] sm:max-w-none object-contain transition-opacity duration-200 group-hover:opacity-90"
+                className="h-16 sm:h-20 md:h-24 -my-2.5 sm:-my-3.5 w-auto max-w-[65vw] sm:max-w-none object-contain transition-opacity duration-200 group-hover:opacity-90"
               />
             </Link>
 
@@ -122,7 +122,7 @@ const Header = () => {
             <img
               src="/images/Guardian reinsurance brokers logo 1.png"
               alt="Guardian Reinsurance Brokers"
-              className="h-10 w-auto object-contain"
+              className="h-16 -my-2 w-auto object-contain"
             />
             {/* Borderless Close Button */}
             <button
